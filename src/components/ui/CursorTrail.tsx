@@ -55,7 +55,7 @@ const CursorTrail: React.FC = () => {
     <>
       {/* Main cursor */}
       <motion.div
-        className="fixed pointer-events-none z-50 w-3 h-3 bg-gradient-to-r from-neon-blue to-electric-green dark:from-purple-accent dark:to-blue-accent rounded-full mix-blend-difference"
+        className="fixed pointer-events-none z-[9999] w-3 h-3 bg-gradient-to-r from-neon-blue to-electric-green dark:from-purple-accent dark:to-blue-accent rounded-full mix-blend-difference"
         animate={{
           x: mousePosition.x - 6,
           y: mousePosition.y - 6,
@@ -70,7 +70,7 @@ const CursorTrail: React.FC = () => {
 
       {/* Cursor ring */}
       <motion.div
-        className="fixed pointer-events-none z-40 w-6 h-6 border border-neon-blue/40 dark:border-electric-green/40 rounded-full"
+        className="fixed pointer-events-none z-[9998] w-6 h-6 border border-neon-blue/40 dark:border-electric-green/40 rounded-full"
         animate={{
           x: mousePosition.x - 12,
           y: mousePosition.y - 12,
@@ -87,7 +87,7 @@ const CursorTrail: React.FC = () => {
       {trail.map((point) => (
         <motion.div
           key={point.id}
-          className="fixed pointer-events-none z-30 w-2 h-2 bg-neon-blue/60 dark:bg-electric-green/60 rounded-full"
+          className="fixed pointer-events-none z-[9997] w-2 h-2 bg-neon-blue/60 dark:bg-electric-green/60 rounded-full"
           initial={{
             x: point.x - 4,
             y: point.y - 4,
