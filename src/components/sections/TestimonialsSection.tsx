@@ -70,7 +70,7 @@ const TestimonialColumn: React.FC<TestimonialColumnProps> = ({
   >([]);
   const [isPaused, setIsPaused] = useState(false);
   const [y, setY] = useState(0);
-  const animationFrame = useRef<number>();
+  const animationFrame = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     setDuplicatedTestimonials([
