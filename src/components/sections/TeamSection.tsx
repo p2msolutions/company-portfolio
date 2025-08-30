@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Linkedin, Github, Mail } from 'lucide-react';
-import { useInView } from '../../hooks/useInView';
-import { teamMembers } from '../../data/content';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Linkedin, Github, Mail } from "lucide-react";
+import { useInView } from "../../hooks/useInView";
+import { teamMembers } from "../../data/content";
 
 const TeamSection: React.FC = () => {
   const { ref, isInView } = useInView({ threshold: 0.1 });
 
   return (
-    <section id="team" ref={ref} className="py-20 bg-light-surface dark:bg-dark-surface">
+    <section
+      id="team"
+      ref={ref}
+      className="py-20 bg-light-surface dark:bg-dark-surface"
+    >
       <div className="container mx-auto px-6">
         <motion.div
           className="text-center mb-16"
@@ -21,11 +25,13 @@ const TeamSection: React.FC = () => {
             <span className="gradient-text dark:dark-gradient-text"> Team</span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            The talented individuals behind P2M Solutions, bringing diverse expertise and shared passion for innovation
+            The talented individuals behind P2M Solutions, bringing diverse
+            expertise and shared passion for innovation
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Changed grid-cols-4 to grid-cols-3 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {teamMembers.map((member, index) => (
             <TeamMemberCard
               key={member.id}
@@ -41,12 +47,16 @@ const TeamSection: React.FC = () => {
 };
 
 interface TeamMemberCardProps {
-  member: typeof teamMembers[0];
+  member: (typeof teamMembers)[0];
   index: number;
   isInView: boolean;
 }
 
-const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member, index, isInView }) => {
+const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
+  member,
+  index,
+  isInView,
+}) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
   return (
@@ -57,26 +67,34 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member, index, isInView
       transition={{ duration: 0.6, delay: index * 0.1 }}
       onClick={() => setIsFlipped(!isFlipped)}
       whileHover={{ y: -10 }}
-      style={{ perspective: '1000px' }}
+      style={{ perspective: "1000px" }}
     >
       <motion.div
         className="relative w-full h-full"
         animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.6, type: 'spring', stiffness: 300, damping: 30 }}
-        style={{ transformStyle: 'preserve-3d' }}
+        transition={{
+          duration: 0.6,
+          type: "spring",
+          stiffness: 300,
+          damping: 30,
+        }}
+        style={{ transformStyle: "preserve-3d" }}
       >
         {/* Front Side */}
         <div
           className="absolute inset-0 bg-white dark:bg-dark-surface rounded-2xl border border-light-border dark:border-dark-border group-hover:border-neon-blue dark:group-hover:border-electric-green transition-colors duration-300 p-6 flex flex-col items-center justify-center"
-          style={{ backfaceVisibility: 'hidden' }}
+          style={{ backfaceVisibility: "hidden" }}
         >
           <motion.div
             className="w-24 h-24 rounded-full bg-gradient-to-br from-neon-blue to-electric-green dark:from-purple-accent dark:to-blue-accent p-0.5 mb-6"
             whileHover={{ scale: 1.1, rotate: 5 }}
-            transition={{ type: 'spring', stiffness: 300 }}
+            transition={{ type: "spring", stiffness: 300 }}
           >
             <div className="w-full h-full rounded-full bg-light-bg dark:bg-dark-bg flex items-center justify-center text-2xl font-bold text-gray-900 dark:text-white">
-              {member.name.split(' ').map(n => n[0]).join('')}
+              {member.name
+                .split(" ")
+                .map((n) => n[0])
+                .join("")}
             </div>
           </motion.div>
 
@@ -117,15 +135,15 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member, index, isInView
         {/* Back Side */}
         <div
           className="absolute inset-0 bg-white dark:bg-dark-surface rounded-2xl border border-light-border dark:border-dark-border p-6 flex flex-col"
-          style={{ 
-            backfaceVisibility: 'hidden',
-            transform: 'rotateY(180deg)'
+          style={{
+            backfaceVisibility: "hidden",
+            transform: "rotateY(180deg)",
           }}
         >
           <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
             {member.name}
           </h3>
-          
+
           <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4 flex-grow">
             {member.bio}
           </p>

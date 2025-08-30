@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const CursorTrail: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [trail, setTrail] = useState<Array<{ x: number; y: number; id: number }>>([]);
+  const [trail, setTrail] = useState<
+    Array<{ x: number; y: number; id: number }>
+  >([]);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -17,10 +19,10 @@ const CursorTrail: React.FC = () => {
         setIsVisible(true);
 
         // Add to trail with throttling
-        setTrail(prev => {
+        setTrail((prev) => {
           const newTrail = [
             { x: newPosition.x, y: newPosition.y, id: trailId++ },
-            ...prev.slice(0, 6) // Keep only 6 trail points for performance
+            ...prev.slice(0, 6), // Keep only 6 trail points for performance
           ];
           return newTrail;
         });
@@ -33,19 +35,21 @@ const CursorTrail: React.FC = () => {
     };
 
     // Check if device supports hover (not touch device)
-    const supportsHover = window.matchMedia('(hover: hover)').matches;
-    
+    const supportsHover = window.matchMedia("(hover: hover)").matches;
+
     if (supportsHover) {
-      document.addEventListener('mousemove', updateMousePosition, { passive: true });
-      document.addEventListener('mouseleave', handleMouseLeave);
+      document.addEventListener("mousemove", updateMousePosition, {
+        passive: true,
+      });
+      document.addEventListener("mouseleave", handleMouseLeave);
     }
 
     return () => {
       if (animationFrame) {
         cancelAnimationFrame(animationFrame);
       }
-      document.removeEventListener('mousemove', updateMousePosition);
-      document.removeEventListener('mouseleave', handleMouseLeave);
+      document.removeEventListener("mousemove", updateMousePosition);
+      document.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, []);
 

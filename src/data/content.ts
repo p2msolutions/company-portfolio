@@ -147,14 +147,6 @@ export const teamMembers = [
     bio: "Infrastructure expert focused on scalable cloud solutions and CI/CD automation.",
     avatar: "/api/placeholder/150/150",
     skills: ["Docker", "Kubernetes", "AWS", "Terraform"],
-  },
-  {
-    id: 4,
-    name: "Emma Wilson",
-    role: "UX/UI Designer",
-    bio: "Design systems expert creating intuitive interfaces for complex software solutions.",
-    avatar: "/api/placeholder/150/150",
-    skills: ["Figma", "Design Systems", "Prototyping", "User Research"],
   }
 ];
 
