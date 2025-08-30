@@ -204,6 +204,14 @@
   }
 }
 
+@layer utilities {
+  .glass-effect {
+    @apply bg-white/80 dark:bg-dark-bg/80 backdrop-blur-xl;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+  }
+}
+
 @keyframes border-flow {
   0% {
     background-position: 0% 50%;
