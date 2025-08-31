@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Code, Brain, Cloud, Zap, Shield, Database, ExternalLink } from 'lucide-react';
 import { useInView } from '../../hooks/useInView';
 import { services } from '../../data/content';
+import { Link } from "react-router-dom";
 
 const iconMap = {
   Code,
@@ -103,10 +104,14 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, isInView }) =
           {service.description}
         </p>
 
-        <div className="flex items-center text-neon-blue dark:text-electric-green font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+        <Link
+          to={`/service/${service.id}`}
+          className="flex items-center text-neon-blue dark:text-electric-green font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0"
+          onClick={e => e.stopPropagation()}
+        >
           <span>Learn More</span>
           <ExternalLink className="w-4 h-4 ml-2" />
-        </div>
+        </Link>
       </div>
     </motion.div>
   );

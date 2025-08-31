@@ -2,16 +2,20 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Moon, Sun, Monitor, Menu, X } from "lucide-react";
 import { useTheme } from "../../contexts/ThemeContext";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const navItems = [
     { name: "Home", href: "#home" },
     { name: "Services", href: "#services" },
-    { name: "Portfolio", href: "#portfolio" },
-    { name: "About", href: "#about" },
+    { name: "Project", href: "#portfolio" },
+    { name: "Pricing", href: "/pricing" },
+    { name: "About", href: "/about" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -25,6 +29,27 @@ const Header: React.FC = () => {
     theme === "light" ? "dark" : theme === "dark" ? "system" : "light";
   const CurrentThemeIcon = themeIcons[theme];
 
+  // Helper to handle navigation and scroll
+  const handleNavClick = (href: string) => (e: React.MouseEvent) => {
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      if (location.pathname !== "/") {
+        navigate("/", { replace: false });
+        // Wait for navigation, then scroll
+        setTimeout(() => {
+          const el = document.querySelector(href);
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        }, 100); // adjust delay if needed
+      } else {
+        const el = document.querySelector(href);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      navigate(href);
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <div className="fixed top-0 left-0 right-0 z-50 px-4 py-4 pointer-events-none">
       <motion.header
@@ -37,7 +62,7 @@ const Header: React.FC = () => {
           damping: 30,
         }}
       >
-        <div className="relative rounded-2xl bg-white/80 dark:bg-dark-bg/80 backdrop-blur-xl border border-white/20 dark:border-gray-800/30 shadow-[0_8px_32px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.25)] overflow-hidden">
+        <div className="relative rounded-2xl bg-white/80 dark:bg-dark-bg/80 backdrop-blur-xl border border-light-border dark:border-dark-border border-[1.5px] shadow-[0_8px_32px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.25)] overflow-hidden">
           <div className="px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex items-center justify-between">
               {/* Logo - Updated animation */}
@@ -67,6 +92,7 @@ const Header: React.FC = () => {
                     className="relative px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-neon-blue dark:hover:text-electric-green transition-colors duration-200 font-medium"
                     whileHover={{ scale: 1.05 }}
                     transition={{ type: "spring", stiffness: 400 }}
+                    onClick={handleNavClick(item.href)}
                   >
                     {item.name}
                     <motion.div
@@ -126,7 +152,7 @@ const Header: React.FC = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: index * 0.05 }}
-                        onClick={() => setIsMobileMenuOpen(false)}
+                        onClick={handleNavClick(item.href)}
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                       >

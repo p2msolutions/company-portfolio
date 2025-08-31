@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Target, Eye, Heart, Users, Award } from "lucide-react";
-import { useInView } from "../../hooks/useInView";
+import { useInView } from "../../../hooks/useInView";
 
 const AboutSection: React.FC = () => {
   const { ref, isInView } = useInView({ threshold: 0.1 });
