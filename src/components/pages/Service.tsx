@@ -1,6 +1,14 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { services, serviceFAQs } from "../../data/content";
-import { Code, Brain, Cloud, Zap, Shield, Database, Smartphone } from "lucide-react";
+import {
+  Code,
+  Brain,
+  Cloud,
+  Zap,
+  Shield,
+  Database,
+  Smartphone,
+} from "lucide-react";
 import { motion } from "framer-motion";
 
 const iconMap = {
@@ -29,7 +37,9 @@ const Service = () => {
   const IconComponent = iconMap[service.icon as keyof typeof iconMap];
 
   // Add type check for FAQs
-  const serviceFAQList = service.id ? serviceFAQs[service.id as keyof typeof serviceFAQs] : null;
+  const serviceFAQList = service.id
+    ? serviceFAQs[service.id as keyof typeof serviceFAQs]
+    : null;
 
   return (
     <motion.section
@@ -94,7 +104,7 @@ const Service = () => {
                   whileHover={{ scale: 1.02 }}
                   src={service.image}
                   alt={service.title}
-                  className="w-full aspect-square object-cover rounded-3xl shadow-2xl bg-white dark:bg-dark-bg p-6"
+                  className="w-full aspect-square object-cover rounded-3xl shadow-2xl"
                 />
               </div>
             )}
@@ -145,7 +155,9 @@ const Service = () => {
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {service.features?.map((feature, index) => {
-                  const FeatureIcon = iconMap[feature.icon as keyof typeof iconMap] || IconComponent;
+                  const FeatureIcon =
+                    iconMap[feature.icon as keyof typeof iconMap] ||
+                    IconComponent;
                   return (
                     <motion.div
                       key={index}
@@ -210,7 +222,9 @@ const Service = () => {
                   className="p-6 rounded-xl bg-white/5 dark:bg-dark-bg/20"
                 >
                   <h4 className="text-xl font-semibold mb-2">{faq.question}</h4>
-                  <p className="text-gray-600 dark:text-gray-400">{faq.answer}</p>
+                  <p className="text-gray-600 dark:text-gray-400">
+                    {faq.answer}
+                  </p>
                 </motion.div>
               ))}
             </div>
