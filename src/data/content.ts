@@ -53,50 +53,547 @@ export const services = [
   {
     id: 1,
     icon: "Code",
-    image : "/api/placeholder/192/192",
+    image: "/api/placeholder/192/192",
     title: "Web & App Development",
-    description: "Custom web applications and mobile apps built with modern frameworks and best practices.",
-    longDescription : "We craft modern, responsive web applications and mobile apps that deliver exceptional user experiences and drive business growth. Our expertise includes custom React/Next.js applications, Progressive Web Apps (PWA), cross-platform mobile development, and API-first architecture.",
+    description: "Full-stack web and mobile applications built with cutting-edge technologies and frameworks.",
+    longDescription: `Our full-stack development expertise spans across multiple modern technology stacks:
+
+    Frontend Excellence: We craft pixel-perfect, responsive interfaces using React.js and Next.js with TypeScript, delivering seamless user experiences with modern UI/UX principles.
+    
+    Backend Powerhouse: Our versatile backend solutions include:
+    • Node.js/Express.js for high-performance, event-driven microservices
+    • .NET Core for enterprise-grade applications with C# and Entity Framework
+    • Python ecosystem (Django/FastAPI/Flask) for rapid development and AI integration
+    
+    Mobile Innovation: We excel in both native Android development using Kotlin/Java and cross-platform solutions with Flutter, ensuring optimal performance and native feel across all devices.
+    
+    API Development: RESTful and GraphQL APIs built with Node.js, .NET Core, or Python, following industry best practices for security, scalability, and documentation.`,
+    features: [
+      {
+        title: "Full-Stack Development",
+        description: "End-to-end solutions with modern frameworks",
+        icon: "Code"
+      },
+      {
+        title: "Mobile Development",
+        description: "Cross-platform and native mobile apps",
+        icon: "Smartphone"
+      },
+      {
+        title: "API Development",
+        description: "RESTful and GraphQL APIs",
+        icon: "Database"
+      }
+    ],
+    technologies: [
+      // Frontend
+      "React/Next.js",
+      "TypeScript",
+      "Redux/Context API",
+      // Backend
+      "Node.js/Express",
+      ".NET Core 7.0",
+      "Django/DRF",
+      "FastAPI",
+      "Flask",
+      // Mobile
+      "Flutter",
+      "Android Native (Kotlin)",
+      // Databases
+      "PostgreSQL",
+      "MongoDB",
+      "Redis",
+      // Cloud & Tools
+      "AWS/Azure",
+      "Docker",
+      "GraphQL",
+      "Socket.io"
+    ],
+    processSteps: [
+      {
+        title: "Discovery",
+        description: "Requirements gathering and project planning"
+      },
+      {
+        title: "Design",
+        description: "UI/UX design and architecture planning"
+      },
+      {
+        title: "Development",
+        description: "Agile development with regular updates"
+      },
+      {
+        title: "Deployment",
+        description: "Testing and production deployment"
+      }
+    ],
+    benefits: [
+      "Faster Time-to-Market",
+      "Scalable Architecture",
+      "Modern User Experience",
+      "Mobile-First Design"
+    ],
+    caseStudies: [
+      {
+        title: "E-commerce Platform",
+        description: "Built a scalable e-commerce solution handling 10k+ daily users",
+        metrics: ["50% faster loading times", "30% increase in conversions"]
+      }
+    ],
+    pricing: [
+      {
+        tier: "Basic",
+        price: "Starting at $5k",
+        features: ["Single-page website", "Basic API integration", "3 months support"]
+      },
+      {
+        tier: "Professional",
+        price: "Starting at $15k",
+        features: ["Full-stack application", "Custom API development", "6 months support"]
+      },
+      {
+        tier: "Enterprise",
+        price: "Custom",
+        features: ["Complete solution", "Priority support", "Custom features"]
+      }
+    ],
+    relatedServices: [2, 3, 4] // IDs of related services
   },
   {
     id: 2,
     icon: "Brain",
-    image : "/api/placeholder/192/192",
+    image: "/api/placeholder/192/192",
     title: "AI/ML Integration",
     description: "Intelligent features powered by machine learning, from predictive analytics to automated workflows.",
-    longDescription : "Harness the power of artificial intelligence to automate processes, gain insights, and create intelligent features for your applications. Our AI/ML services include predictive analytics and forecasting, natural language processing, computer vision solutions, and automated decision systems.",
+    longDescription: `Our AI/ML solutions harness cutting-edge technologies to deliver intelligent, scalable applications:
+
+    Machine Learning Excellence: Custom ML model development using Python's robust ecosystem (TensorFlow, PyTorch, scikit-learn) for classification, regression, and clustering tasks.
+    
+    Deep Learning Innovation: State-of-the-art neural networks for computer vision and NLP tasks, leveraging transfer learning and custom architectures.
+    
+    Production-Ready AI: Containerized ML models deployed as microservices, with real-time processing capabilities and automated retraining pipelines.
+    
+    MLOps Best Practices: Continuous integration and deployment for ML models, with comprehensive monitoring and version control.`,
+    features: [
+      {
+        title: "Deep Learning",
+        description: "Neural networks and computer vision",
+        icon: "Brain"
+      },
+      {
+        title: "NLP Solutions",
+        description: "Text analysis and language processing",
+        icon: "MessageSquare"
+      },
+      {
+        title: "Predictive Analytics",
+        description: "Data-driven forecasting and insights",
+        icon: "TrendingUp"
+      }
+    ],
+    technologies: [
+      "Python",
+      "TensorFlow",
+      "PyTorch",
+      "scikit-learn",
+      "NLTK",
+      "OpenCV",
+      "Pandas",
+      "NumPy",
+      "Keras",
+      "AWS SageMaker",
+      "Azure ML"
+    ],
+    processSteps: [
+      {
+        title: "Consultation",
+        description: "Understanding business needs and objectives"
+      },
+      {
+        title: "Data Collection",
+        description: "Gathering and preparing data for analysis"
+      },
+      {
+        title: "Model Training",
+        description: "Developing and training machine learning models"
+      },
+      {
+        title: "Integration",
+        description: "Integrating ML models into existing systems"
+      }
+    ],
+    benefits: [
+      "Enhanced Decision Making",
+      "Increased Operational Efficiency",
+      "Scalable AI Solutions",
+      "Continuous Learning and Improvement"
+    ],
+    caseStudies: [
+      {
+        title: "Predictive Maintenance",
+        description: "Implemented ML models that predict equipment failures before they occur.",
+        metrics: ["25% reduction in maintenance costs", "40% increase in equipment uptime"]
+      }
+    ],
+    pricing: [
+      {
+        tier: "Basic",
+        price: "Starting at $3k",
+        features: ["Basic ML model", "Data analysis report", "1 month support"]
+      },
+      {
+        tier: "Professional",
+        price: "Starting at $10k",
+        features: ["Custom ML model", "Integration support", "3 months support"]
+      },
+      {
+        tier: "Enterprise",
+        price: "Custom",
+        features: ["Comprehensive AI solution", "Dedicated support", "Custom features"]
+      }
+    ],
+    relatedServices: [1, 3, 4]
   },
   {
     id: 3,
     icon: "Cloud",
-    image : "/api/placeholder/192/192",
+    image: "/api/placeholder/192/192",
     title: "Cloud & DevOps",
     description: "Scalable cloud infrastructure, CI/CD pipelines, and monitoring solutions for enterprise growth.",
-    longDescription : "Scale your applications with robust cloud infrastructure, automated deployments, and monitoring solutions that ensure reliability. We specialize in containerized microservices, auto-scaling infrastructure, CI/CD pipeline automation, and real-time monitoring & alerts.",
+    longDescription: `Transform your infrastructure with our comprehensive cloud and DevOps solutions:
+
+    Cloud Architecture: Expert design and implementation across major cloud providers (AWS, Azure, GCP) with multi-cloud strategies.
+    
+    Infrastructure as Code: Automated infrastructure provisioning using Terraform and CloudFormation with GitOps practices.
+    
+    Container Orchestration: Kubernetes-based microservices architecture with service mesh implementation for complex deployments.
+    
+    Observability Stack: Complete monitoring solutions with Prometheus, Grafana, and ELK stack for real-time insights and alerting.`,
+    features: [
+      {
+        title: "Cloud Migration",
+        description: "Seamless migration to cloud platforms",
+        icon: "CloudUpload"
+      },
+      {
+        title: "Infrastructure as Code",
+        description: "Automated and consistent infrastructure management",
+        icon: "CodeBranch"
+      },
+      {
+        title: "Continuous Monitoring",
+        description: "Real-time monitoring and alerting",
+        icon: "Eye"
+      }
+    ],
+    technologies: [
+      "AWS",
+      "Azure",
+      "Google Cloud",
+      "Kubernetes",
+      "Docker",
+      "Terraform",
+      "Jenkins",
+      "GitLab CI",
+      "Prometheus",
+      "Grafana",
+      "ELK Stack"
+    ],
+    processSteps: [
+      {
+        title: "Assessment",
+        description: "Evaluating current infrastructure and needs"
+      },
+      {
+        title: "Planning",
+        description: "Designing the cloud architecture and migration plan"
+      },
+      {
+        title: "Migration",
+        description: "Executing the migration to the cloud"
+      },
+      {
+        title: "Optimization",
+        description: "Optimizing cloud resources and costs"
+      }
+    ],
+    benefits: [
+      "Scalable and Flexible Infrastructure",
+      "Reduced Operational Costs",
+      "Improved Deployment Frequency",
+      "Enhanced System Reliability"
+    ],
+    caseStudies: [
+      {
+        title: "Global E-commerce Migration",
+        description: "Migrated a large-scale e-commerce platform to AWS, enabling global reach and scalability.",
+        metrics: ["60% reduction in server costs", "99.9% uptime achieved"]
+      }
+    ],
+    pricing: [
+      {
+        tier: "Basic",
+        price: "Starting at $2k",
+        features: ["Cloud readiness assessment", "Basic migration support", "1 month monitoring"]
+      },
+      {
+        tier: "Professional",
+        price: "Starting at $8k",
+        features: ["Comprehensive migration", "CI/CD setup", "3 months monitoring"]
+      },
+      {
+        tier: "Enterprise",
+        price: "Custom",
+        features: ["Full cloud solution", "24/7 support", "Custom architecture"]
+      }
+    ],
+    relatedServices: [1, 2, 4]
   },
   {
     id: 4,
     icon: "Zap",
-    image : "/api/placeholder/192/192",
+    image: "/api/placeholder/192/192",
     title: "Workflow Automation",
     description: "Streamline business processes with custom automation tools and API integrations.",
-    longDescription : "Streamline your business operations with custom automation tools that integrate with your existing systems and workflows. Our workflow automation services include custom API integrations, business process automation, data synchronization, and workflow optimization.",
+    longDescription: "Streamline your business operations with custom automation tools that integrate with your existing systems and workflows. Our workflow automation services include custom API integrations, business process automation, data synchronization, and workflow optimization.",
+    features: [
+      {
+        title: "API Integrations",
+        description: "Seamless integration with existing APIs",
+        icon: "Link"
+      },
+      {
+        title: "Custom Automation",
+        description: "Tailored automation solutions for unique needs",
+        icon: "Cogs"
+      },
+      {
+        title: "Data Synchronization",
+        description: "Real-time data sync across platforms",
+        icon: "Sync"
+      }
+    ],
+    processSteps: [
+      {
+        title: "Analysis",
+        description: "Analyzing current workflows and identifying automation opportunities"
+      },
+      {
+        title: "Design",
+        description: "Designing the automation workflow and integration points"
+      },
+      {
+        title: "Development",
+        description: "Developing custom automation scripts and tools"
+      },
+      {
+        title: "Deployment",
+        description: "Deploying automation solutions and monitoring performance"
+      }
+    ],
+    technologies: [
+      "Zapier",
+      "Integromat",
+      "Custom Scripts",
+      "AWS Lambda",
+      "Webhooks",
+      "RESTful APIs"
+    ],
+    benefits: [
+      "Increased Efficiency",
+      "Reduced Operational Costs",
+      "Improved Data Accuracy",
+      "Faster Response Times"
+    ],
+    caseStudies: [
+      {
+        title: "Automated Reporting System",
+        description: "Developed an automated reporting system that reduced report generation time by 90%.",
+        metrics: ["90% time saved", "100% accuracy in data reporting"]
+      }
+    ],
+    pricing: [
+      {
+        tier: "Basic",
+        price: "Starting at $1k",
+        features: ["Basic workflow automation", "Email support", "1 month monitoring"]
+      },
+      {
+        tier: "Professional",
+        price: "Starting at $5k",
+        features: ["Advanced automation solutions", "API integrations", "3 months monitoring"]
+      },
+      {
+        tier: "Enterprise",
+        price: "Custom",
+        features: ["Comprehensive automation suite", "Dedicated support", "Custom workflows"]
+      }
+    ],
+    relatedServices: [1, 2, 3]
   },
   {
     id: 5,
     icon: "Shield",
-    image : "/api/placeholder/192/192",
+    image: "/api/placeholder/192/192",
     title: "Security Solutions",
     description: "Robust security implementations, audit compliance, and data protection strategies.",
-    longDescription : "Protect your applications and data with comprehensive security solutions. We offer vulnerability assessments, penetration testing, secure coding practices, compliance audits, and data encryption strategies to safeguard your digital assets.",
+    longDescription: "Protect your applications and data with comprehensive security solutions. We offer vulnerability assessments, penetration testing, secure coding practices, compliance audits, and data encryption strategies to safeguard your digital assets.",
+    features: [
+      {
+        title: "Vulnerability Assessment",
+        description: "Identifying and mitigating security vulnerabilities",
+        icon: "ShieldAlt"
+      },
+      {
+        title: "Penetration Testing",
+        description: "Simulated attacks to test system defenses",
+        icon: "Lock"
+      },
+      {
+        title: "Compliance Audits",
+        description: "Ensuring adherence to security standards and regulations",
+        icon: "ClipboardCheck"
+      }
+    ],
+    processSteps: [
+      {
+        title: "Evaluation",
+        description: "Assessing current security posture and identifying gaps"
+      },
+      {
+        title: "Planning",
+        description: "Developing a comprehensive security strategy"
+      },
+      {
+        title: "Implementation",
+        description: "Deploying security measures and controls"
+      },
+      {
+        title: "Monitoring",
+        description: "Continuous monitoring and improvement of security posture"
+      }
+    ],
+    technologies: [
+      "OWASP ZAP",
+      "Burp Suite",
+      "Nessus",
+      "Metasploit",
+      "Wireshark",
+      "Splunk"
+    ],
+    benefits: [
+      "Enhanced Security Posture",
+      "Regulatory Compliance",
+      "Risk Mitigation",
+      "Increased Customer Trust"
+    ],
+    caseStudies: [
+      {
+        title: "Financial Institution Security Overhaul",
+        description: "Redesigned security architecture for a financial institution, achieving full compliance with industry standards.",
+        metrics: ["100% compliance", "50% reduction in security incidents"]
+      }
+    ],
+    pricing: [
+      {
+        tier: "Basic",
+        price: "Starting at $2k",
+        features: ["Initial security assessment", "Basic vulnerability scan", "1 month support"]
+      },
+      {
+        tier: "Professional",
+        price: "Starting at $7k",
+        features: ["Comprehensive security audit", "Penetration testing", "3 months support"]
+      },
+      {
+        tier: "Enterprise",
+        price: "Custom",
+        features: ["Complete security solution", "24/7 monitoring", "Custom compliance needs"]
+      }
+    ],
+    relatedServices: [1, 2, 3]
   },
   {
     id: 6,
     icon: "Database",
-    image : "/api/placeholder/192/192",
+    image: "/api/placeholder/192/192",
     title: "Data Engineering",
     description: "Data pipelines, analytics platforms, and business intelligence solutions.",
-    longDescription : "We design and implement efficient data pipelines, analytics platforms, and business intelligence solutions to help you make data-driven decisions. Our data engineering services include ETL processes, data warehousing, real-time data processing, and advanced analytics.",
+    longDescription: "We design and implement efficient data pipelines, analytics platforms, and business intelligence solutions to help you make data-driven decisions. Our data engineering services include ETL processes, data warehousing, real-time data processing, and advanced analytics.",
+    features: [
+      {
+        title: "Data Warehousing",
+        description: "Centralized repository for structured and semi-structured data",
+        icon: "Warehouse"
+      },
+      {
+        title: "ETL Processes",
+        description: "Extract, Transform, Load - data integration and processing",
+        icon: "Sync"
+      },
+      {
+        title: "Real-time Analytics",
+        description: "Continuous data processing and analytics",
+        icon: "ChartLine"
+      }
+    ],
+    processSteps: [
+      {
+        title: "Consultation",
+        description: "Understanding data needs and challenges"
+      },
+      {
+        title: "Design",
+        description: "Designing the data architecture and pipeline"
+      },
+      {
+        title: "Implementation",
+        description: "Building and deploying data solutions"
+      },
+      {
+        title: "Optimization",
+        description: "Tuning and optimizing for performance and cost"
+      }
+    ],
+    technologies: [
+      "Apache Kafka",
+      "Apache Spark",
+      "AWS Redshift",
+      "Google BigQuery",
+      "Tableau",
+      "Power BI"
+    ],
+    benefits: [
+      "Scalable Data Solutions",
+      "Real-time Insights",
+      "Improved Data Quality",
+      "Faster Time-to-Insight"
+    ],
+    caseStudies: [
+      {
+        title: "Retail Analytics Platform",
+        description: "Developed a data analytics platform for a retail chain, enabling real-time inventory and sales analytics.",
+        metrics: ["70% reduction in report generation time", "30% increase in sales due to better insights"]
+      }
+    ],
+    pricing: [
+      {
+        tier: "Basic",
+        price: "Starting at $3k",
+        features: ["Data pipeline setup", "Basic analytics dashboard", "1 month support"]
+      },
+      {
+        tier: "Professional",
+        price: "Starting at $10k",
+        features: ["Advanced data engineering", "Custom analytics solutions", "3 months support"]
+      },
+      {
+        tier: "Enterprise",
+        price: "Custom",
+        features: ["Comprehensive data solution", "Dedicated support", "Custom integrations"]
+      }
+    ],
+    relatedServices: [1, 2, 3]
   }
 ];
 
@@ -141,6 +638,144 @@ export const clients = [
   { name: "FutureTech", logo: "/api/placeholder/120/40" },
   { name: "StartupX", logo: "/api/placeholder/120/40" },
 ];
+
+export const serviceCategories = [
+  {
+    id: "development",
+    title: "Development Services",
+    services: [1, 4, 6] // Service IDs
+  },
+  {
+    id: "cloud",
+    title: "Cloud & Infrastructure",
+    services: [3, 5]
+  },
+  {
+    id: "ai",
+    title: "AI & Automation",
+    services: [2, 4]
+  }
+];
+
+export const industrySolutions = [
+  {
+    industry: "Finance",
+    relevantServices: [1, 2, 5],
+    customFeatures: [
+      "Secure payment processing",
+      "Regulatory compliance",
+      "Real-time analytics"
+    ]
+  },
+  {
+    industry: "Healthcare",
+    relevantServices: [2, 5, 6],
+    customFeatures: [
+      "HIPAA compliance",
+      "Patient data security",
+      "Medical imaging AI"
+    ]
+  }
+];
+
+export const serviceFAQs = {
+  1: [ // Web & App Development FAQs
+    {
+      question: "Which technology stack do you recommend for my project?",
+      answer: "We evaluate each project's requirements to recommend the optimal stack. For web apps, we often use React/Next.js with .NET Core or Python backends. For mobile, we suggest Flutter for cross-platform or native Android development based on your needs."
+    },
+    {
+      question: "Do you provide both web and mobile app development?",
+      answer: "Yes, we offer comprehensive development services including web applications, progressive web apps (PWA), cross-platform mobile apps using Flutter, and native Android development."
+    },
+    {
+      question: "How do you ensure application security?",
+      answer: "We implement security best practices including encrypted data transmission, secure authentication, input validation, and regular security audits."
+    },
+    {
+      question: "Can you integrate with existing systems?",
+      answer: "Yes, we specialize in creating APIs and integrations with existing systems using RESTful or GraphQL approaches."
+    },
+    {
+      question: "What's your expertise in Node.js development?",
+      answer: "We specialize in building scalable Node.js/Express.js APIs, real-time applications with Socket.io, and microservices architectures. Our Node.js solutions handle millions of requests while maintaining optimal performance."
+    },
+    {
+      question: "How do you handle mobile app development?",
+      answer: "We offer both Flutter for cross-platform development and native Android development with Kotlin/Java. Our approach is based on your specific needs, considering factors like performance requirements, budget, and time-to-market."
+    },
+    {
+      question: "Can you work with multiple backend technologies in one project?",
+      answer: "Yes, we often implement polyglot architectures using Node.js, .NET Core, and Python microservices, choosing the best technology for each specific component."
+    }
+  ],
+  2: [ // AI/ML Integration FAQs
+    {
+      question: "What type of AI solutions do you offer?",
+      answer: "We offer computer vision, natural language processing, predictive analytics, and custom machine learning solutions tailored to your business needs."
+    },
+    {
+      question: "How much data is needed for ML models?",
+      answer: "The amount of data needed varies by project, but generally, we recommend at least 1000 samples per category for basic classification tasks."
+    },
+    {
+      question: "Can AI/ML solutions work with existing systems?",
+      answer: "Yes, we design our AI/ML solutions to integrate seamlessly with your existing infrastructure through APIs and microservices."
+    },
+    {
+      question: "How long does it take to develop an AI solution?",
+      answer: "Development time varies from 2-6 months depending on complexity, data availability, and integration requirements."
+    }
+  ],
+  3: [ // Cloud & DevOps FAQs
+    {
+      question: "What is DevOps?",
+      answer: "DevOps is a set of practices that combines software development (Dev) and IT operations (Ops) to shorten the systems development life cycle."
+    },
+    {
+      question: "Why should I move to the cloud?",
+      answer: "Cloud computing offers scalability, flexibility, and cost savings by allowing you to pay only for the resources you use."
+    },
+    {
+      question: "How do you handle system monitoring?",
+      answer: "We implement comprehensive monitoring using tools like Prometheus, Grafana, and ELK Stack for real-time system visibility and alerting."
+    },
+    {
+      question: "What's your approach to disaster recovery?",
+      answer: "We implement multi-region deployments, regular backups, and automated recovery procedures to ensure business continuity."
+    }
+  ],
+  4: [ // Workflow Automation FAQs
+    {
+      question: "What is workflow automation?",
+      answer: "Workflow automation is the process of automating complex business processes and functions beyond just individual tasks."
+    },
+    {
+      question: "How can automation help my business?",
+      answer: "Automation can increase efficiency, reduce errors, and free up employee time for more valuable tasks."
+    }
+  ],
+  5: [ // Security Solutions FAQs
+    {
+      question: "What is a vulnerability assessment?",
+      answer: "A vulnerability assessment is a systematic review of security weaknesses in an information system."
+    },
+    {
+      question: "How do you ensure data security?",
+      answer: "We implement robust security measures including encryption, access controls, and regular security audits."
+    }
+  ],
+  6: [ // Data Engineering FAQs
+    {
+      question: "What is data engineering?",
+      answer: "Data engineering is the practice of designing and building systems that allow for the collection, storage, and analysis of data."
+    },
+    {
+      question: "What technologies do you use for data engineering?",
+      answer: "We use a variety of technologies including Apache Kafka, Apache Spark, AWS Redshift, and Google BigQuery."
+    }
+  ]
+};
 
 export const features = [
   {

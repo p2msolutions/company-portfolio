@@ -1,147 +1,251 @@
 import { motion } from "framer-motion";
+import { teamMembers } from "../../data/content";
+import { Github, Linkedin, Globe } from "lucide-react";
+
+// Add interfaces
+interface TimelineItemProps {
+  year: string;
+  title: string;
+  description: string;
+  align: "left" | "right";
+}
+
+interface StatItemProps {
+  number: string;
+  suffix: string;
+  label: string;
+}
+
+interface SocialLinkProps {
+  href: string;
+  type: "linkedin" | "github" | "website";
+}
 
 export default function About() {
   return (
-    <section className="relative bg-light-surface dark:bg-dark-surface py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* Decorative Background */}
+    <section className="relative bg-light-surface dark:bg-dark-surface pt-36 lg:pt-40 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      {/* Enhanced Background Elements */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-0 -left-32 w-96 h-96 bg-neon-blue/20 dark:bg-purple-accent/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-0 -right-32 w-96 h-96 bg-electric-green/20 dark:bg-blue-accent/20 rounded-full blur-3xl animate-pulse"></div>
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            rotate: [0, 90, 0],
+          }}
+          transition={{ duration: 20, repeat: Infinity }}
+          className="absolute top-0 -left-32 w-[40rem] h-[40rem] bg-neon-blue/10 dark:bg-purple-accent/10 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            scale: [1, 1.1, 1],
+            rotate: [0, -90, 0],
+          }}
+          transition={{ duration: 25, repeat: Infinity }}
+          className="absolute bottom-0 -right-32 w-[35rem] h-[35rem] bg-electric-green/10 dark:bg-blue-accent/10 rounded-full blur-3xl"
+        />
       </div>
 
-      {/* Hero Section */}
-      <div className="relative max-w-6xl mx-auto text-center z-10">
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
+      <div className="relative max-w-7xl mx-auto z-10">
+        {/* Hero Section with Journey Highlight */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold font-display leading-tight mb-4"
+          className="mb-16 text-center"
         >
-          <span className="block text-gray-900 dark:text-white">
-            Empowering Businesses
-          </span>
-          <span className="gradient-text dark:dark-gradient-text block">
-            with Digital Solutions
-          </span>
-        </motion.h1>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
+            <span className="block text-gray-900 dark:text-white">
+              From College Dreams to
+            </span>
+            <span className="gradient-text dark:dark-gradient-text">
+              Professional Reality
+            </span>
+          </h1>
+          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Three passionate developers, one shared vision. We've transformed
+            from college friends into a professional powerhouse, delivering
+            solutions that scale from{" "}
+            <span className="font-semibold text-neon-blue dark:text-electric-green">
+              100 to 100,000+ users
+            </span>
+            .
+          </p>
+        </motion.div>
 
-        <p className="mt-6 text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-          We are a team of passionate software engineers helping businesses go
-          online with{" "}
-          <strong>websites, apps, AI/ML, and cloud solutions</strong>.
-        </p>
+        {/* Journey Timeline */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="relative mb-24"
+        >
+          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-neon-blue to-electric-green dark:from-purple-accent dark:to-blue-accent" />
 
-        {/* CTA Buttons */}
-        <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-          <motion.a
-            href="#services"
-            whileHover={{ scale: 1.05 }}
-            className="px-6 py-3 rounded-xl font-semibold bg-gradient-to-r from-neon-blue to-electric-green dark:from-purple-accent dark:to-blue-accent text-white shadow-lg"
+          <div className="grid md:grid-cols-2 gap-8 md:gap-16">
+            {/* Timeline Items */}
+            <TimelineItem
+              year="2019"
+              title="The Beginning"
+              description="Started our journey as Computer Science students, bonding over hackathons and coding challenges."
+              align="right"
+            />
+            <TimelineItem
+              year="2021"
+              title="Industry Experience"
+              description="Gained valuable experience at top tech companies, working on enterprise-scale applications."
+              align="left"
+            />
+            <TimelineItem
+              year="2022"
+              title="First Major Project"
+              description="Successfully delivered our first large-scale project, handling 100,000+ users."
+              align="right"
+            />
+            <TimelineItem
+              year="2023"
+              title="P2M Solutions"
+              description="Founded our company, combining our expertise to deliver cutting-edge solutions."
+              align="left"
+            />
+          </div>
+        </motion.div>
+
+        {/* Team Section */}
+        <div className="mb-24">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl sm:text-4xl font-bold gradient-text dark:dark-gradient-text mb-16"
           >
-            Explore Services
-          </motion.a>
+            Meet Our Team
+          </motion.h2>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {teamMembers.map((member, index) => (
+              <motion.div
+                key={member.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                className="glass-card dark:glass-card p-6 rounded-2xl backdrop-blur-sm"
+              >
+                <div className="relative mb-6 group">
+                  <img
+                    src={member.avatar}
+                    alt={member.name}
+                    className="w-32 h-32 rounded-xl mx-auto object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
+                </div>
+                <h3 className="text-xl font-bold mb-2 gradient-text dark:dark-gradient-text">
+                  {member.name}
+                </h3>
+                <p className="text-sm text-neon-blue dark:text-electric-green mb-3">
+                  {member.role}
+                </p>
+                <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                  {member.bio}
+                </p>
+                <div className="flex justify-center space-x-4">
+                  <SocialLink href={member.linkedin} type="linkedin" />
+                  <SocialLink href={member.github} type="github" />
+                  <SocialLink href={member.website} type="website" />
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Stats Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-20"
+        >
+          <StatItem number="2+" suffix="Years" label="Experience" />
+          <StatItem number="50+" suffix="" label="Projects Delivered" />
+          <StatItem number="100K+" suffix="" label="Users Served" />
+          <StatItem number="99%" suffix="" label="Client Satisfaction" />
+        </motion.div>
+
+        {/* CTA Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="max-w-3xl mx-auto text-center"
+        >
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6">
+            Ready to build something amazing?
+          </h2>
           <motion.a
             href="#contact"
             whileHover={{ scale: 1.05 }}
-            className="px-6 py-3 rounded-xl font-semibold bg-white dark:bg-dark-bg text-gray-900 dark:text-white border border-light-border dark:border-dark-border shadow"
+            className="inline-block px-8 py-4 rounded-xl font-semibold bg-gradient-to-r from-neon-blue to-electric-green dark:from-purple-accent dark:to-blue-accent text-white shadow-lg"
           >
-            Contact Us
+            Let's Talk
           </motion.a>
-        </div>
-
-        {/* Hero Image */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-14"
-        >
-          <img
-            src="https://illustrations.popsy.co/gray/team-idea.svg"
-            alt="Digital Solutions"
-            className="w-full max-w-3xl mx-auto"
-          />
         </motion.div>
       </div>
-
-      {/* About Us Section */}
-      <section className="relative bg-light-surface dark:bg-dark-surface py-16 px-4 sm:px-6 lg:px-8 z-10">
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold gradient-text dark:dark-gradient-text mb-8">
-            About Us
-          </h2>
-          <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-12">
-            At{" "}
-            <span className="font-semibold dark:text-neon-blue text-electric-green">
-              P2M Solutions
-            </span>
-            , we are a team of passionate developers who have been working
-            together for over{" "}
-            <span className="font-semibold dark:text-neon-blue text-electric-green">
-              4+ years
-            </span>
-            , solving real-world problems with the power of code. With a strong
-            foundation in{" "}
-            <span className="font-semibold dark:text-neon-blue text-electric-green">
-              Computer Science (B.Tech graduates)
-            </span>{" "}
-            and hands-on industry experience, we’ve helped{" "}
-            <span className="font-semibold dark:text-neon-blue text-electric-green">
-              startups, small businesses, and even medium-to-large enterprises
-            </span>{" "}
-            take off and grow digitally.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {/* Who We Are */}
-          <div className="glass-card dark:glass-card p-8 text-center">
-            <h3 className="text-xl font-semibold gradient-text dark:dark-gradient-text mb-4">
-              Who We Are
-            </h3>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-              We’re not just coders—we’re{" "}
-              <span className="font-semibold dark:text-neon-blue text-electric-green">
-                problem solvers, innovators, and creators
-              </span>
-              . Our expertise spans across{" "}
-              <span className="font-semibold dark:text-neon-blue text-electric-green">
-                web development, mobile apps, and scalable software solutions
-              </span>{" "}
-              that bring measurable impact.
-            </p>
-          </div>
-
-          {/* Mission */}
-          <div className="glass-card dark:glass-card p-8 text-center">
-            <h3 className="text-xl font-semibold gradient-text dark:dark-gradient-text mb-4">
-              Our Mission
-            </h3>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-              To empower businesses and individuals by building{" "}
-              <span className="font-semibold dark:text-neon-blue text-electric-green">
-                simple, scalable, and smart digital solutions
-              </span>{" "}
-              that solve real problems and create lasting value.
-            </p>
-          </div>
-
-          {/* Vision */}
-          <div className="glass-card dark:glass-card p-8 text-center">
-            <h3 className="text-xl font-semibold gradient-text dark:dark-gradient-text mb-4">
-              Our Vision
-            </h3>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-              To become a{" "}
-              <span className="font-semibold dark:text-neon-blue text-electric-green">
-                trusted global tech partner
-              </span>
-              , enabling innovation and growth through technology, while making
-              the digital world more accessible and impactful for everyone.
-            </p>
-          </div>
-        </div>
-      </section>
     </section>
   );
 }
+
+// Helper Components
+const TimelineItem = ({ year, title, description, align }: TimelineItemProps) => (
+  <motion.div
+    initial={{ opacity: 0, x: align === "left" ? 20 : -20 }}
+    animate={{ opacity: 1, x: 0 }}
+    transition={{ duration: 0.6 }}
+    className={`relative ${
+      align === "left" ? "md:ml-auto" : "md:mr-auto"
+    } max-w-md`}
+  >
+    <div className="glass-card dark:glass-card p-6 rounded-xl">
+      <span className="text-sm font-bold text-neon-blue dark:text-electric-green">
+        {year}
+      </span>
+      <h3 className="text-xl font-bold mb-2">{title}</h3>
+      <p className="text-gray-600 dark:text-gray-400">{description}</p>
+    </div>
+  </motion.div>
+);
+
+const StatItem = ({ number, suffix, label }: StatItemProps) => (
+  <motion.div
+    whileHover={{ scale: 1.05 }}
+    className="glass-card dark:glass-card p-4 rounded-xl text-center"
+  >
+    <span className="block text-3xl font-bold gradient-text dark:dark-gradient-text">
+      {number}
+      {suffix}
+    </span>
+    <span className="text-sm text-gray-600 dark:text-gray-400">{label}</span>
+  </motion.div>
+);
+
+const SocialLink = ({ href, type }: SocialLinkProps) => {
+  const iconProps = {
+    className: "w-5 h-5",
+  };
+
+  const icons = {
+    linkedin: <Linkedin {...iconProps} />,
+    github: <Github {...iconProps} />,
+    website: <Globe {...iconProps} />,
+  } as const; // Add const assertion
+
+  return (
+    <motion.a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-gray-600 dark:text-gray-400 hover:text-neon-blue dark:hover:text-electric-green transition-colors p-2 hover:scale-110 transform"
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.95 }}
+    >
+      {icons[type]}
+    </motion.a>
+  );
+};
