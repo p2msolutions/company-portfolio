@@ -105,7 +105,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index, isInView }) =
         </p>
 
         <Link
-          to={`/service/${service.id}`}
+          to={`/service/${service.slug}`}
           className="flex items-center text-neon-blue dark:text-electric-green font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0"
           onClick={e => e.stopPropagation()}
         >

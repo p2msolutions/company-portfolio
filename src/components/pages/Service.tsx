@@ -22,8 +22,8 @@ const iconMap = {
 };
 
 const Service = () => {
-  const { id } = useParams<{ id: string }>();
-  const service = services.find((s) => String(s.id) === id);
+  const { slug } = useParams<{ slug: string }>();
+  const service = services.find((s) => s.slug === slug);
   const navigate = useNavigate();
 
   if (!service) {

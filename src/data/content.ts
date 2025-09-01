@@ -58,6 +58,7 @@ export const testimonials = [
 export const services = [
   {
     id: 1,
+    slug: "web-app-development",
     icon: "Code",
     image:
       "https://res.cloudinary.com/dnmqfgexi/image/upload/v1756669673/web-development_o9g5u3.jpg",
@@ -178,6 +179,7 @@ export const services = [
   },
   {
     id: 2,
+    slug: "ai-ml-integration",
     icon: "Brain",
     image:
       "https://res.cloudinary.com/dnmqfgexi/image/upload/v1756669842/steptodown.com453100_bwkq3q.jpg",
@@ -287,6 +289,7 @@ export const services = [
   },
   {
     id: 3,
+    slug: "cloud-devops",
     icon: "Cloud",
     image:
       "https://res.cloudinary.com/dnmqfgexi/image/upload/v1756670020/steptodown.com638316_wi3avr.jpg",
@@ -397,6 +400,7 @@ export const services = [
   },
   {
     id: 4,
+    slug: "workflow-automation",
     icon: "Zap",
     image:
       "https://res.cloudinary.com/dnmqfgexi/image/upload/v1756670156/steptodown.com209375_xdcsdh.jpg",
@@ -497,6 +501,7 @@ export const services = [
   },
   {
     id: 5,
+    slug: "security-solutions",
     icon: "Shield",
     image:
       "https://res.cloudinary.com/dnmqfgexi/image/upload/v1756670234/steptodown.com759931_l5rqc6.jpg",
@@ -596,6 +601,7 @@ export const services = [
   },
   {
     id: 6,
+    slug: "data-engineering",
     icon: "Database",
     image:
       "https://res.cloudinary.com/dnmqfgexi/image/upload/v1756670334/steptodown.com541483_cgpyhq.jpg",

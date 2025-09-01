@@ -50,17 +50,17 @@ const ContactSection: React.FC = () => {
     {
       icon: MapPin,
       title: 'Visit Us',
-      details: ['123 Innovation Drive', 'San Francisco, CA 94105'],
+      details: ['Noida Sector 63', 'New Delhi, India'],
     },
     {
       icon: Phone,
       title: 'Call Us',
-      details: ['+1 (555) 123-4567', 'Mon-Fri 9AM-6PM PST'],
+      details: ['+91 7369900185, +91 7205384589, ', 'Mon-Fri 9AM-6PM PST'],
     },
     {
       icon: Mail,
       title: 'Email Us',
-      details: ['contact@p2msolutions.com', 'Response within 24 hours'],
+      details: ['info.p2msolutions@gmail.com', 'Response within 24 hours'],
     },
     {
       icon: Clock,
@@ -217,6 +217,16 @@ const ContactSection: React.FC = () => {
                   )}
                 </span>
               </motion.button>
+
+              {/* Justified and bottom-aligned paragraphs */}
+              <div className="mt-6 flex flex-col justify-end h-32 text-justify text-gray-600 dark:text-gray-400 text-base leading-relaxed text-center">
+                <p className='text-center'>
+                  Our team typically replies within <span className="font-semibold text-neon-blue dark:text-electric-green">24 hours</span>. Don't worry we are here for you.
+                </p>
+                <p className="mt-2 text-center">
+                  Your details are safe with us and used only for this inquiry.
+                </p>
+              </div>
             </form>
           </motion.div>
 

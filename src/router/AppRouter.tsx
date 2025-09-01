@@ -20,10 +20,14 @@ import TeamSection from "../components/sections/TeamSection";
 import ContactSection from "../components/sections/ContactSection";
 
 // Pages
-import ProjectDetails from "../components/pages/Project";
+import ProjectDetails from "../components/pages/ProjectDetails";
 import About from "../components/pages/About";
 import Pricing from "../components/pages/Pricing";
 import Service from "../components/pages/Service";
+import Project from "../components/pages/Project";
+import Refund from "../components/pages/Refund";
+import PrivacyPolicy from "../components/pages/PrivacyPolicy";
+import TermsCondition from "../components/pages/TermsCondition";
 
 const AppRouter = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -86,10 +90,14 @@ const AppRouter = () => {
                 />
 
                 {/* Example project details page */}
-                <Route path="/projects/:id" element={<ProjectDetails />} />
+                <Route path="/project" element={<Project />} />
+                <Route path="/projects/:slug" element={<ProjectDetails />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/pricing" element={<Pricing />} />
-                <Route path="/service/:id" element={<Service />} />
+                <Route path="/service/:slug" element={<Service />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="/terms-conditions" element={<TermsCondition />} />
+                <Route path="/refund-policy" element={<Refund />} />
               </Routes>
             </main>
           </motion.div>

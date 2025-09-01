@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Moon, Sun, Monitor, Menu, X } from "lucide-react";
 import { useTheme } from "../../contexts/ThemeContext";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 
 const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -66,11 +66,7 @@ const Header: React.FC = () => {
           <div className="px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex items-center justify-between">
               {/* Logo - Updated animation */}
-              <motion.div
-                className="flex items-center space-x-3"
-                whileHover={{ scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 400 }}
-              >
+              <Link to="/" className="flex items-center space-x-3" tabIndex={0}>
                 <motion.div
                   className="w-9 h-9 bg-gradient-to-br from-neon-blue to-electric-green dark:from-purple-accent dark:to-blue-accent rounded-lg flex items-center justify-center relative overflow-hidden"
                   whileHover={{ scale: 1.1 }}
@@ -79,9 +75,9 @@ const Header: React.FC = () => {
                   <span className="text-white font-bold text-xs">P2M</span>
                 </motion.div>
                 <span className="text-lg font-display font-bold bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-                  P2M Solutions
+                  Solutions
                 </span>
-              </motion.div>
+              </Link>
 
               {/* Desktop Navigation - Updated styling */}
               <nav className="hidden lg:flex items-center space-x-6">

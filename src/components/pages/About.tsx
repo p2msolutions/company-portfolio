@@ -234,11 +234,21 @@ const SocialLink = ({ href, type }: SocialLinkProps) => {
     linkedin: <Linkedin {...iconProps} />,
     github: <Github {...iconProps} />,
     website: <Globe {...iconProps} />,
-  } as const; // Add const assertion
+  } as const;
+
+  // Fix website link protocol
+  const getHref = () => {
+    if (type === "website") {
+      return href.startsWith("http://") || href.startsWith("https://")
+        ? href
+        : `https://${href.replace(/^\/+/, "")}`;
+    }
+    return href;
+  };
 
   return (
     <motion.a
-      href={href}
+      href={getHref()}
       target="_blank"
       rel="noopener noreferrer"
       className="text-gray-600 dark:text-gray-400 hover:text-neon-blue dark:hover:text-electric-green transition-colors p-2 hover:scale-110 transform"

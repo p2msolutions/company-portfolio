@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isMouseInside, setIsMouseInside] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const heroSection = document.getElementById("home");
@@ -69,6 +71,17 @@ const HeroSection: React.FC = () => {
       opacity: 1,
       y: 0,
     },
+  };
+
+  // Handler for "Start Your Project"
+  const handleStartProject = () => {
+    navigate("/", { replace: false });
+    setTimeout(() => {
+      const contactSection = document.getElementById("contact");
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100); // Delay to ensure navigation completes
   };
 
   return (
@@ -157,7 +170,6 @@ const HeroSection: React.FC = () => {
           </motion.div>
         </motion.div>
 
-
         <motion.h1
           variants={itemVariants}
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-8 leading-tight max-w-4xl mx-auto text-center"
@@ -165,7 +177,7 @@ const HeroSection: React.FC = () => {
           <span className="text-gray-900 dark:text-white">
             Innovating Software
           </span>
-          <br className="hidden md:block" />
+          <br className="hidden md:block p-2" />
           <span className="gradient-text dark:dark-gradient-text">
             Empowering Businesses
           </span>
@@ -198,6 +210,7 @@ const HeroSection: React.FC = () => {
               damping: 15,
               mass: 0.8,
             }}
+            onClick={handleStartProject}
           >
             <span className="relative z-10 flex items-center space-x-2 text-base font-semibold">
               <span>Start Your Project</span>
@@ -243,6 +256,7 @@ const HeroSection: React.FC = () => {
               stiffness: 500,
               damping: 15,
             }}
+            onClick={() => navigate("/project")}
           >
             <span className="relative z-10 text-base font-semibold">
               View Our Work

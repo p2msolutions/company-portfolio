@@ -119,13 +119,16 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
         )}
         {member.website && (
           <a
-            href={member.website}
+            href={
+              member.website.startsWith("http://") || member.website.startsWith("https://")
+                ? member.website
+                : `https://${member.website.replace(/^\/+/, "")}`
+            }
             target="_blank"
             rel="noopener noreferrer"
             className="p-2 rounded-full bg-white dark:bg-dark-bg border border-light-border dark:border-dark-border hover:border-neon-blue dark:hover:border-electric-green transition-colors duration-200 shadow"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* You can use Mail or a globe icon if available */}
             <Globe className="w-5 h-5 text-electric-green dark:text-neon-blue" />
           </a>
         )}

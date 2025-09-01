@@ -1,6 +1,7 @@
 export const projects = [
   {
     id: 1,
+    slug: "ai-powered-analytics-platform",
     title: "AI-Powered Analytics Platform",
     description:
       "Built a comprehensive analytics dashboard with ML-powered insights and real-time data processing.",
@@ -66,6 +67,7 @@ def predict(batch: List[Event]):
   },
   {
     id: 2,
+    slug: "ecommerce-automation-suite",
     title: "E-commerce Automation Suite",
     description:
       "Developed a complete automation system for inventory management, order processing, and customer analytics.",
@@ -127,6 +129,7 @@ await redis.xadd("task-queue", "*", "payload", JSON.stringify(task));`,
   },
   {
     id: 3,
+    slug: "cloud-native-microservices",
     title: "Cloud-Native Microservices",
     description:
       "Architected and deployed scalable microservices infrastructure with Kubernetes orchestration.",
@@ -197,6 +200,7 @@ spec:
   },
   {
     id: 4,
+    slug: "real-time-collaboration-app",
     title: "Real-time Collaboration App",
     description:
       "Created a collaborative workspace with real-time editing, video calls, and project management features.",

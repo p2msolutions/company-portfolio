@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import { useInView } from "../../hooks/useInView";
 import { projects } from "../../data/project";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 
 const PortfolioSection: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -82,6 +82,18 @@ const PortfolioSection: React.FC = () => {
             ))}
           </AnimatePresence>
         </motion.div>
+
+        <div className="flex justify-center mt-6">
+          <Link to="/project" className="group w-full max-w-xs">
+            <motion.button
+              className="w-full py-3 bg-gradient-to-r from-blue-500 via-teal-400 to-green-500 dark:from-purple-500 dark:via-indigo-500 dark:to-blue-500 text-white font-semibold rounded-xl shadow-lg opacity-90 group-hover:opacity-100 transition-all duration-300 transform group-hover:-translate-y-1"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+            >
+              See More Projects →
+            </motion.button>
+          </Link>
+        </div>
       </div>
     </section>
   );
@@ -211,7 +223,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
 
         {/* CTA */}
-        <Link to={`/projects/${project.id}`} className="block">
+        <Link to={`/projects/${project.slug}`} className="block">
           <motion.button
             className="w-full py-3 bg-gradient-to-r from-neon-blue to-electric-green dark:from-purple-accent dark:to-blue-accent text-white font-semibold rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0"
             whileHover={{ scale: 1.02 }}

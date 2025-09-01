@@ -23,19 +23,18 @@ const Footer: React.FC = () => {
     {
       title: "Company",
       links: [
-        { name: "About Us", href: "#about" },
+        { name: "About Us", href: "/about" },
         { name: "Our Team", href: "#team" },
-        { name: "Portfolio", href: "#portfolio" },
+        { name: "Projects", href: "/project" },
         { name: "Contact", href: "#contact" },
       ],
     },
     {
       title: "Resources",
       links: [
-        { name: "Blog", href: "#blog" },
-        { name: "Case Studies", href: "#portfolio" },
-        { name: "Careers", href: "#careers" },
-        { name: "Privacy Policy", href: "#" },
+        { name: "Terms & Condition", href: "/terms-conditions" },
+        { name: "Refund Policy", href: "/refund-policy" },
+        { name: "Privacy Policy", href: "/privacy-policy" },
       ],
     },
   ];
@@ -70,14 +69,14 @@ const Footer: React.FC = () => {
               <motion.div className="flex items-center space-x-4">
                 <MapPin className="w-4 h-4 text-gray-500" />
                 <span className="text-gray-600 dark:text-gray-400">
-                  San Francisco, CA
+                  New Delhi, India
                 </span>
               </motion.div>
 
               <motion.div className="flex items-center space-x-4">
                 <Phone className="w-4 h-4 text-gray-500" />
                 <span className="text-gray-600 dark:text-gray-400">
-                  +1 (555) 123-4567
+                  +91 7369900185, +91 7205384589
                 </span>
               </motion.div>
             </div>
