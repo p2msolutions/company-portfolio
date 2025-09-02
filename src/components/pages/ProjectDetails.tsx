@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { projects } from "../../data/project";
+import { motion } from "framer-motion";
 
 export default function ProjectDetails() {
   const { slug } = useParams();
@@ -7,176 +8,149 @@ export default function ProjectDetails() {
 
   if (!project) {
     return (
-      <div className="min-h-screen flex flex-col justify-center items-center bg-gray-50 dark:bg-gray-900 px-6">
+      <div className="min-h-screen flex flex-col justify-center items-center bg-light-surface dark:bg-dark-surface px-6">
         <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
           Project Not Found
         </h2>
-        <p className="text-gray-600 dark:text-gray-400 mb-6">
-          Please check the URL or return to the projects list.
-        </p>
         <Link
           to="/"
-          className="px-6 py-3 rounded-lg bg-blue-600 text-white font-medium shadow hover:bg-blue-700 transition"
+          className="px-6 py-3 rounded-full bg-black dark:bg-white text-white dark:text-black font-medium hover:scale-105 transition-transform"
         >
-          Go Back Home
+          Return Home
         </Link>
       </div>
     );
   }
 
-  const cs = project.caseStudy;
-
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12 px-6">
-      <div className="max-w-5xl mx-auto">
-        {/* Title */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-6 leading-tight">
-          {project.title}
-        </h1>
-
-        {/* Image */}
-        <div className="overflow-hidden rounded-2xl shadow-lg mb-10">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-auto object-cover transform hover:scale-105 transition duration-500"
-          />
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="min-h-screen bg-light-surface dark:bg-dark-surface pt-28 pb-20"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Hero Section */}
+        <div className="mb-16">
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            className="text-center max-w-3xl mx-auto"
+          >
+            <div className="flex flex-wrap gap-2 justify-center mb-6">
+              {project.technologies.map((tech, i) => (
+                <span
+                  key={i}
+                  className="px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+            <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-6">
+              {project.title}
+            </h1>
+            <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
+              {project.description}
+            </p>
+          </motion.div>
         </div>
 
-        {/* Description */}
-        <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-10">
-          {project.description}
-        </p>
-
-        {/* Tech Stack */}
-        <section className="mb-10">
-          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-            🛠 Technologies Used
-          </h2>
-          <div className="flex flex-wrap gap-3">
-            {project.technologies.map((tech, i) => (
-              <span
-                key={i}
-                className="px-4 py-2 text-sm rounded-full bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-gray-200 shadow-sm hover:shadow-md transition"
-              >
-                {tech}
-              </span>
-            ))}
+        {/* Image Section */}
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          className="mb-16"
+        >
+          <div className="relative aspect-video rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800">
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-cover"
+            />
           </div>
-        </section>
+        </motion.div>
 
         {/* Problems Solved */}
         {project.problemsSolved?.length > 0 && (
-          <section className="mb-10">
-            <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-              ✅ Problems We Solved
+          <motion.section
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            className="mb-16"
+          >
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
+              Key Challenges Solved
             </h2>
-            <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {project.problemsSolved.map((problem, i) => (
-                <li key={i} className="leading-relaxed">
-                  {problem}
-                </li>
+                <div
+                  key={i}
+                  className="p-6 rounded-2xl bg-white dark:bg-gray-800 shadow-sm"
+                >
+                  <p className="text-gray-600 dark:text-gray-300">{problem}</p>
+                </div>
               ))}
-            </ul>
-          </section>
+            </div>
+          </motion.section>
         )}
 
         {/* Case Study */}
-        {cs && (
-          <section className="mb-10 space-y-10">
-            <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">
-              📖 Case Study
-            </h2>
+        {project.caseStudy && (
+          <motion.section
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="max-w-4xl mx-auto"
+          >
+            <div className="prose prose-lg dark:prose-invert mx-auto">
+              {project.caseStudy.overview && (
+                <div className="mb-12">
+                  <h2 className="text-3xl font-bold mb-6">Overview</h2>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    {project.caseStudy.overview}
+                  </p>
+                </div>
+              )}
 
-            {cs.overview && (
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                  Overview
-                </h3>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  {cs.overview}
-                </p>
-              </div>
-            )}
-
-            {cs.objectives && (
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                  Objectives
-                </h3>
-                <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
-                  {Array.isArray(cs.objectives)
-                    ? cs.objectives.map((obj, i) => <li key={i}>{obj}</li>)
-                    : <li>{cs.objectives}</li>}
-                </ul>
-              </div>
-            )}
-
-            {(cs.architecture) && (
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                  Architecture & Design
-                </h3>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  {cs.architecture}
-                </p>
-              </div>
-            )}
-
-            {cs.challenges && (
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                  Challenges & Solutions
-                </h3>
-                <ul className="space-y-4">
-                  {cs.challenges.map((c, i) => (
-                    <li key={i} className="text-gray-700 dark:text-gray-300">
-                      <strong className="block text-gray-900 dark:text-white">
+              {project.caseStudy.challenges && (
+                <div className="space-y-8">
+                  <h2 className="text-3xl font-bold">Technical Challenges</h2>
+                  {project.caseStudy.challenges.map((c, i) => (
+                    <div
+                      key={i}
+                      className="p-6 rounded-2xl bg-gray-50 dark:bg-gray-800/50"
+                    >
+                      <h3 className="text-xl font-semibold mb-3">
                         {c.problem}
-                      </strong>
-                      <span>{c.solution}</span>
-                    </li>
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-300">
+                        {c.solution}
+                      </p>
+                    </div>
                   ))}
-                </ul>
-              </div>
-            )}
-
-            {(cs.impact) && (
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                  Outcomes & Impact
-                </h3>
-                <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
-                  {(cs.impact).map(
-                    (item, i) => <li key={i}>{item}</li>
-                  )}
-                </ul>
-              </div>
-            )}
-
-            {cs.technicalHighlights ? (
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                  Technical Highlights
-                </h3>
-                <pre className="bg-gray-900 text-green-400 p-4 rounded-xl overflow-x-auto text-sm shadow">
-                  <code>{cs.technicalHighlights}</code>
-                </pre>
-              </div>
-            ) : null}
-          </section>
+                </div>
+              )}
+            </div>
+          </motion.section>
         )}
 
-        {/* Links */}
-        <div className="flex flex-wrap gap-4 mt-10">
+        {/* Links Section */}
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="flex flex-wrap gap-4 justify-center mt-16"
+        >
           {project.github && (
             <a
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 rounded-xl bg-gray-900 text-white dark:bg-gray-100 dark:text-gray-900 font-medium shadow hover:opacity-90 transition"
+              className="px-8 py-4 rounded-full bg-black dark:bg-white text-white dark:text-black font-medium hover:scale-105 transition-transform"
             >
-              View on GitHub
+              View Source Code
             </a>
           )}
           {project.live && (
@@ -184,13 +158,13 @@ export default function ProjectDetails() {
               href={project.live}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3 rounded-xl bg-blue-600 text-white font-medium shadow hover:bg-blue-700 transition"
+              className="px-8 py-4 rounded-full bg-blue-600 text-white font-medium hover:scale-105 transition-transform"
             >
-              Live Demo
+              Visit Project
             </a>
           )}
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 }

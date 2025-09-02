@@ -1,98 +1,139 @@
 import { motion } from "framer-motion";
 
-const terms = [
-	{
-		title: "1. Acceptance of Terms",
-		content:
-			"By accessing or using our website and services, you agree to be bound by these Terms & Conditions. If you do not agree, please do not use our site.",
-	},
-	{
-		title: "2. Services",
-		content:
-			"We provide software development and consulting services as described on our website. All services are subject to availability and may change without notice.",
-	},
-	{
-		title: "3. User Responsibilities",
-		content:
-			"You agree to provide accurate information and to use our services in compliance with all applicable laws. You are responsible for maintaining the confidentiality of your account details.",
-	},
-	{
-		title: "4. Intellectual Property",
-		content:
-			"All content, trademarks, and intellectual property on this site are owned by P2M Solutions unless otherwise stated. You may not reproduce or distribute any content without permission.",
-	},
-	{
-		title: "5. Limitation of Liability",
-		content:
-			"We are not liable for any indirect, incidental, or consequential damages arising from the use of our services or website.",
-	},
-	{
-		title: "6. Privacy Policy",
-		content:
-			"Your privacy is important to us. Please review our Privacy Policy to understand how we collect, use, and protect your information.",
-	},
-	{
-		title: "7. Changes to Terms",
-		content:
-			"We may update these Terms & Conditions at any time. Changes will be posted on this page and are effective immediately.",
-	},
-	{
-		title: "8. Contact Us",
-		content:
-			"For any questions regarding these Terms & Conditions, please contact us at info.p2msolutions@gmail.com.",
-	},
+const refundPolicies = [
+  {
+    title: "1. Refund Eligibility",
+    content:
+      "Refunds are available within 30 days of purchase for our digital products and services, subject to certain conditions and review.",
+  },
+  {
+    title: "2. Service Cancellation",
+    content:
+      "For ongoing services, you may cancel your subscription at any time. Refunds will be prorated based on the unused portion of the service period.",
+  },
+  {
+    title: "3. Refund Process",
+    content:
+      "To request a refund, please contact our support team at info.p2msolutions@gmail.com with your order details and reason for the refund.",
+  },
+  {
+    title: "4. Non-Refundable Items",
+    content:
+      "Custom development projects, consultation sessions that have been delivered, and services that have been fully rendered are non-refundable.",
+  },
+  {
+    title: "5. Refund Method",
+    content:
+      "Refunds will be processed using the original payment method. Processing time may vary depending on your payment provider (typically 5-10 business days).",
+  },
+  {
+    title: "6. Dispute Resolution",
+    content:
+      "If you're unsatisfied with our services, we encourage you to contact us first to resolve any issues before initiating a refund request.",
+  },
+  {
+    title: "7. Documentation",
+    content:
+      "For refund requests, we may require relevant documentation or information to process your request effectively.",
+  },
+  {
+    title: "8. Policy Updates",
+    content:
+      "We reserve the right to modify this refund policy at any time. Changes will be effective immediately upon posting to our website.",
+  },
 ];
 
 const Refund = () => {
-	return (
-		<section className="relative min-h-screen bg-light-surface dark:bg-dark-surface pt-36 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-			{/* Subtle animated background gradients */}
-			<motion.div
-				className="absolute top-0 left-0 w-[30rem] h-[30rem] bg-gradient-to-br from-neon-blue/10 to-electric-green/10 dark:from-purple-accent/10 dark:to-blue-accent/10 rounded-full blur-3xl pointer-events-none"
-				animate={{ scale: [1, 1.1, 1], x: [0, 40, 0], y: [0, -30, 0] }}
-				transition={{ duration: 20, repeat: Infinity }}
-			/>
-			<motion.div
-				className="absolute bottom-0 right-0 w-[25rem] h-[25rem] bg-gradient-to-br from-electric-green/10 to-neon-blue/10 dark:from-blue-accent/10 dark:to-purple-accent/10 rounded-full blur-3xl pointer-events-none"
-				animate={{ scale: [1, 0.95, 1], x: [0, -30, 0], y: [0, 30, 0] }}
-				transition={{ duration: 25, repeat: Infinity }}
-			/>
+  return (
+    <section className="relative min-h-screen bg-light-surface dark:bg-dark-surface pt-28 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      {/* Animated Background Gradients */}
+      <motion.div
+        className="absolute top-0 left-0 w-[30rem] h-[30rem] bg-gradient-to-br from-neon-blue/10 to-electric-green/10 dark:from-purple-accent/10 dark:to-blue-accent/10 rounded-full blur-3xl pointer-events-none"
+        animate={{ scale: [1, 1.1, 1], x: [0, 40, 0], y: [0, -30, 0] }}
+        transition={{ duration: 20, repeat: Infinity }}
+      />
+      <motion.div
+        className="absolute bottom-0 right-0 w-[25rem] h-[25rem] bg-gradient-to-br from-electric-green/10 to-neon-blue/10 dark:from-blue-accent/10 dark:to-purple-accent/10 rounded-full blur-3xl pointer-events-none"
+        animate={{ scale: [1, 0.95, 1], x: [0, -30, 0], y: [0, 30, 0] }}
+        transition={{ duration: 25, repeat: Infinity }}
+      />
 
-			<div className="relative max-w-3xl mx-auto z-10">
-				<motion.h1
-					initial={{ opacity: 0, y: 30 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.8 }}
-					className="text-4xl md:text-5xl font-bold mb-8 text-center gradient-text dark:dark-gradient-text"
-				>
-					Refund Policy
-				</motion.h1>
-				<p className="text-lg text-gray-600 dark:text-gray-400 mb-10 text-center">
-					Please read these terms carefully before using our website or
-					services.
-				</p>
-        <img className="mt-5 mb-5 rounded-2xl" src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
-				<div className="space-y-8 mt-10">
-					{terms.map((term, idx) => (
-						<motion.div
-							key={term.title}
-							initial={{ opacity: 0, y: 20 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							viewport={{ once: true }}
-							transition={{ duration: 0.5, delay: idx * 0.05 }}
-						>
-							<h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-								{term.title}
-							</h2>
-							<p className="text-gray-700 dark:text-gray-300 text-justify">
-								{term.content}
-							</p>
-						</motion.div>
-					))}
-				</div>
-			</div>
-		</section>
-	);
+      <div className="relative max-w-4xl mx-auto z-10">
+        {/* Header Section */}
+        <div className="text-center mb-16">
+          <motion.div
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="flex justify-center mb-6"
+          >
+            <div className="p-3 rounded-full bg-neon-blue/10 dark:bg-electric-green/10">
+              <span className="text-2xl">💰</span>
+            </div>
+          </motion.div>
+          <motion.h1
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-4xl sm:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-neon-blue to-electric-green dark:from-purple-accent dark:to-blue-accent"
+          >
+            Refund Policy
+          </motion.h1>
+          <motion.p
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            className="text-lg text-gray-600 dark:text-gray-400"
+          >
+            Your satisfaction is our priority. Learn about our refund process.
+          </motion.p>
+        </div>
+
+        {/* Policies Content */}
+        <div className="grid gap-8">
+          {refundPolicies.map((policy, idx) => (
+            <motion.div
+              key={policy.title}
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+              className="glass-card dark:glass-card rounded-2xl p-6 sm:p-8 backdrop-blur-sm border border-gray-200/20 dark:border-gray-700/20"
+            >
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-neon-blue/10 dark:bg-electric-green/10 flex items-center justify-center">
+                  <span className="text-sm font-semibold text-neon-blue dark:text-electric-green">
+                    {idx + 1}
+                  </span>
+                </div>
+                <div>
+                  <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                    {policy.title.split(". ")[1]}
+                  </h2>
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    {policy.content}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Footer Note */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mt-12 text-center"
+        >
+          <div className="inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+            <span className="text-sm">🔒</span>
+            <span>Last updated: September 2025</span>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
 };
 
 export default Refund;

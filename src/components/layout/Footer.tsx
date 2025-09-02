@@ -14,10 +14,10 @@ const Footer: React.FC = () => {
     {
       title: "Services",
       links: [
-        { name: "Web Development", href: "#services" },
-        { name: "AI/ML Integration", href: "#services" },
-        { name: "Cloud Solutions", href: "#services" },
-        { name: "Automation", href: "#services" },
+        { name: "Web Development", href: "/service/web-app-development" },
+        { name: "AI/ML Integration", href: "/service/ai-ml-integration" },
+        { name: "Cloud Solutions", href: "/service/cloud-devops" },
+        { name: "Automation", href: "/service/workflow-automation" },
       ],
     },
     {
