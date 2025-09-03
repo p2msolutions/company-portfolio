@@ -36,7 +36,7 @@ const PortfolioSection: React.FC = () => {
             <span className="text-gray-900 dark:text-white">Our</span>
             <br />
             <span className="gradient-text dark:dark-gradient-text">
-              Portfolio
+              Porjects
             </span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-8">

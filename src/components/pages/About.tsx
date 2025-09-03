@@ -111,14 +111,16 @@ export default function About() {
 
         {/* Team Section */}
         <div className="mb-24">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-3xl sm:text-4xl font-bold gradient-text dark:dark-gradient-text mb-16"
-          >
-            Meet Our Team
-          </motion.h2>
+          <div className="flex justify-center align-middle">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-3xl sm:text-4xl font-bold gradient-text dark:dark-gradient-text mb-16"
+            >
+              Meet Our Team
+            </motion.h2>
+          </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {teamMembers.map((member, index) => (
@@ -169,6 +171,77 @@ export default function About() {
           <StatItem number="99%" suffix="" label="Client Satisfaction" />
         </motion.div>
 
+        {/* About Us Section */}
+        <motion.section
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto px-6 py-16 text-center leading-relaxed"
+        >
+          <h2 className="text-3xl sm:text-4xl font-extrabold mb-8 text-gray-900 dark:text-white">
+            About Us – <span className="text-gradient">P2msolutions</span>
+          </h2>
+
+          <div className="space-y-6 text-gray-600 dark:text-gray-300">
+            <p className="text-lg">
+              At <span className="font-semibold">NeuraNext</span>, we believe
+              that
+              <span className="text-gradient font-semibold">
+                {" "}
+                innovation is the true driving force behind business growth.
+              </span>
+              Our mission is simple yet powerful – to build next-generation
+              software solutions that empower businesses and transform bold
+              ideas into reality.
+            </p>
+
+            <p>
+              We specialize in crafting intelligent, scalable, and future-ready
+              digital solutions. From{" "}
+              <span className="font-medium">AI-powered applications</span>
+              that optimize workflows to
+              <span className="font-medium">
+                {" "}
+                robust cloud infrastructures
+              </span>{" "}
+              that scale with your business, our team of experts is dedicated to
+              delivering technology that makes a real impact.
+            </p>
+
+            <p>
+              With a focus on creativity, precision, and performance, we partner
+              with startups, enterprises, and organizations worldwide to bring
+              visions to life. Every project we take on is guided by our core
+              values:
+              <span className="font-medium">
+                {" "}
+                innovation, reliability, and excellence.
+              </span>
+            </p>
+          </div>
+
+          <div className=" border border-gray-600 glass-card dark:glass-card p-8 rounded-2xl shadow-md mt-10 mb-8 text-left sm:text-center">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-2xl sm:text-3xl font-bold gradient-text dark:dark-gradient-text mb-8"
+            >
+              Our Promis
+            </motion.h2>
+            <ul className="space-y-3 text-gray-700 dark:text-gray-300">
+              <li>✅ Cutting-edge software tailored to your needs</li>
+              <li>✅ Scalable, secure, and future-proof solutions</li>
+              <li>✅ A collaborative approach focused on your success</li>
+            </ul>
+          </div>
+
+          <p className="text-lg font-semibold text-gray-900 dark:text-white mt-6">
+            🚀 Let’s build the future together.
+          </p>
+        </motion.section>
+
         {/* CTA Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -193,7 +266,12 @@ export default function About() {
 }
 
 // Helper Components
-const TimelineItem = ({ year, title, description, align }: TimelineItemProps) => (
+const TimelineItem = ({
+  year,
+  title,
+  description,
+  align,
+}: TimelineItemProps) => (
   <motion.div
     initial={{ opacity: 0, x: align === "left" ? 20 : -20 }}
     animate={{ opacity: 1, x: 0 }}

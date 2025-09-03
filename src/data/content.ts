@@ -710,7 +710,7 @@ export const teamMembers = [
     id: 1,
     name: "Mukesh Jena",
     role: "Software Engineer",
-    bio: "Software engineer focused on building scalable, efficient, and user-friendly applications.",
+    bio: "Software engineer focused on building scalable, efficient, and user-friendly business applications.",
     avatar:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHjgbrcGebNVdw4eu5INxzjJy4YcjVvrGGGw&s",
     linkedin: "https://www.linkedin.com/in/mukesh-jena/?originalSubdomain=in",
@@ -726,8 +726,8 @@ export const teamMembers = [
       "https://media.licdn.com/dms/image/v2/D5603AQHdmIOE8V2UYA/profile-displayphoto-crop_800_800/B56Zgt2nelG4AI-/0/1753115957055?e=1759363200&v=beta&t=kEVsR0H8hNSXIghe0PXWwYEyZ-IorNWQ1O5ofmDPrmI",
     linkedin:
       "https://www.linkedin.com/in/paresh-tripathy-9a3441256/?originalSubdomain=in",
-    github: "https://github.com/mukeshjena",
-    website: "www.pareshtripathy.com",
+    github: "https://github.com/paresh720538",
+    website: "https://paresh-tripathy.vercel.app/",
   },
   {
     id: 3,

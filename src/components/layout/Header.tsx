@@ -67,13 +67,11 @@ const Header: React.FC = () => {
             <div className="flex items-center justify-between">
               {/* Logo - Updated animation */}
               <Link to="/" className="flex items-center space-x-3" tabIndex={0}>
-                <motion.div
-                  className="w-9 h-9 bg-gradient-to-br from-neon-blue to-electric-green dark:from-purple-accent dark:to-blue-accent rounded-lg flex items-center justify-center relative overflow-hidden"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ type: "spring", stiffness: 400 }}
-                >
-                  <span className="text-white font-bold text-xs">P2M</span>
-                </motion.div>
+                <img
+                  className="h-7 flex items-center justify-center relative overflow-hidden"
+                  src="https://res.cloudinary.com/dnmqfgexi/image/upload/v1756924084/p2m-logo_cqbkrh_c0ni94.png"
+                  alt="P2msolutions.com logo"
+                />
                 <span className="text-lg font-display font-bold bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
                   Solutions
                 </span>

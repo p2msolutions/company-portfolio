@@ -52,11 +52,13 @@ const Footer: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <div className="w-10 h-10 bg-gradient-to-br from-neon-blue to-electric-green dark:from-purple-accent dark:to-blue-accent rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold">P2M</span>
-              </div>
+              <img
+                className="h-7 flex items-center justify-center relative overflow-hidden"
+                src="https://res.cloudinary.com/dnmqfgexi/image/upload/v1756924084/p2m-logo_cqbkrh_c0ni94.png"
+                alt="P2msolutions.com logo"
+              />
               <span className="text-2xl font-display font-bold text-gray-900 dark:text-white">
-                P2M Solutions
+                Solutions
               </span>
             </motion.div>
 
