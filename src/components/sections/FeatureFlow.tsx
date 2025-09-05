@@ -13,7 +13,7 @@ const iconMap = {
 
 const FeatureFlow: React.FC = () => {
   return (
-    <section className="py-16 lg:py-20 bg-light-surface dark:bg-dark-surface">
+    <section className="py-16 lg:py-20 bg-light-surface dark:bg-dark-bg">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <motion.div
           className="text-center mb-20"
@@ -56,7 +56,7 @@ const FeatureFlow: React.FC = () => {
 
 interface FeatureBlockProps {
   feature: typeof features[0];
-  icon: React.ComponentType<any>;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   isEven: boolean;
   index: number;
 }

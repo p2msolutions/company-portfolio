@@ -34,7 +34,7 @@ export default function ProjectDetails() {
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45 }}
-      className="min-h-screen bg-light-surface dark:bg-dark-surface pt-28 pb-28"
+      className="min-h-screen bg-light-surface dark:bg-dark-bg pt-28 pb-28"
     >
       {/* Decorative background */}
       <div className="pointer-events-none fixed inset-0 -z-10">
@@ -44,14 +44,6 @@ export default function ProjectDetails() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
-        <div className="mb-6">
-          <Link
-            to="/project"
-            className="text-sm text-gray-600 dark:text-gray-300 hover:underline"
-          >
-            ← Back to projects
-          </Link>
-        </div>
 
         {/* Hero split - adjusted to 6/6 so image is larger */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
@@ -154,7 +146,7 @@ export default function ProjectDetails() {
                   whileInView={{ y: 0, opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.05 }}
-                  className="p-6 rounded-2xl bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-sm"
+                  className="p-6 rounded-2xl bg-white dark:bg-dark-surface border border-light-border dark:border-dark-border hover:border-neon-blue dark:hover:border-electric-green transition-all duration-300 shadow-sm"
                 >
                   <div className="flex items-start gap-4">
                     <div className="min-w-[44px] h-11 rounded-lg bg-neon-blue/10 dark:bg-electric-green/10 flex items-center justify-center font-semibold text-neon-blue dark:text-electric-green">
@@ -183,7 +175,7 @@ export default function ProjectDetails() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4 }}
-              className="p-8 rounded-2xl bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-sm max-w-7xl mx-auto"
+              className="p-8 rounded-2xl bg-white dark:bg-dark-surface border shadow-sm max-w-7xl mx-auto border-light-border dark:border-dark-border hover:border-neon-blue dark:hover:border-electric-green transition-all duration-300"
             >
               <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
                 Case Study

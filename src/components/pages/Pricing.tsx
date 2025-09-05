@@ -17,6 +17,7 @@ const plans = [
       "Free SSL & Hosting Setup Assistance",
       "1 Free Revision",
       "Delivery in 7–10 Days",
+      "6 months Free Maintenance & Support",
     ],
     accent: "from-neon-blue to-electric-green",
     recommended: false,
@@ -79,7 +80,7 @@ export default function Pricing() {
   };
 
   return (
-    <section className="relative bg-light-surface dark:bg-dark-surface pt-36 lg:pt-40 pb-20 px-4 sm:px-6 lg:px-8 min-h-screen overflow-hidden">
+    <section className="relative bg-light-surface dark:bg-dark-bg pt-36 lg:pt-40 pb-20 px-4 sm:px-6 lg:px-8 min-h-screen overflow-hidden">
       {/* Enhanced Background Elements */}
       <motion.div
         animate={{

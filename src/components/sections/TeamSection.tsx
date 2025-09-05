@@ -11,7 +11,7 @@ const TeamSection: React.FC = () => {
     <section
       id="team"
       ref={ref}
-      className="py-20 bg-light-surface dark:bg-dark-surface"
+      className="py-20 bg-light-surface dark:bg-dark-bg"
     >
       <div className="container mx-auto px-6">
         <motion.div
@@ -67,40 +67,47 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
 }) => {
   return (
     <motion.div
-      className="relative h-80 cursor-pointer group flex flex-col items-center justify-center 
-        bg-white/30 dark:bg-dark-surface/30 
+      className="relative flex flex-col items-center justify-start 
+        bg-white/40 dark:bg-dark-surface 
         rounded-2xl border border-light-border dark:border-dark-border 
         p-6 transition-colors duration-300 
         hover:border-neon-blue dark:hover:border-electric-green 
-        backdrop-blur-lg"
+        backdrop-blur-xl shadow-md"
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       whileHover={{ y: -10 }}
-      style={{ perspective: "1000px" }}
     >
-      <img
-        src={member.avatar}
-        alt={member.name}
-        className="w-24 h-24 rounded-full object-cover mb-6 border-4 border-electric-green dark:border-neon-blue"
-      />
-      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 text-center">
+      {/* Avatar */}
+      <div className="w-28 h-28 rounded-full overflow-hidden border-4 border-neon-blue dark:border-electric-green shadow-lg mb-6">
+        <img
+          src={member.avatar}
+          alt={member.name}
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+      {/* Name & Role */}
+      <h3 className="text-xl font-bold text-gray-900 dark:text-white text-center mb-1">
         {member.name}
       </h3>
-      <p className="text-sm font-bold text-gray-700 dark:text-gray-400 mb-2 text-center">
+      <p className="text-sm font-medium text-neon-blue dark:text-electric-green mb-3 text-center">
         {member.role}
       </p>
-      <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed text-center mb-4">
+
+      {/* Bio */}
+      <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed text-center mb-6 line-clamp-3">
         {member.bio}
       </p>
+
       {/* Social Icons */}
-      <div className="flex justify-center gap-4 mt-2">
+      <div className="flex justify-center gap-3 mt-auto">
         {member.linkedin && (
           <a
             href={member.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 rounded-full bg-white dark:bg-dark-bg border border-light-border dark:border-dark-border hover:border-neon-blue dark:hover:border-electric-green transition-colors duration-200 shadow"
+            className="p-2 rounded-full bg-white dark:bg-dark-bg border border-light-border dark:border-dark-border hover:border-neon-blue dark:hover:border-electric-green transition-colors duration-200 shadow-sm"
             onClick={(e) => e.stopPropagation()}
           >
             <Linkedin className="w-5 h-5 text-neon-blue dark:text-electric-green" />
@@ -111,7 +118,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
             href={member.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 rounded-full bg-white dark:bg-dark-bg border border-light-border dark:border-dark-border hover:border-neon-blue dark:hover:border-electric-green transition-colors duration-200 shadow"
+            className="p-2 rounded-full bg-white dark:bg-dark-bg border border-light-border dark:border-dark-border hover:border-neon-blue dark:hover:border-electric-green transition-colors duration-200 shadow-sm"
             onClick={(e) => e.stopPropagation()}
           >
             <Github className="w-5 h-5 text-gray-700 dark:text-gray-300" />
@@ -120,13 +127,14 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
         {member.website && (
           <a
             href={
-              member.website.startsWith("http://") || member.website.startsWith("https://")
+              member.website.startsWith("http://") ||
+              member.website.startsWith("https://")
                 ? member.website
                 : `https://${member.website.replace(/^\/+/, "")}`
             }
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 rounded-full bg-white dark:bg-dark-bg border border-light-border dark:border-dark-border hover:border-neon-blue dark:hover:border-electric-green transition-colors duration-200 shadow"
+            className="p-2 rounded-full bg-white dark:bg-dark-bg border border-light-border dark:border-dark-border hover:border-neon-blue dark:hover:border-electric-green transition-colors duration-200 shadow-sm"
             onClick={(e) => e.stopPropagation()}
           >
             <Globe className="w-5 h-5 text-electric-green dark:text-neon-blue" />

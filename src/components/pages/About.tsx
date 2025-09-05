@@ -23,7 +23,7 @@ interface SocialLinkProps {
 
 export default function About() {
   return (
-    <section className="relative bg-light-surface dark:bg-dark-surface pt-36 lg:pt-40 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section className="relative bg-light-surface dark:bg-dark-bg pt-36 lg:pt-40 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Enhanced Background Elements */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <motion.div
@@ -180,12 +180,12 @@ export default function About() {
           className="max-w-4xl mx-auto px-6 py-16 text-center leading-relaxed"
         >
           <h2 className="text-3xl sm:text-4xl font-extrabold mb-8 text-gray-900 dark:text-white">
-            About Us – <span className="text-gradient">P2msolutions</span>
+            About Us
           </h2>
 
           <div className="space-y-6 text-gray-600 dark:text-gray-300">
             <p className="text-lg">
-              At <span className="font-semibold">NeuraNext</span>, we believe
+              At <span className="font-semibold">P2Msolutions</span>, we believe
               that
               <span className="text-gradient font-semibold">
                 {" "}
@@ -221,24 +221,10 @@ export default function About() {
             </p>
           </div>
 
-          <div className=" border border-gray-600 glass-card dark:glass-card p-8 rounded-2xl shadow-md mt-10 mb-8 text-left sm:text-center">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-2xl sm:text-3xl font-bold gradient-text dark:dark-gradient-text mb-8"
-            >
-              Our Promis
-            </motion.h2>
-            <ul className="space-y-3 text-gray-700 dark:text-gray-300">
-              <li>✅ Cutting-edge software tailored to your needs</li>
-              <li>✅ Scalable, secure, and future-proof solutions</li>
-              <li>✅ A collaborative approach focused on your success</li>
-            </ul>
-          </div>
+          
 
           <p className="text-lg font-semibold text-gray-900 dark:text-white mt-6">
-            🚀 Let’s build the future together.
+            Let’s build the future together.
           </p>
         </motion.section>
 

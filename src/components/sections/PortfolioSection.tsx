@@ -23,7 +23,7 @@ const PortfolioSection: React.FC = () => {
     <section
       id="portfolio"
       ref={ref}
-      className="py-12 lg:py-16 bg-light-surface dark:bg-dark-surface"
+      className="py-12 lg:py-16 bg-light-surface dark:bg-dark-bg"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <motion.div
@@ -36,7 +36,7 @@ const PortfolioSection: React.FC = () => {
             <span className="text-gray-900 dark:text-white">Our</span>
             <br />
             <span className="gradient-text dark:dark-gradient-text">
-              Porjects
+              Projects
             </span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-8">
