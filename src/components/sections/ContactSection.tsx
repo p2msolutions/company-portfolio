@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { Send, MapPin, Phone, Mail, Clock } from "lucide-react";
 import { useInView } from "../../hooks/useInView";
-import { send } from "@emailjs/browser";
 
 interface ContactFormData {
   name: string;
@@ -41,10 +40,6 @@ const ContactSection: React.FC = () => {
     reset,
   } = useForm<ContactFormData>();
 
-  const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
-  const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
-  const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string;
-
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -77,16 +72,33 @@ const ContactSection: React.FC = () => {
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
 
-    const templateParams = {
-      name: data.name,
-      email: data.email,
-      company: data.company,
-      projectType: data.projectType,
-      message: data.message,
+    const payload = {
+      toEmail: "info.p2msolutions@gmail.com", // Mapping form email to API's toEmail
+      subject: "", // Static subject, as in original cURL
+      body: "", // Empty body, as in original cURL
+      fullName: data.name, // Mapping form name to API's fullName
+      company: data.company, // Direct mapping
+      projectType: data.projectType, // Direct mapping
+      message: data.message, // Direct mapping
     };
 
     try {
-      await send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
+      const response = await fetch(
+        "https://email.p2msolutions.com/api/Email/queue",
+        {
+          method: "POST",
+          headers: {
+            Accept: "*/*",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
       showToast("success", "Message sent — we will get back soon.");
       setForm({
         name: "",
@@ -96,7 +108,7 @@ const ContactSection: React.FC = () => {
         message: "",
       });
     } catch (err) {
-      console.error("EmailJS send error:", err);
+      console.error("API send error:", err);
       showToast("error", "Failed to send. Please try again later.");
     } finally {
       setIsSubmitting(false);
