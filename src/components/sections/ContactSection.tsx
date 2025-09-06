@@ -80,6 +80,7 @@ const ContactSection: React.FC = () => {
       company: data.company, // Direct mapping
       projectType: data.projectType, // Direct mapping
       message: data.message, // Direct mapping
+      isP2m: true, // Static value, as in original cURL
     };
 
     try {
