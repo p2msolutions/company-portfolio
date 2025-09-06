@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { Send, MapPin, Phone, Mail, Clock } from "lucide-react";
 import { useInView } from "../../hooks/useInView";
+import { userMailTemplate } from "../../data/mailTemplate";
 
 interface ContactFormData {
   name: string;
@@ -69,6 +70,8 @@ const ContactSection: React.FC = () => {
     }, ms);
   };
 
+  
+
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
 
@@ -101,6 +104,25 @@ const ContactSection: React.FC = () => {
       }
 
       showToast("success", "Message sent — we will get back soon.");
+
+      // call a function to send a mail
+
+      const userPayload = {
+        toEmail: data.email, // Mapping form email to API's toEmail
+        subject: "Thanks for Contacting P2Msolutions", // Static subject, as in original cURL
+        body: userMailTemplate.replace('{{name}}', data.name), // Empty body, as in original cURL
+        isP2m: false, // Static value, as in original cURL
+      };
+
+      await fetch("https://email.p2msolutions.com/api/Email/queue", {
+        method: "POST",
+        headers: {
+          Accept: "*/*",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userPayload),
+      });
+
       setForm({
         name: "",
         email: "",
@@ -219,8 +241,8 @@ const ContactSection: React.FC = () => {
                     className="w-full px-4 py-3 bg-light-surface dark:bg-dark-bg border border-light-border dark:border-dark-border rounded-lg focus:border-neon-blue dark:focus:border-electric-green focus:outline-none transition-colors duration-200"
                     placeholder="john@company.com"
                     whileFocus={{ scale: 1.02 }}
-                    value={form.email}
-                    onChange={handleChange}
+                    // value={form.email}
+                    // onChange={handleChange}
                   />
                   {errors.email && (
                     <p className="text-red-500 text-sm mt-1">

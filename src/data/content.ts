@@ -919,6 +919,7 @@ export const serviceFAQs = {
 
 export const features = [
   {
+    slug: "web-app-development",
     title: "Web & App Development",
     description:
       "We craft modern, responsive web applications and mobile apps that deliver exceptional user experiences and drive business growth.",
@@ -930,6 +931,7 @@ export const features = [
     ],
   },
   {
+    slug: "ai-ml-integration",
     title: "AI/ML Integrations",
     description:
       "Harness the power of artificial intelligence to automate processes, gain insights, and create intelligent features for your applications.",
@@ -941,6 +943,7 @@ export const features = [
     ],
   },
   {
+    slug: "cloud-devops",
     title: "Cloud & DevOps Solutions",
     description:
       "Scale your applications with robust cloud infrastructure, automated deployments, and monitoring solutions that ensure reliability.",
@@ -952,6 +955,7 @@ export const features = [
     ],
   },
   {
+    slug: "workflow-automation",
     title: "Workflow Automation",
     description:
       "Streamline your business operations with custom automation tools that integrate with your existing systems and workflows.",
