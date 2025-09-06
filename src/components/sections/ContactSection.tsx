@@ -73,7 +73,7 @@ const ContactSection: React.FC = () => {
     setIsSubmitting(true);
 
     const payload = {
-      toEmail: "info.p2msolutions@gmail.com", // Mapping form email to API's toEmail
+      toEmail: data.email, // Mapping form email to API's toEmail
       subject: "", // Static subject, as in original cURL
       body: "", // Empty body, as in original cURL
       fullName: data.name, // Mapping form name to API's fullName
