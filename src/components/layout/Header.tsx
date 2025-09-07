@@ -13,10 +13,10 @@ const Header: React.FC = () => {
   const navItems = [
     { name: "Home", href: "#home" },
     { name: "Services", href: "#services" },
-    { name: "Project", href: "#portfolio" },
+    { name: "Projects", href: "/projects" },
     { name: "Pricing", href: "/pricing" },
     { name: "About", href: "/about" },
-    { name: "Contact", href: "#contact" },
+    { name: "Contact", href: "/contact" },
   ];
 
   const themeIcons = {
@@ -29,20 +29,38 @@ const Header: React.FC = () => {
     theme === "light" ? "dark" : theme === "dark" ? "system" : "light";
   const CurrentThemeIcon = themeIcons[theme];
 
-  // Helper to handle navigation and scroll
+  // Helper to handle navigation and scroll with proper offset
   const handleNavClick = (href: string) => (e: React.MouseEvent) => {
     if (href.startsWith("#")) {
       e.preventDefault();
       if (location.pathname !== "/") {
         navigate("/", { replace: false });
-        // Wait for navigation, then scroll
+        // Wait for navigation, then scroll with offset
         setTimeout(() => {
           const el = document.querySelector(href);
-          if (el) el.scrollIntoView({ behavior: "smooth" });
-        }, 100); // adjust delay if needed
+          if (el) {
+            const headerHeight = 120; // Account for header height + padding
+            const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - headerHeight;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth"
+            });
+          }
+        }, 100);
       } else {
         const el = document.querySelector(href);
-        if (el) el.scrollIntoView({ behavior: "smooth" });
+        if (el) {
+          const headerHeight = 120; // Account for header height + padding
+          const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - headerHeight;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          });
+        }
       }
     } else {
       navigate(href);

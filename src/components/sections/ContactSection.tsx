@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Send, MapPin, Phone, Mail, Clock } from "lucide-react";
 import { useInView } from "../../hooks/useInView";
 import { userMailTemplate } from "../../data/mailTemplate";
+import { sectionContent } from "../../data/content";
 
 interface ContactFormData {
   name: string;
@@ -13,14 +14,7 @@ interface ContactFormData {
   message: string;
 }
 
-const projectTypes = [
-  "Web Development",
-  "Mobile App",
-  "AI/ML Integration",
-  "Cloud Infrastructure",
-  "Automation",
-  "Other",
-];
+const projectTypes = sectionContent.contact.form.projectTypes;
 
 const ContactSection: React.FC = () => {
   const { ref, isInView } = useInView({ threshold: 0.1 });
@@ -103,13 +97,13 @@ const ContactSection: React.FC = () => {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      showToast("success", "Message sent — we will get back soon.");
+      showToast("success", sectionContent.contact.form.successMessage);
 
       // call a function to send a mail
 
       const userPayload = {
         toEmail: data.email, // Mapping form email to API's toEmail
-        subject: "Thanks for Contacting P2Msolutions", // Static subject, as in original cURL
+        subject: sectionContent.contact.form.emailSubject, // Static subject, as in original cURL
         body: userMailTemplate.replace('{{name}}', data.name), // Empty body, as in original cURL
         isP2m: false, // Static value, as in original cURL
       };
@@ -143,28 +137,17 @@ const ContactSection: React.FC = () => {
     }
   };
 
-  const contactInfo = [
-    {
-      icon: MapPin,
-      title: "Visit Us",
-      details: ["Noida Sector 63", "New Delhi, India"],
-    },
-    {
-      icon: Phone,
-      title: "Call Us",
-      details: ["+91 7369900185, +91 7205384589, ", "Mon-Fri 9AM-6PM PST"],
-    },
-    {
-      icon: Mail,
-      title: "Email Us",
-      details: ["info.p2msolutions@gmail.com", "Response within 24 hours"],
-    },
-    {
-      icon: Clock,
-      title: "Business Hours",
-      details: ["Monday - Friday", "9:00 AM - 6:00 PM PST"],
-    },
-  ];
+  const iconMap = {
+    MapPin,
+    Phone,
+    Mail,
+    Clock,
+  };
+
+  const contactInfo = sectionContent.contact.contactInfo.map(info => ({
+    ...info,
+    icon: iconMap[info.icon as keyof typeof iconMap],
+  }));
 
   return (
     <section
@@ -180,15 +163,14 @@ const ContactSection: React.FC = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
-            <span className="text-gray-900 dark:text-white">Let's Build</span>
+            <span className="text-gray-900 dark:text-white">{sectionContent.contact.title.line1}</span>
             <br />
             <span className="gradient-text dark:dark-gradient-text">
-              Something Together
+              {sectionContent.contact.title.line2}
             </span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            Ready to transform your ideas into reality? Get in touch and let's
-            discuss your next project.
+            {sectionContent.contact.description}
           </p>
         </motion.div>
 

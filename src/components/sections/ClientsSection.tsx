@@ -81,49 +81,40 @@ const ClientsSection: React.FC = () => {
         {/* Marquee Animation */}
         <div className="relative overflow-hidden">
           <motion.div
-            className="flex space-x-12 items-center"
+            className="flex items-center"
             animate={{
-              x: [0, -1200],
+              x: [`0%`, `-${100 / 2}%`],
             }}
             transition={{
-              duration: 20,
+              duration: 25,
               repeat: Infinity,
               ease: 'linear',
+              repeatType: 'loop'
             }}
-            style={{ width: 'calc(200% + 48px)' }}
+            style={{
+              width: `${200}%`,
+              gap: '3rem'
+            }}
           >
             {/* First set of logos */}
-            {clients.map((client, index) => (
+            {clients.concat(clients).map((client, index) => (
               <motion.div
-                key={`first-${client.name}`}
+                key={`logo-${index}`}
                 className="flex-shrink-0 w-32 h-16 bg-white dark:bg-dark-surface rounded-lg border border-light-border dark:border-dark-border flex items-center justify-center group hover:border-neon-blue dark:hover:border-electric-green transition-colors duration-200"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-
+                transition={{ duration: 0.6, delay: (index % clients.length) * 0.1 }}
               >
                 <span className="text-sm font-semibold text-gray-700 dark:text-gray-300 group-hover:text-neon-blue dark:group-hover:text-electric-green transition-colors duration-200">
                   {client.name}
                 </span>
               </motion.div>
             ))}
-
-            {/* Duplicate set for seamless loop */}
-            {clients.map((client) => (
-              <div
-                key={`second-${client.name}`}
-                className="flex-shrink-0 w-32 h-16 bg-white dark:bg-dark-surface rounded-lg border border-light-border dark:border-dark-border flex items-center justify-center group hover:border-neon-blue dark:hover:border-electric-green transition-colors duration-200"
-              >
-                <span className="text-sm font-semibold text-gray-700 dark:text-gray-300 group-hover:text-neon-blue dark:group-hover:text-electric-green transition-colors duration-200">
-                  {client.name}
-                </span>
-              </div>
-            ))}
           </motion.div>
 
           {/* Gradient Overlays */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-light-bg dark:from-dark-bg to-transparent pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-light-bg dark:from-dark-bg to-transparent pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-light-bg dark:from-dark-bg to-transparent pointer-events-none z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-light-bg dark:from-dark-bg to-transparent pointer-events-none z-10" />
         </div>
 
         {/* Stats with Counting Animation */}

@@ -917,6 +917,218 @@ export const serviceFAQs = {
   ],
 };
 
+// Section Content
+export const sectionContent = {
+  hero: {
+    badge: {
+      text: "AI-Powered Software Solutions",
+      icon: "Sparkles"
+    },
+    title: {
+      line1: "Innovating Software",
+      line2: "Empowering Businesses"
+    },
+    description: "We build next-generation software solutions that transform ideas into reality. From AI-powered applications to scalable cloud infrastructure.",
+    buttons: {
+      primary: "Start Your Project",
+      secondary: "View Our Work"
+    }
+  },
+  services: {
+    title: {
+      line1: "Our",
+      line2: "Services"
+    },
+    description: "Comprehensive software solutions tailored to accelerate your business growth and digital transformation"
+  },
+  portfolio: {
+    title: {
+      line1: "Our",
+      line2: "Projects"
+    },
+    description: "Showcasing innovative solutions we've built for forward-thinking companies"
+  },
+  team: {
+    title: {
+      line1: "Meet Our",
+      line2: "Team"
+    },
+    description: "The talented individuals behind P2M Solutions, bringing diverse expertise and shared passion for innovation"
+  },
+  testimonials: {
+    title: {
+      line1: "Trusted by",
+      line2: "Innovative Companies"
+    },
+    description: "See what our clients say about working with P2M Solutions"
+  },
+  contact: {
+    title: {
+      line1: "Let's Build",
+      line2: "Something Together"
+    },
+    description: "Ready to transform your ideas into reality? Get in touch and let's discuss your next project.",
+    contactInfo: [
+      {
+        icon: "MapPin",
+        title: "Visit Us",
+        details: ["Noida Sector 63", "New Delhi, India"]
+      },
+      {
+        icon: "Phone",
+        title: "Call Us",
+        details: ["+91 7369900185, +91 7205384589, ", "Mon-Fri 9AM-6PM PST"]
+      },
+      {
+        icon: "Mail",
+        title: "Email Us",
+        details: ["info.p2msolutions@gmail.com", "Response within 24 hours"]
+      },
+      {
+        icon: "Clock",
+        title: "Business Hours",
+        details: ["Monday - Friday", "9:00 AM - 6:00 PM PST"]
+      }
+    ],
+    form: {
+      title: "Send us a message",
+      fields: {
+        name: "Full Name",
+        email: "Email Address",
+        company: "Company Name",
+        projectType: "Project Type",
+        message: "Tell us about your project"
+      },
+      projectTypes: [
+        "Web Development",
+        "Mobile App",
+        "AI/ML Integration",
+        "Cloud Infrastructure",
+        "Automation",
+        "Other"
+      ],
+      submitButton: "Send Message",
+      submittingText: "Sending...",
+      successMessage: "Message sent — we will get back soon.",
+      emailSubject: "Thanks for Contacting P2Msolutions"
+    }
+  }
+};
+
+// Page Content
+export const pageContent = {
+  about: {
+    hero: {
+      title: {
+        line1: "From College Dreams to",
+        line2: "Professional Reality"
+      },
+      description: "Three passionate developers, one shared vision. We've transformed from college friends into a professional powerhouse, delivering solutions that scale from 100 to 100,000+ users.",
+      highlight: "100 to 100,000+ users"
+    },
+    timeline: [
+      {
+        year: "2021",
+        title: "The Beginning",
+        description: "Started as college friends with a shared passion for technology and innovation.",
+        align: "left" as const
+      },
+      {
+        year: "2022",
+        title: "First Projects",
+        description: "Delivered our first client projects, learning and growing with each challenge.",
+        align: "right" as const
+      },
+      {
+        year: "2023",
+        title: "Professional Growth",
+        description: "Expanded our expertise in AI/ML, cloud solutions, and enterprise applications.",
+        align: "left" as const
+      },
+      {
+        year: "2024",
+        title: "P2M Solutions",
+        description: "Officially launched P2M Solutions, serving clients across multiple industries.",
+        align: "right" as const
+      }
+    ],
+    stats: [
+      { number: "50", suffix: "+", label: "Projects Completed" },
+      { number: "25", suffix: "+", label: "Happy Clients" },
+      { number: "3", suffix: "", label: "Team Members" },
+      { number: "99", suffix: "%", label: "Client Satisfaction" }
+    ]
+  },
+  pricing: {
+    hero: {
+      title: {
+        line1: "Simple,",
+        line2: "Transparent Pricing"
+      },
+      description: "Choose the perfect plan for your business. Start small and scale as you grow."
+    },
+    plans: [
+      {
+        name: "Starter",
+        price: "₹12,999",
+        period: "one-time",
+        tagline: "Perfect for individuals & small businesses just getting started online.",
+        features: [
+          "1 Landing Page (Static or Dynamic)",
+          "Modern & Responsive Design (Mobile + Desktop)",
+          "Basic SEO Optimization (Meta, Alt, Sitemap)",
+          "Contact Form with Email Integration",
+          "Free SSL & Hosting Setup Assistance",
+          "1 Free Revision",
+          "Delivery in 7–10 Days",
+          "6 months Free Maintenance & Support"
+        ],
+        accent: "from-neon-blue to-electric-green",
+        recommended: false
+      },
+      {
+        name: "Business",
+        price: "₹34,999",
+        period: "one-time",
+        tagline: "Best for growing businesses that need a professional online presence.",
+        features: [
+          "Up to 7 Pages (Home, About, Services, Blog, Portfolio, Contact, etc.)",
+          "Custom UI/UX Design with Branding",
+          "Advanced SEO Setup (On-page + Keywords)",
+          "Blog/Portfolio Section with CMS (Easy Editing)",
+          "Performance Optimization & Speed Setup",
+          "WhatsApp/Chatbot Integration",
+          "Priority Support (Email + WhatsApp)",
+          "2 Free Revisions",
+          "Delivery in 20–25 Days"
+        ],
+        accent: "from-purple-accent to-blue-accent",
+        recommended: true
+      },
+      {
+        name: "Enterprise",
+        price: "Custom Quote",
+        period: "project-based",
+        tagline: "Tailored solutions for enterprises, startups & large-scale projects.",
+        features: [
+          "Unlimited Pages & Fully Custom Design",
+          "E-commerce Store / Marketplace Development",
+          "Payment Gateway Integration (Razorpay, Stripe, PayPal)",
+          "CRM, ERP & 3rd Party API Integrations",
+          "Cloud Solutions & AI/ML Integrations",
+          "Custom Admin Dashboard",
+          "Dedicated Project Manager",
+          "Ongoing Maintenance & Support",
+          "SEO + Digital Marketing Strategy",
+          "Delivery Timeline Based on Scope"
+        ],
+        accent: "from-pink-500 to-orange-400",
+        recommended: false
+      }
+    ]
+  }
+};
+
 export const features = [
   {
     slug: "web-app-development",

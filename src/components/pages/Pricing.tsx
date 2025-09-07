@@ -1,7 +1,12 @@
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
-import { useNavigate } from "react-router-dom"; // Add this import
+import { useNavigate } from "react-router-dom";
+import { pageContent } from "../../data/content";
 
+const plans = pageContent.pricing.plans;
+
+// Keep the original plans array as backup (commented out)
+/*
 const plans = [
   {
     name: "Starter",
@@ -64,6 +69,7 @@ const plans = [
     recommended: false,
   },
 ];
+*/
 
 export default function Pricing() {
   const navigate = useNavigate(); // Add this line
@@ -80,7 +86,7 @@ export default function Pricing() {
   };
 
   return (
-    <section className="relative bg-light-surface dark:bg-dark-bg pt-36 lg:pt-40 pb-20 px-4 sm:px-6 lg:px-8 min-h-screen overflow-hidden">
+    <section className="relative bg-light-surface dark:bg-dark-bg page-padding-top pb-16 container-padding overflow-hidden">
       {/* Enhanced Background Elements */}
       <motion.div
         animate={{
@@ -108,14 +114,13 @@ export default function Pricing() {
           className="text-center mb-16"
         >
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-            <span className="block text-gray-900 dark:text-white">Simple,</span>
+            <span className="block text-gray-900 dark:text-white">{pageContent.pricing.hero.title.line1}</span>
             <span className="gradient-text dark:dark-gradient-text">
-              Transparent Pricing
+              {pageContent.pricing.hero.title.line2}
             </span>
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Choose the perfect plan for your business. Start small and scale as
-            you grow.
+            {pageContent.pricing.hero.description}
           </p>
         </motion.div>
 
@@ -172,7 +177,7 @@ export default function Pricing() {
 
               {/* CTA Button */}
               <motion.a
-                href="#contact"
+  href="/contact"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className={`w-full py-4 rounded-xl font-semibold transition-all duration-200 text-center ${
@@ -202,7 +207,7 @@ export default function Pricing() {
             solution that matches your vision perfectly.
           </p>
           <motion.a
-            href="#contact"
+href="/contact"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="inline-flex items-center px-12 py-4 rounded-xl text-lg font-semibold bg-gradient-to-r from-neon-blue to-electric-green dark:from-purple-accent dark:to-blue-accent text-white shadow-xl hover:shadow-2xl transition-all duration-300"

@@ -8,6 +8,8 @@
   html {
     scroll-behavior: smooth;
     font-size: 16px;
+    /* Add scroll padding to account for fixed header */
+    scroll-padding-top: 120px;
     /* Add these properties to prevent unwanted zooming and horizontal scroll */
     max-width: 100vw;
     overflow-x: hidden;
@@ -45,6 +47,28 @@
 }
 
 @layer components {
+  /* Consistent section spacing */
+  .section-padding {
+    @apply py-12 lg:py-16;
+  }
+  
+  .section-padding-large {
+    @apply py-16 lg:py-20;
+  }
+  
+  .page-padding-top {
+    @apply pt-32 lg:pt-36;
+  }
+  
+  /* Consistent container spacing */
+  .container-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+  
+  .max-container {
+    @apply container mx-auto max-w-7xl;
+  }
+
   .glass-morphism {
     backdrop-filter: blur(16px);
     background: linear-gradient(

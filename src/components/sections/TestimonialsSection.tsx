@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
-import { testimonials } from "../../data/content";
+import { testimonials, sectionContent } from "../../data/content";
 import type { Testimonial } from "../../types";
+import BaseCard from '../ui/BaseCard';
 
 const TestimonialsSection: React.FC = () => {
   const column1 = testimonials.slice(0, 2);
@@ -10,8 +11,8 @@ const TestimonialsSection: React.FC = () => {
   const column3 = testimonials.slice(4, 6);
 
   return (
-    <section className="py-12 lg:py-16 bg-light-bg dark:bg-dark-bg overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+    <section className="section-padding bg-light-bg dark:bg-dark-bg overflow-hidden">
+      <div className="max-container container-padding">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
@@ -20,14 +21,14 @@ const TestimonialsSection: React.FC = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold mb-6">
-            <span className="text-gray-900 dark:text-white">Trusted by</span>
+            <span className="text-gray-900 dark:text-white">{sectionContent.testimonials.title.line1}</span>
             <br />
             <span className="gradient-text dark:dark-gradient-text">
-              Innovative Companies
+              {sectionContent.testimonials.title.line2}
             </span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            See what our clients say about working with P2M Solutions
+            {sectionContent.testimonials.description}
           </p>
         </motion.div>
 
@@ -140,7 +141,11 @@ interface TestimonialCardProps {
 
 const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial }) => {
   return (
-    <div className="bg-white dark:bg-dark-surface p-6 rounded-2xl border border-light-border dark:border-dark-border group cursor-pointer relative overflow-hidden">
+    <BaseCard
+      variant="default"
+      hoverEffect="glow"
+      className="p-6 mb-6"
+    >
       {/* Star Rating */}
       <div className="flex items-center mb-4">
         {[...Array(5)].map((_, i) => (
@@ -186,7 +191,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial }) => {
           </div>
         </div>
       </div>
-    </div>
+    </BaseCard>
   );
 };
 

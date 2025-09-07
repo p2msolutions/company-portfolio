@@ -2,7 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Linkedin, Github, Globe } from "lucide-react";
 import { useInView } from "../../hooks/useInView";
-import { teamMembers } from "../../data/content";
+import { teamMembers, sectionContent } from "../../data/content";
+import BaseCard from '../ui/BaseCard';
 
 const TeamSection: React.FC = () => {
   const { ref, isInView } = useInView({ threshold: 0.1 });
@@ -11,9 +12,9 @@ const TeamSection: React.FC = () => {
     <section
       id="team"
       ref={ref}
-      className="py-20 bg-light-surface dark:bg-dark-bg"
+      className="section-padding-large bg-light-surface dark:bg-dark-bg"
     >
-      <div className="container mx-auto px-6">
+      <div className="max-container container-padding">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
@@ -21,12 +22,11 @@ const TeamSection: React.FC = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
-            <span className="text-gray-900 dark:text-white">Meet Our</span>
-            <span className="gradient-text dark:dark-gradient-text"> Team</span>
+            <span className="text-gray-900 dark:text-white">{sectionContent.team.title.line1}</span>
+            <span className="gradient-text dark:dark-gradient-text"> {sectionContent.team.title.line2}</span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            The talented individuals behind P2M Solutions, bringing diverse
-            expertise and shared passion for innovation
+            {sectionContent.team.description}
           </p>
         </motion.div>
 
@@ -66,24 +66,19 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
   isInView,
 }) => {
   return (
-    <motion.div
-      className="relative flex flex-col items-center justify-start 
-        bg-white/40 dark:bg-dark-surface 
-        rounded-2xl border border-light-border dark:border-dark-border 
-        p-6 transition-colors duration-300 
-        hover:border-neon-blue dark:hover:border-electric-green 
-        backdrop-blur-xl shadow-md"
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      whileHover={{ y: -10 }}
+    <BaseCard
+      index={index}
+      isInView={isInView}
+      variant="elevated"
+      hoverEffect="lift"
+      className="flex flex-col items-center justify-start p-6"
     >
       {/* Avatar */}
-      <div className="w-28 h-28 rounded-full overflow-hidden border-4 border-neon-blue dark:border-electric-green shadow-lg mb-6">
+      <div className="w-28 h-28 rounded-full overflow-hidden border-4 border-neon-blue dark:border-electric-green shadow-lg mb-6 mx-auto">
         <img
           src={member.avatar}
           alt={member.name}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-center"
         />
       </div>
 
@@ -96,7 +91,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
       </p>
 
       {/* Bio */}
-      <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed text-center mb-6 line-clamp-3">
+      <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed text-center mb-6 line-clamp-3 flex-grow">
         {member.bio}
       </p>
 
@@ -141,7 +136,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
           </a>
         )}
       </div>
-    </motion.div>
+    </BaseCard>
   );
 };
 

@@ -6,6 +6,11 @@ interface SEOHeadProps {
   keywords?: string;
   image?: string;
   url?: string;
+  type?: 'website' | 'article' | 'service' | 'project';
+  publishedTime?: string;
+  modifiedTime?: string;
+  author?: string;
+  breadcrumbs?: Array<{ name: string; url: string }>;
 }
 
 const SEOHead: React.FC<SEOHeadProps> = ({
@@ -13,7 +18,12 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   description = "P2M Solutions provides cutting-edge software development, AI/ML integration, cloud solutions, and workflow automation. Transform your business with our innovative technology solutions.",
   keywords = "software development, AI integration, cloud solutions, automation, web development, mobile apps, machine learning, DevOps, custom software",
   image = "/og-image.png",
-  url = "https://p2msolutions.com"
+  url = "https://p2msolutions.com",
+  type = 'website',
+  publishedTime,
+  modifiedTime,
+  author = 'P2M Solutions',
+  breadcrumbs = []
 }) => {
   const fullTitle = title.includes('P2M Solutions') ? title : `${title} | P2M Solutions`;
 
@@ -49,8 +59,19 @@ const SEOHead: React.FC<SEOHeadProps> = ({
     updateMetaTag('og:description', description, true);
     updateMetaTag('og:image', image, true);
     updateMetaTag('og:url', url, true);
-    updateMetaTag('og:type', 'website', true);
+    updateMetaTag('og:type', type, true);
     updateMetaTag('og:site_name', 'P2M Solutions', true);
+    updateMetaTag('og:locale', 'en_US', true);
+    
+    if (publishedTime) {
+      updateMetaTag('article:published_time', publishedTime, true);
+    }
+    if (modifiedTime) {
+      updateMetaTag('article:modified_time', modifiedTime, true);
+    }
+    if (author && type === 'article') {
+      updateMetaTag('article:author', author, true);
+    }
 
     // Twitter Card tags
     updateMetaTag('twitter:card', 'summary_large_image');
@@ -70,33 +91,124 @@ const SEOHead: React.FC<SEOHeadProps> = ({
 
     const jsonLdScript = document.createElement('script');
     jsonLdScript.type = 'application/ld+json';
-    jsonLdScript.textContent = JSON.stringify({
+    
+    let structuredData: any = {
       "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "P2M Solutions",
-      "description": description,
-      "url": url,
-      "logo": `${url}/logo.png`,
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+1-555-123-4567",
-        "contactType": "customer service",
-        "email": "contact@p2msolutions.com"
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "123 Innovation Drive",
-        "addressLocality": "San Francisco",
-        "addressRegion": "CA",
-        "postalCode": "94105",
-        "addressCountry": "US"
-      },
-      "sameAs": [
-        "https://linkedin.com/company/p2m-solutions",
-        "https://github.com/p2m-solutions",
-        "https://twitter.com/p2msolutions"
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": `${url}/#organization`,
+          "name": "P2M Solutions",
+          "description": "Innovative software development company specializing in AI/ML integration, cloud solutions, and custom software development.",
+          "url": url,
+          "logo": {
+            "@type": "ImageObject",
+            "url": `${url}/logo.png`,
+            "width": 200,
+            "height": 200
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+91-7369900185",
+            "contactType": "customer service",
+            "email": "info.p2msolutions@gmail.com",
+            "availableLanguage": "English"
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Noida Sector 63",
+            "addressLocality": "New Delhi",
+            "addressRegion": "Delhi",
+            "postalCode": "110001",
+            "addressCountry": "IN"
+          },
+          "sameAs": [
+            "https://linkedin.com/company/p2m-solutions",
+            "https://github.com/p2m-solutions"
+          ],
+          "foundingDate": "2021",
+          "numberOfEmployees": "3-10",
+          "industry": "Software Development",
+          "services": [
+            "Web Development",
+            "Mobile App Development",
+            "AI/ML Integration",
+            "Cloud Solutions",
+            "DevOps",
+            "Workflow Automation"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": `${url}/#website`,
+          "url": url,
+          "name": "P2M Solutions",
+          "description": description,
+          "publisher": {
+            "@id": `${url}/#organization`
+          },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": `${url}/search?q={search_term_string}`
+            },
+            "query-input": "required name=search_term_string"
+          }
+        }
       ]
-    });
+    };
+
+    // Add page-specific structured data
+    if (type === 'service') {
+      structuredData['@graph'].push({
+        "@type": "Service",
+        "name": title,
+        "description": description,
+        "provider": {
+          "@id": `${url}/#organization`
+        },
+        "url": url,
+        "serviceType": "Software Development"
+      });
+    } else if (type === 'article' || type === 'project') {
+      structuredData['@graph'].push({
+        "@type": "Article",
+        "headline": title,
+        "description": description,
+        "author": {
+          "@type": "Organization",
+          "@id": `${url}/#organization`
+        },
+        "publisher": {
+          "@id": `${url}/#organization`
+        },
+        "url": url,
+        "datePublished": publishedTime || new Date().toISOString(),
+        "dateModified": modifiedTime || new Date().toISOString(),
+        "image": {
+          "@type": "ImageObject",
+          "url": image,
+          "width": 1200,
+          "height": 630
+        }
+      });
+    }
+
+    // Add breadcrumb structured data
+    if (breadcrumbs.length > 0) {
+      structuredData['@graph'].push({
+        "@type": "BreadcrumbList",
+        "itemListElement": breadcrumbs.map((crumb, index) => ({
+          "@type": "ListItem",
+          "position": index + 1,
+          "name": crumb.name,
+          "item": crumb.url
+        }))
+      });
+    }
+
+    jsonLdScript.textContent = JSON.stringify(structuredData);
     document.head.appendChild(jsonLdScript);
 
     return () => {

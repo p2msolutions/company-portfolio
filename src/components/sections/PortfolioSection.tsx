@@ -3,7 +3,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import { useInView } from "../../hooks/useInView";
 import { projects } from "../../data/project";
+import { sectionContent } from "../../data/content";
 import { Link} from "react-router-dom";
+import BaseCard from '../ui/BaseCard';
 
 const PortfolioSection: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -23,9 +25,9 @@ const PortfolioSection: React.FC = () => {
     <section
       id="portfolio"
       ref={ref}
-      className="py-12 lg:py-16 bg-light-surface dark:bg-dark-bg"
+      className="section-padding bg-light-surface dark:bg-dark-bg"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+      <div className="max-container container-padding">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
@@ -33,15 +35,14 @@ const PortfolioSection: React.FC = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold mb-6">
-            <span className="text-gray-900 dark:text-white">Our</span>
+            <span className="text-gray-900 dark:text-white">{sectionContent.portfolio.title.line1}</span>
             <br />
             <span className="gradient-text dark:dark-gradient-text">
-              Projects
+              {sectionContent.portfolio.title.line2}
             </span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-8">
-            Showcasing innovative solutions we've built for forward-thinking
-            companies
+            {sectionContent.portfolio.description}
           </p>
 
           {/* Category Filter */}
@@ -84,7 +85,7 @@ const PortfolioSection: React.FC = () => {
         </motion.div>
 
         <div className="flex justify-center mt-6">
-          <Link to="/project" className="group w-full max-w-xs">
+          <Link to="/projects" className="group w-full max-w-xs">
             <motion.button
               className="w-full py-3 bg-gradient-to-r from-blue-500 via-teal-400 to-green-500 dark:from-purple-500 dark:via-indigo-500 dark:to-blue-500 text-white font-semibold rounded-xl shadow-lg opacity-90 group-hover:opacity-100 transition-all duration-300 transform group-hover:-translate-y-1"
               whileHover={{ scale: 1.05 }}
@@ -113,32 +114,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <motion.div
-      layout
-      initial={{ opacity: 0, y: 30 }}
-      animate={
-        isInView
-          ? {
-              opacity: 1,
-              y: 0,
-              transition: {
-                duration: 0.6,
-                delay: index * 0.1,
-              },
-            }
-          : {}
-      }
-      exit={{ opacity: 0, scale: 0.9 }}
-      className="group relative bg-white dark:bg-dark-surface rounded-2xl overflow-hidden border border-light-border dark:border-dark-border hover:border-neon-blue dark:hover:border-electric-green transition-all duration-300"
+    <BaseCard
+      index={index}
+      isInView={isInView}
+      variant="default"
+      hoverEffect="lift"
+      className="p-0 overflow-hidden"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      whileHover={{
-        y: -4,
-        boxShadow: "0 10px 25px rgba(0, 212, 255, 0.1)",
-        transition: {
-          duration: 0.2,
-        },
-      }}
     >
       {/* Project Image */}
       <div className="relative h-64 overflow-hidden">
@@ -234,12 +217,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </Link>
       </div>
 
-      {/* Glow Effect */}
-      <motion.div
-        className="absolute inset-0 rounded-2xl bg-gradient-to-r from-neon-blue/5 to-electric-green/5 dark:from-purple-accent/5 dark:to-blue-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-        layoutId={`project-glow-${project.id}`}
-      />
-    </motion.div>
+    </BaseCard>
   );
 };
 

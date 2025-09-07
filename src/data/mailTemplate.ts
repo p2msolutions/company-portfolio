@@ -27,7 +27,7 @@ export const userMailTemplate = `<!doctype html>
                   <p style="margin:0 0 6px 0;"><strong>What happens next?</strong></p>
                   <p style="margin:0; line-height:1.45; color:#6b7280;">One of our team members will reply within 24–48 business hours. If your request is urgent, you can reply to this email or visit our contact page.</p>
                 </div>
-                <a href="https://p2msolutions.com/#contact" style="display:inline-block; padding:12px 24px; border-radius:8px; background:#2563eb; color:#ffffff; font-weight:600; text-decoration:none; margin:20px 0;">Contact us</a>
+                <a href="https://p2msolutions.com/contact" style="display:inline-block; padding:12px 24px; border-radius:8px; background:#2563eb; color:#ffffff; font-weight:600; text-decoration:none; margin:20px 0;">Contact us</a>
               </td>
             </tr>
 

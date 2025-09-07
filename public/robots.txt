@@ -1,0 +1,23 @@
+# Robots.txt for P2M Solutions Portfolio
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+
+# Disallow crawling of admin or private areas (if any)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /.well-known/
+
+# Allow crawling of important pages
+Allow: /about
+Allow: /projects
+Allow: /pricing
+Allow: /contact
+Allow: /service/
+
+# Sitemap location
+Sitemap: https://p2msolutions.com/sitemap.xml
+
+# Crawl delay (optional - helps prevent server overload)
+Crawl-delay: 1

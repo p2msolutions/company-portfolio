@@ -27,12 +27,12 @@ export default {
         'neon-blue': '#00d4ff',
         'electric-green': '#00ff88',
         
-        // Light mode colors
+        // Light mode colors (using same accent colors as dark mode)
         'light-bg': '#ffffff',
         'light-surface': '#f8fafc',
         'light-border': '#e2e8f0',
-        'purple-accent': '#8b5cf6',
-        'blue-accent': '#3b82f6',
+        'purple-accent': '#8b5cf6', // Original purple accent
+        'blue-accent': '#3b82f6',   // Original blue accent
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',

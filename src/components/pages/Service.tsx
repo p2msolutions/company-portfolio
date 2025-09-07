@@ -46,7 +46,7 @@ const Service = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="relative bg-light-surface dark:bg-dark-surface pt-28 pb-16 px-4 sm:px-6 lg:px-8 min-h-screen"
+      className="relative bg-light-surface dark:bg-dark-surface page-padding-top pb-16 container-padding min-h-screen"
     >
       {/* Background Elements */}
       <motion.div
@@ -246,12 +246,8 @@ const Service = () => {
             whileTap={{ scale: 0.95 }}
             className="px-12 py-4 rounded-xl font-semibold bg-gradient-to-r from-neon-blue to-electric-green dark:from-purple-accent dark:to-blue-accent text-white shadow-lg transition-all duration-300"
             onClick={() => {
-              navigate("/");
-              setTimeout(() => {
-                const el = document.querySelector("#contact");
-                if (el) el.scrollIntoView({ behavior: "smooth" });
-              }, 100);
-            }}
+                navigate("/contact");
+              }}
           >
             Contact Us
           </motion.button>

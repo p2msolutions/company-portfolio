@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { teamMembers } from "../../data/content";
+import { teamMembers, pageContent } from "../../data/content";
 import { Github, Linkedin, Globe } from "lucide-react";
 
 // Add interfaces
@@ -23,7 +23,7 @@ interface SocialLinkProps {
 
 export default function About() {
   return (
-    <section className="relative bg-light-surface dark:bg-dark-bg pt-36 lg:pt-40 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section className="relative bg-light-surface dark:bg-dark-bg page-padding-top pb-16 container-padding overflow-hidden">
       {/* Enhanced Background Elements */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <motion.div
@@ -54,20 +54,18 @@ export default function About() {
         >
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
             <span className="block text-gray-900 dark:text-white">
-              From College Dreams to
+              {pageContent.about.hero.title.line1}
             </span>
             <span className="gradient-text dark:dark-gradient-text">
-              Professional Reality
+              {pageContent.about.hero.title.line2}
             </span>
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Three passionate developers, one shared vision. We've transformed
-            from college friends into a professional powerhouse, delivering
-            solutions that scale from{" "}
+            {pageContent.about.hero.description.split(pageContent.about.hero.highlight)[0]}
             <span className="font-semibold text-neon-blue dark:text-electric-green">
-              100 to 100,000+ users
+              {pageContent.about.hero.highlight}
             </span>
-            .
+            {pageContent.about.hero.description.split(pageContent.about.hero.highlight)[1]}
           </p>
         </motion.div>
 
@@ -82,30 +80,15 @@ export default function About() {
 
           <div className="grid md:grid-cols-2 gap-8 md:gap-16">
             {/* Timeline Items */}
-            <TimelineItem
-              year="2019"
-              title="The Beginning"
-              description="Started our journey as Computer Science students, bonding over hackathons and coding challenges."
-              align="right"
-            />
-            <TimelineItem
-              year="2021"
-              title="Industry Experience"
-              description="Gained valuable experience at top tech companies, working on enterprise-scale applications."
-              align="left"
-            />
-            <TimelineItem
-              year="2022"
-              title="First Major Project"
-              description="Successfully delivered our first large-scale project, handling 100,000+ users."
-              align="right"
-            />
-            <TimelineItem
-              year="2023"
-              title="P2M Solutions"
-              description="Founded our company, combining our expertise to deliver cutting-edge solutions."
-              align="left"
-            />
+            {pageContent.about.timeline.map((item, index) => (
+              <TimelineItem
+                key={index}
+                year={item.year}
+                title={item.title}
+                description={item.description}
+                align={item.align}
+              />
+            ))}
           </div>
         </motion.div>
 
@@ -165,10 +148,14 @@ export default function About() {
           transition={{ duration: 0.6 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-20"
         >
-          <StatItem number="2+" suffix="Years" label="Experience" />
-          <StatItem number="50+" suffix="" label="Projects Delivered" />
-          <StatItem number="100K+" suffix="" label="Users Served" />
-          <StatItem number="99%" suffix="" label="Client Satisfaction" />
+          {pageContent.about.stats.map((stat, index) => (
+            <StatItem
+              key={index}
+              number={stat.number}
+              suffix={stat.suffix}
+              label={stat.label}
+            />
+          ))}
         </motion.div>
 
         {/* About Us Section */}
@@ -239,7 +226,7 @@ export default function About() {
             Ready to build something amazing?
           </h2>
           <motion.a
-            href="#contact"
+href="/contact"
             whileHover={{ scale: 1.05 }}
             className="inline-block px-8 py-4 rounded-xl font-semibold bg-gradient-to-r from-neon-blue to-electric-green dark:from-purple-accent dark:to-blue-accent text-white shadow-lg"
           >

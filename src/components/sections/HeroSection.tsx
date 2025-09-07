@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { sectionContent } from "../../data/content";
 
 const HeroSection: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -75,13 +76,7 @@ const HeroSection: React.FC = () => {
 
   // Handler for "Start Your Project"
   const handleStartProject = () => {
-    navigate("/", { replace: false });
-    setTimeout(() => {
-      const contactSection = document.getElementById("contact");
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: "smooth" });
-      }
-    }, 100); // Delay to ensure navigation completes
+    navigate("/contact");
   };
 
   return (
@@ -165,7 +160,7 @@ const HeroSection: React.FC = () => {
               <Sparkles className="w-5 h-5 text-neon-blue dark:text-electric-green" />
             </motion.div>
             <span className="text-sm font-semibold text-gray-800 dark:text-gray-200 tracking-wide">
-              AI-Powered Software Solutions
+              {sectionContent.hero.badge.text}
             </span>
           </motion.div>
         </motion.div>
@@ -175,11 +170,11 @@ const HeroSection: React.FC = () => {
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-8 leading-tight max-w-4xl mx-auto text-center"
         >
           <span className="text-gray-900 dark:text-white">
-            Innovating Software
+            {sectionContent.hero.title.line1}
           </span>
           <br className="hidden md:block p-2" />
           <span className="gradient-text dark:dark-gradient-text">
-            Empowering Businesses
+            {sectionContent.hero.title.line2}
           </span>
         </motion.h1>
 
@@ -187,9 +182,7 @@ const HeroSection: React.FC = () => {
           variants={itemVariants}
           className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed px-4"
         >
-          We build next-generation software solutions that transform ideas into
-          reality. From AI-powered applications to scalable cloud
-          infrastructure.
+          {sectionContent.hero.description}
         </motion.p>
 
         <motion.div
@@ -213,7 +206,7 @@ const HeroSection: React.FC = () => {
             onClick={handleStartProject}
           >
             <span className="relative z-10 flex items-center space-x-2 text-base font-semibold">
-              <span>Start Your Project</span>
+              <span>{sectionContent.hero.buttons.primary}</span>
               <motion.div
                 animate={{ x: [0, 5, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
@@ -256,7 +249,7 @@ const HeroSection: React.FC = () => {
               stiffness: 500,
               damping: 15,
             }}
-            onClick={() => navigate("/project")}
+            onClick={() => navigate("/projects")}
           >
             <span className="relative z-10 text-base font-semibold">
               View Our Work
