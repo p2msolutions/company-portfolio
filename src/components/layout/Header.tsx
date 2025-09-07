@@ -68,8 +68,8 @@ const Header: React.FC = () => {
               {/* Logo - Updated animation */}
               <Link to="/" className="flex items-center space-x-3" tabIndex={0}>
                 <img
-                  className="h-7 flex items-center justify-center relative overflow-hidden"
-                  src="https://res.cloudinary.com/dnmqfgexi/image/upload/v1756924084/p2m-logo_cqbkrh_c0ni94.png"
+                  className="h-12 flex items-center justify-center relative rounded-md overflow-hidden"
+                  src="https://res.cloudinary.com/dnmqfgexi/image/upload/v1757271735/Logo_3_jtnmsq.png"
                   alt="P2msolutions.com logo"
                 />
                 <span className="text-lg font-display font-bold bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">

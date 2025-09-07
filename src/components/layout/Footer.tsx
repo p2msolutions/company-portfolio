@@ -53,8 +53,8 @@ const Footer: React.FC = () => {
               transition={{ duration: 0.5 }}
             >
               <img
-                className="h-7 flex items-center justify-center relative overflow-hidden"
-                src="https://res.cloudinary.com/dnmqfgexi/image/upload/v1756924084/p2m-logo_cqbkrh_c0ni94.png"
+                className="h-12 rounded-md flex items-center justify-center relative overflow-hidden"
+                src="https://res.cloudinary.com/dnmqfgexi/image/upload/v1757271735/Logo_3_jtnmsq.png"
                 alt="P2msolutions.com logo"
               />
               <span className="text-2xl font-display font-bold text-gray-900 dark:text-white">

@@ -12,13 +12,13 @@ const LoadingAnimation: React.FC = () => {
       <div className="text-center">
         {/* Simple Logo */}
         <motion.div
-          className="w-20 h-20 mx-auto mb-8 bg-gray-200 rounded-2xl flex items-center justify-center"
+          className="w-20 h-20 mx-auto mb-8 bg-white rounded-2xl flex items-center justify-center"
           animate={{ rotate: 360 }}
           transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
         >
           <img
-            className="h-7 flex items-center justify-center relative overflow-hidden"
-            src="https://res.cloudinary.com/dnmqfgexi/image/upload/v1756924084/p2m-logo_cqbkrh_c0ni94.png"
+            className="h-12 flex items-center justify-center relative overflow-hidden"
+            src="https://res.cloudinary.com/dnmqfgexi/image/upload/v1757271735/Logo_3_jtnmsq.png"
             alt="P2msolutions.com logo"
           />
         </motion.div>
