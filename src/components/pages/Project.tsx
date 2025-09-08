@@ -1,13 +1,52 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import { useInView } from "../../hooks/useInView";
-import { projects } from "../../data/project";
 import { Link } from "react-router-dom";
+
+interface ProjectType {
+  id: number;
+  slug: string;
+  title: string;
+  description: string;
+  image: string;
+  category: string;
+  technologies: string[];
+  live?: string;
+  github?: string;
+}
 
 const Project: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const { ref, isInView } = useInView({ threshold: 0.09 });
+
+  const [projects, setProjects] = useState<ProjectType[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        setLoading(true);
+        const res = await fetch("https://email.p2msolutions.com/api/Projects", {
+          headers: {
+            accept: "text/plain",
+          },
+        });
+
+        if (!res.ok) throw new Error("Failed to fetch projects");
+
+        const data = await res.json();
+        setProjects(data);
+      } catch (err: any) {
+        setError(err.message || "Something went wrong");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, []);
 
   const categories = [
     "All",
@@ -20,7 +59,6 @@ const Project: React.FC = () => {
       : projects.filter((p) => p.category === selectedCategory);
 
   return (
-    /* increased top spacing responsively (keeps layout intact) */
     <section
       id="portfolio"
       ref={ref}
@@ -45,50 +83,64 @@ const Project: React.FC = () => {
           </p>
 
           {/* Category Filter */}
-          <motion.div
-            className="flex flex-wrap justify-center gap-3 mt-8"
-            initial={{ opacity: 0, y: 8 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.15 }}
-          >
-            {categories.map((category) => (
-              <motion.button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 focus:outline-none ${
-                  selectedCategory === category
-                    ? "bg-gradient-to-r from-neon-blue to-electric-green text-white shadow-lg"
-                    : "bg-white dark:bg-dark-surface text-gray-700 dark:text-gray-300 border border-light-border dark:border-dark-border hover:shadow-sm"
-                }`}
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                {category}
-              </motion.button>
-            ))}
-          </motion.div>
+          {projects.length > 0 && (
+            <motion.div
+              className="flex flex-wrap justify-center gap-3 mt-8"
+              initial={{ opacity: 0, y: 8 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.15 }}
+            >
+              {categories.map((category) => (
+                <motion.button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 focus:outline-none ${
+                    selectedCategory === category
+                      ? "bg-gradient-to-r from-neon-blue to-electric-green text-white shadow-lg"
+                      : "bg-white dark:bg-dark-surface text-gray-700 dark:text-gray-300 border border-light-border dark:border-dark-border hover:shadow-sm"
+                  }`}
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  {category}
+                </motion.button>
+              ))}
+            </motion.div>
+          )}
         </motion.div>
 
+        {/* Loading & Error */}
+        {loading && (
+          <p className="text-center text-gray-500 dark:text-gray-400">
+            Loading projects...
+          </p>
+        )}
+        {error && (
+          <p className="text-center text-red-500 dark:text-red-400">{error}</p>
+        )}
+
         {/* Projects Grid */}
-        <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-8" layout>
-          <AnimatePresence mode="wait">
-            {filteredProjects.map((project, index) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                index={index}
-                isInView={isInView}
-              />
-            ))}
-          </AnimatePresence>
-        </motion.div>
+        {!loading && !error && (
+          <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-8" layout>
+            <AnimatePresence mode="wait">
+              {filteredProjects.map((project, index) => (
+                <ProjectCard
+                  key={project.id}
+                  project={project}
+                  index={index}
+                  isInView={isInView}
+                />
+              ))}
+            </AnimatePresence>
+          </motion.div>
+        )}
       </div>
     </section>
   );
 };
 
 interface ProjectCardProps {
-  project: (typeof projects)[0];
+  project: ProjectType;
   index: number;
   isInView: boolean;
 }
@@ -107,8 +159,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     const y = e.clientY - rect.top;
     const cx = rect.width / 2;
     const cy = rect.height / 2;
-    const ry = ((x - cx) / cx) * 6; // rotateY
-    const rx = -((y - cy) / cy) * 6; // rotateX
+    const ry = ((x - cx) / cx) * 6;
+    const rx = -((y - cy) / cy) * 6;
     setTilt({ rx, ry });
   };
 
@@ -140,7 +192,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         willChange: "transform",
       }}
     >
-      {/* Project Image (larger visual, responsive heights) */}
+      {/* Project Image */}
       <div className="relative h-64 sm:h-72 md:h-80 lg:h-96 xl:h-[28rem] overflow-hidden">
         <motion.img
           src={project.image}
@@ -150,7 +202,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           transition={{ duration: 0.45 }}
         />
 
-        {/* overlay with CTA icons */}
+        {/* Overlay */}
         <AnimatePresence>
           {isHovered && (
             <motion.div
@@ -205,7 +257,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           <span className="px-3 py-1 text-xs font-semibold bg-neon-blue/10 dark:bg-electric-green/10 text-neon-blue dark:text-electric-green rounded-full">
             {project.category}
           </span>
-          
         </div>
 
         <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
@@ -216,9 +267,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           {project.description}
         </p>
 
-        {/* tech chips */}
+        {/* Technologies */}
         <div className="flex flex-wrap gap-2 mb-4">
-          {project.technologies.slice(0, 6).map((tech) => (
+          {project.technologies?.slice(0, 6).map((tech) => (
             <span
               key={tech}
               className="px-3 py-1 text-xs bg-light-surface dark:bg-dark-bg text-gray-700 dark:text-gray-300 rounded-lg border border-light-border dark:border-dark-border"
@@ -227,11 +278,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             </span>
           ))}
         </div>
-
-        
       </div>
 
-      {/* glow accent */}
+      {/* Glow Accent */}
       <motion.div
         className="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
         style={{

@@ -1,11 +1,84 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { projects } from "../../data/project";
 import { motion } from "framer-motion";
 
+// Define type based on your API response
+interface Project {
+  id: number;
+  slug: string;
+  title: string;
+  description: string;
+  category?: string;
+  technologies?: string[];
+  github?: string;
+  live?: string;
+  image?: string;
+  problemsSolved?: string[];
+  caseStudy?: {
+    overview?: string;
+    challenges?: {
+      problem: string;
+      solution: string;
+      impact?: string;
+    }[];
+  };
+}
+
 export default function ProjectDetails() {
-  const { slug } = useParams();
-  const project = projects.find((p) => p.slug === slug);
+  const { slug } = useParams<{ slug: string }>();
+  const [project, setProject] = useState<Project | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProject = async () => {
+      try {
+        if (!slug) return;
+
+        const headers = { accept: "text/plain" };
+
+        let data: Project | null = null;
+
+        // If the slug looks like a numeric ID, try fetching by ID first
+        if (/^\d+$/.test(slug)) {
+          const resById = await fetch(
+            `https://email.p2msolutions.com/api/Projects/${slug}`,
+            { headers }
+          );
+          if (resById.ok) {
+            data = await resById.json();
+          }
+        }
+
+        // If not found by ID or slug is not numeric, fetch all and match by slug
+        if (!data) {
+          const listRes = await fetch(
+            "https://email.p2msolutions.com/api/Projects",
+            { headers }
+          );
+          if (!listRes.ok) throw new Error("Failed to fetch projects");
+          const list: Project[] = await listRes.json();
+          data = list.find((p) => p.slug === slug) || null;
+        }
+
+        setProject(data);
+      } catch (error) {
+        console.error("Error fetching project:", error);
+        setProject(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProject();
+  }, [slug]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-light-surface dark:bg-dark-surface">
+        <p className="text-lg text-gray-600 dark:text-gray-300">Loading...</p>
+      </div>
+    );
+  }
 
   if (!project) {
     return (
@@ -34,7 +107,7 @@ export default function ProjectDetails() {
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45 }}
-      className="min-h-screen bg-light-surface dark:bg-dark-bg pt-28 pb-28"
+      className="min-h-screen bg-light-surface dark:bg-dark-bg pt-28 sm:pt-32 lg:pt-36 xl:pt-40 pb-28"
     >
       {/* Decorative background */}
       <div className="pointer-events-none fixed inset-0 -z-10">
@@ -43,9 +116,7 @@ export default function ProjectDetails() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Breadcrumb */}
-
-        {/* Hero split - adjusted to 6/6 so image is larger */}
+        {/* Hero Section */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           <div className="lg:col-span-6">
             <motion.h1
@@ -96,7 +167,7 @@ export default function ProjectDetails() {
             </div>
           </div>
 
-          {/* Image / media card - enlarged */}
+          {/* Image */}
           <div className="lg:col-span-6">
             <motion.div
               initial={{ scale: 0.98, opacity: 0 }}
@@ -110,7 +181,6 @@ export default function ProjectDetails() {
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover"
-                    style={{ display: "block", margin: 0, padding: 0 }}
                   />
                   <div className="absolute left-4 bottom-4 bg-white/80 dark:bg-black/60 rounded-full px-3 py-1 text-xs font-medium">
                     {project.category ?? "Project"}
@@ -132,7 +202,7 @@ export default function ProjectDetails() {
           </div>
         </div>
 
-        {/* Problems Solved - keep only 2 */}
+        {/* Challenges */}
         {project.problemsSolved && project.problemsSolved.length > 0 && (
           <section className="mt-14">
             <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
@@ -167,7 +237,7 @@ export default function ProjectDetails() {
           </section>
         )}
 
-        {/* Case Study - clearer layout with overview + challenge/solution pairs */}
+        {/* Case Study */}
         {project.caseStudy && (
           <section className="mt-14">
             <motion.div
@@ -181,93 +251,61 @@ export default function ProjectDetails() {
                 Case Study
               </h2>
 
-              <div className="space-y-8">
-                {/* Overview */}
-                {project.caseStudy.overview && (
-                  <div>
-                    <h3 className="text-lg font-semibold mb-3 text-gray-800 dark:text-gray-200">
-                      Overview
-                    </h3>
-                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                      {project.caseStudy.overview}
-                    </p>
-                  </div>
-                )}
+              {project.caseStudy.overview && (
+                <div>
+                  <h3 className="text-lg font-semibold mb-3 text-gray-800 dark:text-gray-200">
+                    Overview
+                  </h3>
+                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                    {project.caseStudy.overview}
+                  </p>
+                </div>
+              )}
 
-                {/* Challenges & Solutions */}
-                {project.caseStudy.challenges?.length > 0 && (
-                  <div>
-                    <h3 className="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">
-                      Challenges & Solutions
-                    </h3>
-                    <div className="grid gap-6 sm:grid-cols-2">
-                      {project.caseStudy.challenges.map(
-                        (
-                          c: {
-                            problem: string;
-                            solution: string;
-                            impact?: string;
-                          },
-                          i: number
-                        ) => (
-                          <div
-                            key={i}
-                            className="p-5 rounded-xl bg-gray-50 dark:bg-gray-700/30 border border-gray-100 dark:border-gray-600"
-                          >
-                            <div className="flex items-start gap-3">
-                              <div className="flex-shrink-0">
-                                <div className="w-9 h-9 rounded-lg bg-neon-blue/10 dark:bg-electric-green/10 flex items-center justify-center">
-                                  <span className="text-neon-blue dark:text-electric-green font-semibold">
-                                    {i + 1}
-                                  </span>
-                                </div>
-                              </div>
-                              <div>
-                                <h4 className="text-md font-semibold mb-2 text-gray-900 dark:text-white">
-                                  {c.problem}
-                                </h4>
-                                <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">
-                                  <strong className="text-gray-600 dark:text-gray-400">
-                                    Solution:
-                                  </strong>{" "}
-                                  {c.solution}
-                                </p>
-                                {c.impact && (
-                                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                                    <strong>Impact:</strong> {c.impact}
-                                  </p>
-                                )}
-                              </div>
+              {(project.caseStudy.challenges ?? []).length > 0 && (
+                <div className="mt-6">
+                  <h3 className="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">
+                    Challenges & Solutions
+                  </h3>
+                  <div className="grid gap-6 sm:grid-cols-2">
+                    {(project.caseStudy.challenges ?? []).map((c, i) => (
+                      <div
+                        key={i}
+                        className="p-5 rounded-xl bg-gray-50 dark:bg-gray-700/30 border border-gray-100 dark:border-gray-600"
+                      >
+                        <div className="flex items-start gap-3">
+                          <div className="flex-shrink-0">
+                            <div className="w-9 h-9 rounded-lg bg-neon-blue/10 dark:bg-electric-green/10 flex items-center justify-center">
+                              <span className="text-neon-blue dark:text-electric-green font-semibold">
+                                {i + 1}
+                              </span>
                             </div>
                           </div>
-                        )
-                      )}
-                    </div>
+                          <div>
+                            <h4 className="text-md font-semibold mb-2 text-gray-900 dark:text-white">
+                              {c.problem}
+                            </h4>
+                            <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">
+                              <strong className="text-gray-600 dark:text-gray-400">
+                                Solution:
+                              </strong>{" "}
+                              {c.solution}
+                            </p>
+                            {c.impact && (
+                              <p className="text-sm text-gray-600 dark:text-gray-400">
+                                <strong>Impact:</strong> {c.impact}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                )}
-              </div>
+                </div>
+              )}
             </motion.div>
           </section>
         )}
-
-        {/* Footer actions - removed Source & Live buttons per request */}
-        <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              Interested in a similar project?
-            </p>
-            <p className="text-sm text-gray-900 dark:text-white font-medium">
-              Let's talk —{" "}
-              <Link to="/contact" className="underline">
-                Contact us
-              </Link>
-            </p>
-          </div>
-
-          <div className="flex items-center gap-3">
-            {/* Intentionally left blank (Source & Live removed) */}
-          </div>
-        </div>
       </div>
     </motion.main>
   );

@@ -1,15 +1,54 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import { useInView } from "../../hooks/useInView";
-import { projects } from "../../data/project";
 import { sectionContent } from "../../data/content";
-import { Link} from "react-router-dom";
-import BaseCard from '../ui/BaseCard';
+import { Link } from "react-router-dom";
+import BaseCard from "../ui/BaseCard";
+
+interface Project {
+  id: number;
+  slug: string;
+  title: string;
+  description: string;
+  image: string;
+  category: string;
+  technologies: string[];
+  live?: string;
+  github?: string;
+}
 
 const PortfolioSection: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const { ref, isInView } = useInView({ threshold: 0.1 });
+
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        setLoading(true);
+        const res = await fetch("https://email.p2msolutions.com/api/Projects", {
+          headers: {
+            accept: "text/plain",
+          },
+        });
+
+        if (!res.ok) throw new Error("Failed to fetch projects");
+
+        const data = await res.json();
+        setProjects(data);
+      } catch (err: any) {
+        setError(err.message || "Something went wrong");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, []);
 
   const categories = [
     "All",
@@ -35,7 +74,9 @@ const PortfolioSection: React.FC = () => {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold mb-6">
-            <span className="text-gray-900 dark:text-white">{sectionContent.portfolio.title.line1}</span>
+            <span className="text-gray-900 dark:text-white">
+              {sectionContent.portfolio.title.line1}
+            </span>
             <br />
             <span className="gradient-text dark:dark-gradient-text">
               {sectionContent.portfolio.title.line2}
@@ -46,43 +87,57 @@ const PortfolioSection: React.FC = () => {
           </p>
 
           {/* Category Filter */}
-          <motion.div
-            className="flex flex-wrap justify-center gap-3"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            {categories.map((category) => (
-              <motion.button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-2 rounded-full font-medium transition-all duration-200 ${
-                  selectedCategory === category
-                    ? "bg-gradient-to-r from-neon-blue to-electric-green dark:from-purple-accent dark:to-blue-accent text-white"
-                    : "bg-white dark:bg-dark-surface text-gray-700 dark:text-gray-300 border border-light-border dark:border-dark-border hover:border-neon-blue dark:hover:border-electric-green"
-                }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {category}
-              </motion.button>
-            ))}
-          </motion.div>
+          {projects.length > 0 && (
+            <motion.div
+              className="flex flex-wrap justify-center gap-3"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              {categories.map((category) => (
+                <motion.button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`px-6 py-2 rounded-full font-medium transition-all duration-200 ${
+                    selectedCategory === category
+                      ? "bg-gradient-to-r from-neon-blue to-electric-green dark:from-purple-accent dark:to-blue-accent text-white"
+                      : "bg-white dark:bg-dark-surface text-gray-700 dark:text-gray-300 border border-light-border dark:border-dark-border hover:border-neon-blue dark:hover:border-electric-green"
+                  }`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {category}
+                </motion.button>
+              ))}
+            </motion.div>
+          )}
         </motion.div>
 
+        {/* Loading / Error */}
+        {loading && (
+          <p className="text-center text-gray-500 dark:text-gray-400">
+            Loading projects...
+          </p>
+        )}
+        {error && (
+          <p className="text-center text-red-500 dark:text-red-400">{error}</p>
+        )}
+
         {/* Projects Grid */}
-        <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-8" layout>
-          <AnimatePresence mode="wait">
-            {filteredProjects.map((project, index) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                index={index}
-                isInView={isInView}
-              />
-            ))}
-          </AnimatePresence>
-        </motion.div>
+        {!loading && !error && (
+          <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-8" layout>
+            <AnimatePresence mode="wait">
+              {filteredProjects.map((project, index) => (
+                <ProjectCard
+                  key={project.id}
+                  project={project}
+                  index={index}
+                  isInView={isInView}
+                />
+              ))}
+            </AnimatePresence>
+          </motion.div>
+        )}
 
         <div className="flex justify-center mt-6">
           <Link to="/projects" className="group w-full max-w-xs">
@@ -101,7 +156,7 @@ const PortfolioSection: React.FC = () => {
 };
 
 interface ProjectCardProps {
-  project: (typeof projects)[0];
+  project: Project;
   index: number;
   isInView: boolean;
 }
@@ -195,7 +250,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
         {/* Technologies */}
         <div className="flex flex-wrap gap-2 mb-4">
-          {project.technologies.map((tech) => (
+          {project.technologies?.map((tech) => (
             <span
               key={tech}
               className="px-3 py-1 text-xs bg-light-surface dark:bg-dark-bg text-gray-700 dark:text-gray-300 rounded-lg border border-light-border dark:border-dark-border"
@@ -216,7 +271,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           </motion.button>
         </Link>
       </div>
-
     </BaseCard>
   );
 };
