@@ -28,7 +28,7 @@ const Service = () => {
 
   if (!service) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-2xl font-bold text-accent-primary dark:text-accent-primary-light">
+      <div className="min-h-screen flex items-center justify-center text-2xl font-bold text-light-text dark:text-dark-text">
         Service not found.
       </div>
     );
@@ -55,7 +55,7 @@ const Service = () => {
           rotate: [0, 90, 0],
         }}
         transition={{ duration: 20, repeat: Infinity }}
-        className="absolute top-20 left-0 w-96 h-96 bg-accent-primary/5 dark:bg-accent-primary-light/5 rounded-full blur-3xl pointer-events-none"
+        className="absolute top-20 left-0 w-96 h-96 bg-light-text/5 dark:bg-dark-text/5 rounded-full blur-3xl pointer-events-none"
       />
       <motion.div
         animate={{
@@ -63,7 +63,7 @@ const Service = () => {
           rotate: [0, -90, 0],
         }}
         transition={{ duration: 20, repeat: Infinity }}
-        className="absolute bottom-0 right-0 w-96 h-96 bg-accent-primary/5 dark:bg-accent-primary-light/5 rounded-full blur-3xl pointer-events-none"
+        className="absolute bottom-0 right-0 w-96 h-96 bg-light-text-secondary/5 dark:bg-dark-text-secondary/5 rounded-full blur-3xl pointer-events-none"
       />
 
       <div className="relative max-w-7xl mx-auto z-10">
@@ -137,7 +137,7 @@ const Service = () => {
             className="lg:col-span-7 space-y-6"
           >
             {/* Service Description */}
-            <div className="glass-card dark:glass-card p-6 lg:p-8 rounded-3xl shadow-xl backdrop-blur-sm">
+            <div className="bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border p-6 lg:p-8 rounded-3xl backdrop-blur-sm">
               <h2 className="text-2xl lg:text-3xl font-bold mb-4 gradient-text dark:dark-gradient-text">
                 About This Service
               </h2>
@@ -187,7 +187,7 @@ const Service = () => {
                     whileHover={{ x: 5 }}
                     className="flex items-start gap-4 p-4 rounded-xl bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border"
                   >
-                    <span className="flex-shrink-0 w-8 h-8 rounded-full bg-light-surface dark:bg-dark-bg flex items-center justify-center text-accent-primary dark:text-accent-primary-light font-bold border border-light-border dark:border-dark-border">
+                    <span className="flex-shrink-0 w-8 h-8 rounded-full bg-light-surface dark:bg-dark-bg flex items-center justify-center text-light-text dark:text-dark-text font-bold border border-light-border dark:border-dark-border">
                       {index + 1}
                     </span>
                     <div>

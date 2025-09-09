@@ -12,7 +12,7 @@ const TeamSection: React.FC = () => {
     <section
       id="team"
       ref={ref}
-      className="section-padding-large bg-light-surface dark:bg-dark-bg"
+      className="section-padding-large bg-light-bg dark:bg-dark-bg"
     >
       <div className="max-container container-padding">
         <motion.div

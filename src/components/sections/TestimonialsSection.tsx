@@ -149,7 +149,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial }) => {
       {/* Star Rating */}
       <div className="flex items-center mb-4">
         {[...Array(5)].map((_, i) => (
-          <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+          <Star key={i} className="w-4 h-4 text-light-text dark:text-dark-text fill-current" />
         ))}
       </div>
 

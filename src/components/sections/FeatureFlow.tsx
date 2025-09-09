@@ -14,7 +14,7 @@ const iconMap = {
 
 const FeatureFlow: React.FC = () => {
   return (
-    <section className="py-16 lg:py-20 bg-light-surface dark:bg-dark-bg">
+    <section className="py-16 lg:py-20 bg-light-bg dark:bg-dark-bg">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <motion.div
           className="text-center mb-20"
@@ -175,11 +175,11 @@ const FeatureBlock: React.FC<FeatureBlockProps> = ({
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <Icon className="w-20 h-20 text-neon-blue dark:text-electric-green mx-auto mb-4" />
+              <Icon className="w-20 h-20 text-light-text dark:text-dark-text mx-auto mb-4" />
               <div className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                 {feature.title}
               </div>
-              <div className="w-16 h-1 bg-gradient-to-r from-neon-blue to-electric-green dark:from-purple-accent dark:to-blue-accent rounded-full mx-auto" />
+              <div className="w-16 h-1 bg-gradient-to-r from-light-text to-light-text-secondary dark:from-dark-text dark:to-dark-text-secondary rounded-full mx-auto" />
             </motion.div>
           </div>
         </motion.div>

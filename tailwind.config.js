@@ -34,12 +34,12 @@ export default {
         'light-text': '#212529',     // Softer black for better readability
         'light-text-secondary': '#6c757d', // Improved gray text
         
-        // Consistent accent colors for both modes
-        'accent-primary': '#0066cc',   // Clean blue
-        'accent-primary-light': '#4d94ff', // Lighter blue for light mode
+        // Monochrome accent colors for both modes
+        'accent-primary': '#000000',   // Pure black
+        'accent-primary-light': '#ffffff', // Pure white
         'accent-secondary': '#6c757d', // Neutral gray
-        'accent-hover': '#0052a3',     // Darker blue for hover
-        'accent-hover-light': '#0056b3', // Hover state for light mode
+        'accent-hover': '#333333',     // Dark gray for hover
+        'accent-hover-light': '#666666', // Gray for light mode hover
       },
       animation: {
         'fade-in': 'fadeIn 0.3s ease-out',

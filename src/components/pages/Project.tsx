@@ -63,7 +63,7 @@ const Project: React.FC = () => {
     <section
       id="portfolio"
       ref={ref}
-      className="pt-28 sm:pt-32 lg:pt-36 xl:pt-40 pb-16 bg-light-surface dark:bg-dark-bg"
+      className="pt-28 sm:pt-32 lg:pt-36 xl:pt-40 pb-16 bg-light-bg dark:bg-dark-bg"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <motion.div
@@ -241,7 +241,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                   <motion.button
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.98 }}
-                    className="btn-primary ml-2 px-4 py-2 rounded-full text-sm font-medium shadow"
+                    className="btn-primary ml-2 px-4 py-2 rounded-full text-sm font-medium"
                   >
                     View Case Study
                   </motion.button>

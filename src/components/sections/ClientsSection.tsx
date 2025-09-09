@@ -100,12 +100,12 @@ const ClientsSection: React.FC = () => {
             {clients.concat(clients).map((client, index) => (
               <motion.div
                 key={`logo-${index}`}
-                className="flex-shrink-0 w-32 h-16 bg-white dark:bg-dark-surface rounded-lg border border-light-border dark:border-dark-border flex items-center justify-center group hover:border-neon-blue dark:hover:border-electric-green transition-colors duration-200"
+                className="flex-shrink-0 w-32 h-16 bg-white dark:bg-dark-surface rounded-lg border border-light-border dark:border-dark-border flex items-center justify-center group glass-card transition-colors duration-200"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: (index % clients.length) * 0.1 }}
               >
-                <span className="text-sm font-semibold text-gray-700 dark:text-gray-300 group-hover:text-neon-blue dark:group-hover:text-electric-green transition-colors duration-200">
+                <span className="text-sm font-semibold text-gray-700 dark:text-gray-300 group-hover:text-light-text dark:group-hover:text-dark-text transition-colors duration-200">
                   {client.name}
                 </span>
               </motion.div>

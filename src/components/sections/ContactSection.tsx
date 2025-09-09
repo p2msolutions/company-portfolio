@@ -153,7 +153,7 @@ const ContactSection: React.FC = () => {
     <section
       id="contact"
       ref={ref}
-      className="py-20 bg-light-surface dark:bg-dark-bg relative"
+      className="py-20 bg-light-bg dark:bg-dark-bg relative"
     >
       <div className="container mx-auto px-6">
         <motion.div

@@ -230,7 +230,7 @@ export default function ProjectDetails() {
                   whileInView={{ y: 0, opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.05 }}
-                  className="p-6 rounded-2xl bg-light-bg dark:bg-dark-surface border border-light-border dark:border-dark-border glass-card transition-all duration-300 shadow-sm"
+                  className="p-6 rounded-2xl bg-light-bg dark:bg-dark-surface border border-light-border dark:border-dark-border transition-all duration-300"
                 >
                   <div className="flex items-start gap-4">
                     <div className="min-w-[44px] h-11 rounded-lg bg-light-surface dark:bg-dark-surface flex items-center justify-center font-semibold text-light-text dark:text-dark-text border border-light-border dark:border-dark-border">
@@ -259,7 +259,7 @@ export default function ProjectDetails() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4 }}
-              className="p-8 rounded-2xl bg-light-bg dark:bg-dark-surface border shadow-sm max-w-7xl mx-auto border-light-border dark:border-dark-border glass-card transition-all duration-300"
+              className="p-8 rounded-2xl bg-light-bg dark:bg-dark-surface border max-w-7xl mx-auto border-light-border dark:border-dark-border transition-all duration-300"
             >
               <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
                 Case Study
@@ -285,7 +285,7 @@ export default function ProjectDetails() {
                     {(project.caseStudy.challenges ?? []).map((c, i) => (
                       <div
                         key={i}
-                        className="p-5 rounded-xl bg-gray-50 dark:bg-gray-700/30 border border-gray-100 dark:border-gray-600"
+                        className="p-5 rounded-xl bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border"
                       >
                         <div className="flex items-start gap-3">
                           <div className="flex-shrink-0">

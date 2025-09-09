@@ -23,7 +23,7 @@ interface SocialLinkProps {
 
 export default function About() {
   return (
-    <section className="relative bg-light-surface dark:bg-dark-bg page-padding-top pb-16 container-padding overflow-hidden">
+    <section className="relative bg-light-bg dark:bg-dark-bg page-padding-top pb-16 container-padding overflow-hidden">
       {/* Enhanced Background Elements */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <motion.div
@@ -32,7 +32,7 @@ export default function About() {
             rotate: [0, 90, 0],
           }}
           transition={{ duration: 20, repeat: Infinity }}
-          className="absolute top-0 -left-32 w-[40rem] h-[40rem] bg-neon-blue/10 dark:bg-purple-accent/10 rounded-full blur-3xl"
+          className="absolute top-0 -left-32 w-[40rem] h-[40rem] bg-light-text/5 dark:bg-dark-text/5 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -40,7 +40,7 @@ export default function About() {
             rotate: [0, -90, 0],
           }}
           transition={{ duration: 25, repeat: Infinity }}
-          className="absolute bottom-0 -right-32 w-[35rem] h-[35rem] bg-electric-green/10 dark:bg-blue-accent/10 rounded-full blur-3xl"
+          className="absolute bottom-0 -right-32 w-[35rem] h-[35rem] bg-light-text-secondary/5 dark:bg-dark-text-secondary/5 rounded-full blur-3xl"
         />
       </div>
 
@@ -76,7 +76,7 @@ export default function About() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="relative mb-24"
         >
-          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-neon-blue to-electric-green dark:from-purple-accent dark:to-blue-accent" />
+          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-light-text to-light-text-secondary dark:from-dark-text dark:to-dark-text-secondary" />
 
           <div className="grid md:grid-cols-2 gap-8 md:gap-16">
             {/* Timeline Items */}
@@ -112,7 +112,7 @@ export default function About() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="glass-card dark:glass-card p-6 rounded-2xl backdrop-blur-sm"
+                className="bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border p-6 rounded-2xl backdrop-blur-sm"
               >
                 <div className="relative mb-6 group">
                   <img
@@ -125,7 +125,7 @@ export default function About() {
                 <h3 className="text-xl font-bold mb-2 gradient-text dark:dark-gradient-text">
                   {member.name}
                 </h3>
-                <p className="text-sm text-neon-blue dark:text-electric-green mb-3">
+                <p className="text-sm text-light-text dark:text-dark-text mb-3">
                   {member.role}
                 </p>
                 <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
@@ -253,8 +253,8 @@ const TimelineItem = ({
       align === "left" ? "md:ml-auto" : "md:mr-auto"
     } max-w-md`}
   >
-    <div className="glass-card dark:glass-card p-6 rounded-xl">
-      <span className="text-sm font-bold text-neon-blue dark:text-electric-green">
+    <div className="bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border p-6 rounded-xl">
+      <span className="text-sm font-bold text-light-text dark:text-dark-text">
         {year}
       </span>
       <h3 className="text-xl font-bold mb-2">{title}</h3>
@@ -266,7 +266,7 @@ const TimelineItem = ({
 const StatItem = ({ number, suffix, label }: StatItemProps) => (
   <motion.div
     whileHover={{ scale: 1.05 }}
-    className="glass-card dark:glass-card p-4 rounded-xl text-center"
+    className="bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border p-4 rounded-xl text-center"
   >
     <span className="block text-3xl font-bold gradient-text dark:dark-gradient-text">
       {number}

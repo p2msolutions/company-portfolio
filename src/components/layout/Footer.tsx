@@ -141,7 +141,7 @@ const Footer: React.FC = () => {
                 <motion.a
                   key={social.label}
                   href={social.href}
-                  className="p-2 rounded-lg bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border hover:border-accent-primary dark:hover:border-accent-primary-light transition-colors duration-200"
+                  className="p-2 rounded-lg bg-light-bg dark:bg-dark-surface border border-light-border dark:border-dark-border hover:border-accent-primary dark:hover:border-accent-primary-light transition-colors duration-200"
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   aria-label={social.label}

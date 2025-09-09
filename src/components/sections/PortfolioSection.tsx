@@ -65,7 +65,7 @@ const PortfolioSection: React.FC = () => {
     <section
       id="portfolio"
       ref={ref}
-      className="section-padding bg-light-surface dark:bg-dark-bg"
+      className="section-padding bg-light-bg dark:bg-dark-bg"
     >
       <div className="max-container container-padding">
         <motion.div
@@ -143,7 +143,7 @@ const PortfolioSection: React.FC = () => {
         <div className="flex justify-center mt-6">
           <Link to="/projects" className="group w-full max-w-xs">
             <motion.button
-              className="btn-primary w-full py-3 font-semibold rounded-xl shadow-lg opacity-90 group-hover:opacity-100 transition-all duration-300 transform group-hover:-translate-y-1"
+              className="btn-primary w-full py-3 font-semibold rounded-xl opacity-90 group-hover:opacity-100 transition-all duration-300 transform group-hover:-translate-y-1"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
             >

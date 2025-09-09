@@ -6,70 +6,6 @@ import { pageContent } from "../../data/content";
 const plans = pageContent.pricing.plans;
 
 // Keep the original plans array as backup (commented out)
-/*
-const plans = [
-  {
-    name: "Starter",
-    price: "₹12,999",
-    period: "one-time",
-    tagline:
-      "Perfect for individuals & small businesses just getting started online.",
-    features: [
-      "1 Landing Page (Static or Dynamic)",
-      "Modern & Responsive Design (Mobile + Desktop)",
-      "Basic SEO Optimization (Meta, Alt, Sitemap)",
-      "Contact Form with Email Integration",
-      "Free SSL & Hosting Setup Assistance",
-      "1 Free Revision",
-      "Delivery in 7–10 Days",
-      "6 months Free Maintenance & Support",
-    ],
-    accent: "from-accent-primary to-accent-primary",
-    recommended: false,
-  },
-  {
-    name: "Business",
-    price: "₹34,999",
-    period: "one-time",
-    tagline:
-      "Best for growing businesses that need a professional online presence.",
-    features: [
-      "Up to 7 Pages (Home, About, Services, Blog, Portfolio, Contact, etc.)",
-      "Custom UI/UX Design with Branding",
-      "Advanced SEO Setup (On-page + Keywords)",
-      "Blog/Portfolio Section with CMS (Easy Editing)",
-      "Performance Optimization & Speed Setup",
-      "WhatsApp/Chatbot Integration",
-      "Priority Support (Email + WhatsApp)",
-      "2 Free Revisions",
-      "Delivery in 20–25 Days",
-    ],
-    accent: "from-purple-accent to-blue-accent",
-    recommended: true,
-  },
-  {
-    name: "Enterprise",
-    price: "Custom Quote",
-    period: "project-based",
-    tagline:
-      "Tailored solutions for enterprises, startups & large-scale projects.",
-    features: [
-      "Unlimited Pages & Fully Custom Design",
-      "E-commerce Store / Marketplace Development",
-      "Payment Gateway Integration (Razorpay, Stripe, PayPal)",
-      "CRM, ERP & 3rd Party API Integrations",
-      "Cloud Solutions & AI/ML Integrations",
-      "Custom Admin Dashboard",
-      "Dedicated Project Manager",
-      "Ongoing Maintenance & Support",
-      "SEO + Digital Marketing Strategy",
-      "Delivery Timeline Based on Scope",
-    ],
-    accent: "from-pink-500 to-orange-400",
-    recommended: false,
-  },
-];
-*/
 
 export default function Pricing() {
   const navigate = useNavigate(); // Add this line
@@ -86,7 +22,7 @@ export default function Pricing() {
   };
 
   return (
-    <section className="relative bg-light-surface dark:bg-dark-bg page-padding-top pb-16 container-padding overflow-hidden">
+    <section className="relative bg-light-bg dark:bg-dark-bg page-padding-top pb-16 container-padding overflow-hidden">
       {/* Enhanced Background Elements */}
       <motion.div
         animate={{
@@ -94,7 +30,7 @@ export default function Pricing() {
           rotate: [0, 90, 0],
         }}
         transition={{ duration: 20, repeat: Infinity }}
-        className="absolute top-0 -left-32 w-[40rem] h-[40rem] bg-accent-primary/5 dark:bg-accent-primary-light/5 rounded-full blur-3xl pointer-events-none"
+        className="absolute top-0 -left-32 w-[40rem] h-[40rem] bg-light-text/5 dark:bg-dark-text/5 rounded-full blur-3xl pointer-events-none"
       />
       <motion.div
         animate={{
@@ -102,7 +38,7 @@ export default function Pricing() {
           rotate: [0, -90, 0],
         }}
         transition={{ duration: 25, repeat: Infinity }}
-        className="absolute bottom-0 -right-32 w-[35rem] h-[35rem] bg-accent-primary/5 dark:bg-accent-primary-light/5 rounded-full blur-3xl pointer-events-none"
+        className="absolute bottom-0 -right-32 w-[35rem] h-[35rem] bg-light-text-secondary/5 dark:bg-dark-text-secondary/5 rounded-full blur-3xl pointer-events-none"
       />
 
       <div className="relative max-w-7xl mx-auto z-10">
@@ -133,7 +69,7 @@ export default function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
               viewport={{ once: true }}
-              className={`relative glass-card dark:glass-card p-8 rounded-2xl shadow-xl flex flex-col h-full ${
+              className={`relative bg-light-bg dark:bg-dark-surface border border-light-border dark:border-dark-border p-8 rounded-2xl flex flex-col h-full ${
                 plan.recommended ? "scale-105 md:scale-110 z-10" : ""
               }`}
             >
@@ -143,7 +79,7 @@ export default function Pricing() {
                   <motion.span
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-semibold bg-accent-primary text-white shadow-lg"
+                    className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-semibold bg-light-text dark:bg-dark-text text-light-bg dark:text-dark-bg"
                   >
                     Most Popular
                   </motion.span>
@@ -151,9 +87,7 @@ export default function Pricing() {
                 <h2 className="text-2xl font-bold mb-2 gradient-text dark:dark-gradient-text">
                   {plan.name}
                 </h2>
-                <div
-                  className={`text-4xl font-extrabold mb-2 bg-gradient-to-r ${plan.accent} bg-clip-text text-transparent`}
-                >
+                <div className="text-4xl font-extrabold mb-2 gradient-text">
                   {plan.price}
                 </div>
                 <p className="text-sm text-gray-500">
@@ -167,7 +101,7 @@ export default function Pricing() {
               <ul className="space-y-4 mb-8 flex-grow">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-accent-primary dark:text-accent-primary-light flex-shrink-0 mt-0.5" />
+                    <Check className="w-5 h-5 text-light-text dark:text-dark-text flex-shrink-0 mt-0.5" />
                     <span className="text-gray-700 dark:text-gray-300 text-left">
                       {feature}
                     </span>
@@ -182,7 +116,7 @@ export default function Pricing() {
                 whileTap={{ scale: 0.95 }}
                 className={`w-full py-4 rounded-xl font-semibold transition-all duration-200 text-center ${
                   plan.recommended
-                    ? "btn-primary text-white shadow-lg"
+                    ? "btn-primary text-white"
                     : "bg-white/10 dark:bg-dark-bg/20 text-gray-900 dark:text-white border border-light-border dark:border-dark-border backdrop-blur-sm"
                 }`}
               >

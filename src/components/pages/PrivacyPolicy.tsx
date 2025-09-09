@@ -107,8 +107,8 @@ const PrivacyPolicy = () => {
               className="glass-card dark:glass-card rounded-2xl p-6 sm:p-8 backdrop-blur-sm border border-gray-200/20 dark:border-gray-700/20"
             >
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-neon-blue/10 dark:bg-electric-green/10 flex items-center justify-center">
-                  <span className="text-sm font-semibold text-neon-blue dark:text-electric-green">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border flex items-center justify-center">
+                  <span className="text-sm font-semibold text-light-text dark:text-dark-text">
                     {idx + 1}
                   </span>
                 </div>

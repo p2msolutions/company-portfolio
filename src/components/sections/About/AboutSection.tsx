@@ -77,13 +77,13 @@ const AboutSection: React.FC = () => {
         {/* Vision & Mission */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
           <motion.div
-            className="glass-card rounded-3xl p-8"
+            className="bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border rounded-3xl p-8"
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className="flex items-center mb-6">
-              <Eye className="w-8 h-8 text-neon-blue dark:text-electric-green mr-4" />
+              <Eye className="w-8 h-8 text-light-text dark:text-dark-text mr-4" />
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
                 Our Vision
               </h3>
@@ -102,7 +102,7 @@ const AboutSection: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <div className="flex items-center mb-6">
-              <Heart className="w-8 h-8 text-electric-green dark:text-neon-blue mr-4" />
+              <Heart className="w-8 h-8 text-light-text dark:text-dark-text mr-4" />
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
                 Our Mission
               </h3>
@@ -167,7 +167,7 @@ const AboutSection: React.FC = () => {
           </h3>
           <div className="relative">
             {/* Timeline Line */}
-            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 transform md:-translate-x-0.5 bg-gradient-to-b from-neon-blue to-electric-green dark:from-purple-accent dark:to-blue-accent rounded-full" />
+            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 transform md:-translate-x-0.5 bg-gradient-to-b from-light-text to-light-text-secondary dark:from-dark-text dark:to-dark-text-secondary rounded-full" />
 
             <div className="space-y-8">
               {milestones.map((milestone, index) => (
@@ -187,8 +187,8 @@ const AboutSection: React.FC = () => {
                         : "md:text-left md:pl-8"
                     }`}
                   >
-                    <div className="bg-light-bg dark:bg-dark-surface rounded-xl p-6 border border-light-border dark:border-dark-border hover:border-accent-primary dark:hover:border-accent-primary-light transition-colors duration-200">
-                      <div className="text-2xl font-bold text-accent-primary dark:text-accent-primary-light mb-2">
+                    <div className="bg-light-bg dark:bg-dark-surface rounded-xl p-6 border border-light-border dark:border-dark-border transition-colors duration-200">
+                      <div className="text-2xl font-bold text-light-text dark:text-dark-text mb-2">
                         {milestone.year}
                       </div>
                       <h4 className="text-lg font-semibold text-light-text dark:text-dark-text mb-2">

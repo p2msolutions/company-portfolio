@@ -1083,7 +1083,7 @@ export const pageContent = {
           "Delivery in 7–10 Days",
           "6 months Free Maintenance & Support"
         ],
-        accent: "from-accent-primary to-accent-primary",
+        accent: "from-light-text to-light-text-secondary",
         recommended: false
       },
       {
@@ -1102,7 +1102,7 @@ export const pageContent = {
           "2 Free Revisions",
           "Delivery in 20–25 Days"
         ],
-        accent: "from-purple-accent to-blue-accent",
+        accent: "from-light-text to-light-text-secondary",
         recommended: true
       },
       {
@@ -1122,7 +1122,7 @@ export const pageContent = {
           "SEO + Digital Marketing Strategy",
           "Delivery Timeline Based on Scope"
         ],
-        accent: "from-pink-500 to-orange-400",
+        accent: "from-light-text to-light-text-secondary",
         recommended: false
       }
     ]
