@@ -52,9 +52,16 @@ const Footer: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
+              {/* Light mode logo (black) */}
               <img
-                className="h-12 rounded-md flex items-center justify-center relative overflow-hidden"
-                src="https://res.cloudinary.com/dnmqfgexi/image/upload/v1757271735/Logo_3_jtnmsq.png"
+                className="h-12 rounded-md flex items-center justify-center relative overflow-hidden dark:hidden"
+                src="https://res.cloudinary.com/dnmqfgexi/image/upload/v1757441494/black_P2M_Logo_t5snsq.png"
+                alt="P2msolutions.com logo"
+              />
+              {/* Dark mode logo (white) */}
+              <img
+                className="h-12 rounded-md flex items-center justify-center relative overflow-hidden hidden dark:block"
+                src="https://res.cloudinary.com/dnmqfgexi/image/upload/v1757441496/White_P2M_Logo_lrojvg.png"
                 alt="P2msolutions.com logo"
               />
               <span className="text-2xl font-display font-bold text-gray-900 dark:text-white">
@@ -103,7 +110,7 @@ const Footer: React.FC = () => {
                       <motion.li key={link.name}>
                         <a
                           href={link.href}
-                          className="text-sm sm:text-base text-gray-600 dark:text-gray-400 hover:text-neon-blue dark:hover:text-electric-green transition-colors duration-200"
+                          className="text-sm sm:text-base text-light-text-secondary dark:text-dark-text-secondary hover:text-accent-primary dark:hover:text-accent-primary-light transition-colors duration-200"
                         >
                           {link.name}
                         </a>
@@ -134,12 +141,12 @@ const Footer: React.FC = () => {
                 <motion.a
                   key={social.label}
                   href={social.href}
-                  className="p-2 rounded-lg bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border hover:border-neon-blue dark:hover:border-electric-green transition-colors duration-200"
+                  className="p-2 rounded-lg bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border hover:border-accent-primary dark:hover:border-accent-primary-light transition-colors duration-200"
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   aria-label={social.label}
                 >
-                  <Icon className="w-4 h-4 text-gray-600 dark:text-gray-400 hover:text-neon-blue dark:hover:text-electric-green" />
+                  <Icon className="w-4 h-4 text-light-text-secondary dark:text-dark-text-secondary hover:text-accent-primary dark:hover:text-accent-primary-light" />
                 </motion.a>
               );
             })}

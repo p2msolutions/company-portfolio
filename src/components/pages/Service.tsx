@@ -28,7 +28,7 @@ const Service = () => {
 
   if (!service) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-2xl font-bold text-neon-blue dark:text-electric-green">
+      <div className="min-h-screen flex items-center justify-center text-2xl font-bold text-accent-primary dark:text-accent-primary-light">
         Service not found.
       </div>
     );
@@ -55,7 +55,7 @@ const Service = () => {
           rotate: [0, 90, 0],
         }}
         transition={{ duration: 20, repeat: Infinity }}
-        className="absolute top-20 left-0 w-96 h-96 bg-neon-blue/10 dark:bg-purple-accent/10 rounded-full blur-3xl pointer-events-none"
+        className="absolute top-20 left-0 w-96 h-96 bg-accent-primary/5 dark:bg-accent-primary-light/5 rounded-full blur-3xl pointer-events-none"
       />
       <motion.div
         animate={{
@@ -63,7 +63,7 @@ const Service = () => {
           rotate: [0, -90, 0],
         }}
         transition={{ duration: 20, repeat: Infinity }}
-        className="absolute bottom-0 right-0 w-96 h-96 bg-electric-green/10 dark:bg-blue-accent/10 rounded-full blur-3xl pointer-events-none"
+        className="absolute bottom-0 right-0 w-96 h-96 bg-accent-primary/5 dark:bg-accent-primary-light/5 rounded-full blur-3xl pointer-events-none"
       />
 
       <div className="relative max-w-7xl mx-auto z-10">
@@ -76,14 +76,14 @@ const Service = () => {
         >
           <motion.div
             whileHover={{ scale: 1.1 }}
-            className="w-28 h-28 rounded-2xl bg-gradient-to-br from-neon-blue/20 to-electric-green/20 dark:from-purple-accent/20 dark:to-blue-accent/20 border-2 border-neon-blue dark:border-electric-green flex items-center justify-center mb-8 shadow-lg backdrop-blur-sm"
+            className="w-28 h-28 rounded-2xl bg-light-surface dark:bg-dark-surface border-2 border-accent-primary dark:border-accent-primary-light flex items-center justify-center mb-8 shadow-lg"
           >
-            <IconComponent className="w-16 h-16 text-neon-blue dark:text-electric-green" />
+            <IconComponent className="w-16 h-16 text-accent-primary dark:text-accent-primary-light" />
           </motion.div>
-          <h1 className="text-5xl sm:text-6xl font-display font-bold gradient-text dark:dark-gradient-text text-center mb-6">
+          <h1 className="text-5xl sm:text-6xl font-display font-bold gradient-text text-center mb-6">
             {service.title}
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 text-center max-w-3xl leading-relaxed">
+          <p className="text-xl text-light-text-secondary dark:text-dark-text-secondary text-center max-w-3xl leading-relaxed">
             {service.description}
           </p>
         </motion.div>
@@ -119,7 +119,7 @@ const Service = () => {
                   {service.technologies.map((tech, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1.5 rounded-full bg-neon-blue/10 dark:bg-electric-green/10 text-neon-blue dark:text-electric-green text-sm font-medium"
+                      className="px-3 py-1.5 rounded-full bg-light-surface dark:bg-dark-surface text-accent-primary dark:text-accent-primary-light text-sm font-medium border border-light-border dark:border-dark-border"
                     >
                       {tech}
                     </span>
@@ -162,9 +162,9 @@ const Service = () => {
                     <motion.div
                       key={index}
                       whileHover={{ scale: 1.02 }}
-                      className="p-4 rounded-xl bg-white/10 dark:bg-dark-bg/30 backdrop-blur-sm border border-neon-blue/20 dark:border-electric-green/20 shadow-lg h-full"
+                      className="p-4 rounded-xl bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border shadow-lg h-full"
                     >
-                      <FeatureIcon className="w-6 h-6 text-neon-blue dark:text-electric-green mb-2" />
+                      <FeatureIcon className="w-6 h-6 text-accent-primary dark:text-accent-primary-light mb-2" />
                       <h4 className="font-semibold mb-1">{feature.title}</h4>
                       <p className="text-sm text-gray-600 dark:text-gray-400">
                         {feature.description}
@@ -185,9 +185,9 @@ const Service = () => {
                   <motion.div
                     key={index}
                     whileHover={{ x: 5 }}
-                    className="flex items-start gap-4 p-4 rounded-xl bg-white/5 dark:bg-dark-bg/20 border border-neon-blue/10 dark:border-electric-green/10"
+                    className="flex items-start gap-4 p-4 rounded-xl bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border"
                   >
-                    <span className="flex-shrink-0 w-8 h-8 rounded-full bg-neon-blue/20 dark:bg-electric-green/20 flex items-center justify-center text-neon-blue dark:text-electric-green font-bold">
+                    <span className="flex-shrink-0 w-8 h-8 rounded-full bg-light-surface dark:bg-dark-bg flex items-center justify-center text-accent-primary dark:text-accent-primary-light font-bold border border-light-border dark:border-dark-border">
                       {index + 1}
                     </span>
                     <div>
@@ -244,7 +244,7 @@ const Service = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-12 py-4 rounded-xl font-semibold bg-gradient-to-r from-neon-blue to-electric-green dark:from-purple-accent dark:to-blue-accent text-white shadow-lg transition-all duration-300"
+            className="btn-primary px-12 py-4 rounded-xl font-semibold shadow-lg transition-all duration-300"
             onClick={() => {
                 navigate("/contact");
               }}

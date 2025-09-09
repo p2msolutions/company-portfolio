@@ -32,20 +32,20 @@ const BaseCard: React.FC<BaseCardProps> = ({
   rel,
 }) => {
   const baseClasses = {
-    default: 'bg-white dark:bg-dark-surface border border-light-border dark:border-dark-border',
-    elevated: 'bg-white/80 dark:bg-dark-surface/80 backdrop-blur-xl border border-light-border dark:border-dark-border shadow-lg',
+    default: 'bg-light-bg dark:bg-dark-surface border border-light-border dark:border-dark-border',
+    elevated: 'bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border',
     minimal: 'bg-transparent border border-light-border/50 dark:border-dark-border/50',
   };
 
   const hoverEffects = {
     lift: {
-      y: -4
+      y: -2
     },
     glow: {
       // No specific properties for glow effect
     },
     scale: {
-      scale: 1.02
+      scale: 1.01
     },
     none: {},
   };
@@ -53,20 +53,20 @@ const BaseCard: React.FC<BaseCardProps> = ({
   const cardContent = (
     <motion.div
       className={cn(
-        'relative rounded-2xl p-6 transition-all duration-300 cursor-pointer group',
-        'hover:border-neon-blue dark:hover:border-electric-green',
+        'relative rounded-lg p-6 transition-all duration-200 cursor-pointer group',
+        'glossy-hover',
         baseClasses[variant],
         className
       )}
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={
         isInView
           ? {
               opacity: 1,
               y: 0,
               transition: {
-                duration: 0.6,
-                delay: index * 0.1,
+                duration: 0.4,
+                delay: index * 0.05,
               },
             }
           : {}
@@ -77,13 +77,8 @@ const BaseCard: React.FC<BaseCardProps> = ({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      {/* Background Glow Effect */}
-      <div
-        className="absolute inset-0 rounded-2xl bg-gradient-to-r from-neon-blue/5 to-electric-green/5 dark:from-purple-accent/5 dark:to-blue-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-      />
-      
       {/* Content */}
-      <div className="relative z-10">
+      <div className="relative">
         {children}
       </div>
     </motion.div>

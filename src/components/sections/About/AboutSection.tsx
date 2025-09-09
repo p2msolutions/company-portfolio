@@ -142,12 +142,12 @@ const AboutSection: React.FC = () => {
                     whileHover={{ rotateY: 180 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <Icon className="w-8 h-8 text-neon-blue dark:text-electric-green" />
+                    <Icon className="w-8 h-8 text-accent-primary dark:text-accent-primary-light" />
                   </motion.div>
-                  <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                  <h4 className="text-xl font-bold text-light-text dark:text-dark-text mb-3">
                     {value.title}
                   </h4>
-                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                  <p className="text-light-text-secondary dark:text-dark-text-secondary leading-relaxed">
                     {value.description}
                   </p>
                 </motion.div>
@@ -187,21 +187,21 @@ const AboutSection: React.FC = () => {
                         : "md:text-left md:pl-8"
                     }`}
                   >
-                    <div className="bg-white dark:bg-dark-surface rounded-xl p-6 border border-light-border dark:border-dark-border hover:border-neon-blue dark:hover:border-electric-green transition-colors duration-200">
-                      <div className="text-2xl font-bold text-neon-blue dark:text-electric-green mb-2">
+                    <div className="bg-light-bg dark:bg-dark-surface rounded-xl p-6 border border-light-border dark:border-dark-border hover:border-accent-primary dark:hover:border-accent-primary-light transition-colors duration-200">
+                      <div className="text-2xl font-bold text-accent-primary dark:text-accent-primary-light mb-2">
                         {milestone.year}
                       </div>
-                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+                      <h4 className="text-lg font-semibold text-light-text dark:text-dark-text mb-2">
                         {milestone.event}
                       </h4>
-                      <p className="text-gray-600 dark:text-gray-400">
+                      <p className="text-light-text-secondary dark:text-dark-text-secondary">
                         {milestone.description}
                       </p>
                     </div>
                   </div>
 
                   {/* Timeline Dot */}
-                  <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-neon-blue to-electric-green dark:from-purple-accent dark:to-blue-accent rounded-full border-4 border-light-bg dark:border-dark-bg" />
+                  <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-light-text to-light-text-secondary dark:from-dark-text dark:to-dark-text-secondary rounded-full border-4 border-light-bg dark:border-dark-bg" />
                 </motion.div>
               ))}
             </div>

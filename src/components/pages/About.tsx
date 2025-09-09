@@ -56,13 +56,13 @@ export default function About() {
             <span className="block text-gray-900 dark:text-white">
               {pageContent.about.hero.title.line1}
             </span>
-            <span className="gradient-text dark:dark-gradient-text">
+            <span className="gradient-text">
               {pageContent.about.hero.title.line2}
             </span>
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-light-text-secondary dark:text-dark-text-secondary max-w-3xl mx-auto leading-relaxed">
             {pageContent.about.hero.description.split(pageContent.about.hero.highlight)[0]}
-            <span className="font-semibold text-neon-blue dark:text-electric-green">
+            <span className="font-semibold text-accent-primary dark:text-accent-primary-light">
               {pageContent.about.hero.highlight}
             </span>
             {pageContent.about.hero.description.split(pageContent.about.hero.highlight)[1]}

@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import { useInView } from "../../hooks/useInView";
 import { Link } from "react-router-dom";
+import SkeletonLoader from "../ui/SkeletonLoader";
 
 interface ProjectType {
   id: number;
@@ -96,8 +97,8 @@ const Project: React.FC = () => {
                   onClick={() => setSelectedCategory(category)}
                   className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 focus:outline-none ${
                     selectedCategory === category
-                      ? "bg-gradient-to-r from-neon-blue to-electric-green text-white shadow-lg"
-                      : "bg-white dark:bg-dark-surface text-gray-700 dark:text-gray-300 border border-light-border dark:border-dark-border hover:shadow-sm"
+                      ? "btn-primary text-white shadow-lg"
+                      : "bg-light-bg dark:bg-dark-surface text-light-text-secondary dark:text-dark-text-secondary border border-light-border dark:border-dark-border glass-card"
                   }`}
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.98 }}
@@ -111,9 +112,9 @@ const Project: React.FC = () => {
 
         {/* Loading & Error */}
         {loading && (
-          <p className="text-center text-gray-500 dark:text-gray-400">
-            Loading projects...
-          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <SkeletonLoader variant="project" count={4} />
+          </div>
         )}
         {error && (
           <p className="text-center text-red-500 dark:text-red-400">{error}</p>
@@ -240,7 +241,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                   <motion.button
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.98 }}
-                    className="ml-2 px-4 py-2 rounded-full bg-gradient-to-r from-neon-blue to-electric-green text-white text-sm font-medium shadow"
+                    className="btn-primary ml-2 px-4 py-2 rounded-full text-sm font-medium shadow"
                   >
                     View Case Study
                   </motion.button>
@@ -254,7 +255,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       {/* Details */}
       <div className="p-6">
         <div className="mb-3 flex items-center justify-between">
-          <span className="px-3 py-1 text-xs font-semibold bg-neon-blue/10 dark:bg-electric-green/10 text-neon-blue dark:text-electric-green rounded-full">
+          <span className="px-3 py-1 text-xs font-semibold bg-light-surface dark:bg-dark-surface text-light-text dark:text-dark-text rounded-full border border-light-border dark:border-dark-border">
             {project.category}
           </span>
         </div>
@@ -280,12 +281,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
       </div>
 
-      {/* Glow Accent */}
+      {/* Subtle Accent */}
       <motion.div
         className="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
         style={{
           background:
-            "linear-gradient(90deg, rgba(59,130,246,0.04), rgba(16,185,129,0.04))",
+            "linear-gradient(90deg, rgba(0,0,0,0.02), rgba(102,102,102,0.02))",
         }}
       />
     </motion.div>

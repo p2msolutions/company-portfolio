@@ -80,19 +80,23 @@ const Header: React.FC = () => {
           damping: 30,
         }}
       >
-        <div className="relative rounded-2xl bg-white/80 dark:bg-dark-bg/80 backdrop-blur-xl border border-light-border dark:border-dark-border border-[1.5px] shadow-[0_8px_32px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.25)] overflow-hidden">
+        <div className="relative rounded-lg bg-light-bg dark:bg-dark-bg border border-light-border dark:border-dark-border overflow-hidden">
           <div className="px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex items-center justify-between">
               {/* Logo - Updated animation */}
-              <Link to="/" className="flex items-center space-x-3" tabIndex={0}>
+              <Link to="/" className="flex items-center" tabIndex={0}>
+                {/* Light mode logo (black) */}
                 <img
-                  className="h-12 flex items-center justify-center relative rounded-md overflow-hidden"
-                  src="https://res.cloudinary.com/dnmqfgexi/image/upload/v1757271735/Logo_3_jtnmsq.png"
+                  className="h-12 flex items-center justify-center relative rounded-md overflow-hidden dark:hidden"
+                  src="https://res.cloudinary.com/dnmqfgexi/image/upload/v1757441494/black_P2M_Logo_t5snsq.png"
                   alt="P2msolutions.com logo"
                 />
-                <span className="text-lg font-display font-bold bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-                  Solutions
-                </span>
+                {/* Dark mode logo (white) */}
+                <img
+                  className="h-12 flex items-center justify-center relative rounded-md overflow-hidden hidden dark:block"
+                  src="https://res.cloudinary.com/dnmqfgexi/image/upload/v1757441496/White_P2M_Logo_lrojvg.png"
+                  alt="P2msolutions.com logo"
+                />
               </Link>
 
               {/* Desktop Navigation - Updated styling */}
@@ -101,14 +105,14 @@ const Header: React.FC = () => {
                   <motion.a
                     key={item.name}
                     href={item.href}
-                    className="relative px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-neon-blue dark:hover:text-electric-green transition-colors duration-200 font-medium"
+                    className="relative px-3 py-2 text-light-text-secondary dark:text-dark-text-secondary hover:text-light-text dark:hover:text-dark-text transition-colors duration-200 font-medium"
                     whileHover={{ scale: 1.05 }}
                     transition={{ type: "spring", stiffness: 400 }}
                     onClick={handleNavClick(item.href)}
                   >
                     {item.name}
                     <motion.div
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-neon-blue to-electric-green dark:from-purple-accent dark:to-blue-accent rounded-full"
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-light-text dark:bg-dark-text rounded-full"
                       initial={{ scaleX: 0 }}
                       whileHover={{ scaleX: 1 }}
                       transition={{ duration: 0.2 }}
@@ -121,25 +125,25 @@ const Header: React.FC = () => {
               <div className="flex items-center space-x-3">
                 <motion.button
                   onClick={() => setTheme(nextTheme)}
-                  className="p-2 rounded-xl bg-gray-100/50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+                  className="p-2 rounded-lg bg-light-surface dark:bg-dark-surface hover:bg-light-border dark:hover:bg-dark-border transition-colors duration-200 border border-light-border dark:border-dark-border"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   aria-label="Toggle theme"
                 >
-                  <CurrentThemeIcon className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+                  <CurrentThemeIcon className="w-5 h-5 text-light-text-secondary dark:text-dark-text-secondary" />
                 </motion.button>
 
                 <motion.button
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                  className="lg:hidden p-2 rounded-xl bg-gray-100/50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+                  className="lg:hidden p-2 rounded-lg bg-light-surface dark:bg-dark-surface hover:bg-light-border dark:hover:bg-dark-border transition-colors duration-200 border border-light-border dark:border-dark-border"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   aria-label="Toggle mobile menu"
                 >
                   {isMobileMenuOpen ? (
-                    <X className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+                    <X className="w-5 h-5 text-light-text-secondary dark:text-dark-text-secondary" />
                   ) : (
-                    <Menu className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+                    <Menu className="w-5 h-5 text-light-text-secondary dark:text-dark-text-secondary" />
                   )}
                 </motion.button>
               </div>
@@ -153,14 +157,14 @@ const Header: React.FC = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.2 }}
-                  className="lg:hidden mt-4 pt-4 border-t border-gray-200 dark:border-gray-700/50"
+                  className="lg:hidden mt-4 pt-4 border-t border-light-border dark:border-dark-border"
                 >
                   <div className="grid grid-cols-2 gap-2 pb-4">
                     {navItems.map((item, index) => (
                       <motion.a
                         key={item.name}
                         href={item.href}
-                        className="px-4 py-2 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 transition-colors duration-200 font-medium text-center"
+                        className="px-4 py-2 rounded-lg text-light-text-secondary dark:text-dark-text-secondary hover:bg-light-surface dark:hover:bg-dark-surface transition-colors duration-200 font-medium text-center border border-transparent hover:border-light-border dark:hover:border-dark-border"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: index * 0.05 }}

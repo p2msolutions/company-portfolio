@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import SkeletonLoader from "../ui/SkeletonLoader";
 
 // Define type based on your API response
 interface Project {
@@ -74,8 +75,21 @@ export default function ProjectDetails() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-light-surface dark:bg-dark-surface">
-        <p className="text-lg text-gray-600 dark:text-gray-300">Loading...</p>
+      <div className="min-h-screen bg-light-surface dark:bg-dark-bg pt-28 sm:pt-32 lg:pt-36 xl:pt-40 pb-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            <div className="lg:col-span-6">
+              <SkeletonLoader variant="text" count={1} className="mb-4" />
+              <SkeletonLoader variant="text" count={3} className="mb-6" />
+              <div className="flex gap-4">
+                <SkeletonLoader variant="card" count={2} className="flex-1" />
+              </div>
+            </div>
+            <div className="lg:col-span-6">
+              <SkeletonLoader variant="image" count={1} />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -111,8 +125,8 @@ export default function ProjectDetails() {
     >
       {/* Decorative background */}
       <div className="pointer-events-none fixed inset-0 -z-10">
-        <div className="absolute left-0 top-24 w-72 h-72 rounded-full bg-neon-blue/8 dark:bg-purple-accent/8 blur-3xl transform -translate-x-1/3" />
-        <div className="absolute right-0 bottom-10 w-80 h-80 rounded-full bg-electric-green/8 dark:bg-blue-accent/8 blur-3xl transform translate-x-1/4" />
+        <div className="absolute left-0 top-24 w-72 h-72 rounded-full bg-accent-primary/3 dark:bg-accent-primary-light/3 blur-3xl transform -translate-x-1/3" />
+        <div className="absolute right-0 bottom-10 w-80 h-80 rounded-full bg-accent-primary/3 dark:bg-accent-primary-light/3 blur-3xl transform translate-x-1/4" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -123,7 +137,7 @@ export default function ProjectDetails() {
               initial={{ y: 6, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.05 }}
-              className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white leading-tight"
+              className="text-4xl sm:text-5xl font-extrabold text-light-text dark:text-dark-text leading-tight"
             >
               {project.title}
             </motion.h1>
@@ -138,7 +152,7 @@ export default function ProjectDetails() {
               initial={{ y: 8, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.1 }}
-              className="mt-6 text-lg text-gray-600 dark:text-gray-300 max-w-3xl"
+              className="mt-6 text-lg text-light-text-secondary dark:text-dark-text-secondary max-w-3xl"
             >
               {project.description}
             </motion.p>
@@ -159,7 +173,7 @@ export default function ProjectDetails() {
                   href={project.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-gradient-to-r from-neon-blue to-electric-green text-white font-medium shadow-md hover:shadow-lg transition"
+                  className="btn-primary inline-flex items-center gap-3 px-5 py-3 rounded-full font-medium shadow-md hover:shadow-lg transition"
                 >
                   Live Demo
                 </a>
@@ -187,12 +201,12 @@ export default function ProjectDetails() {
                   </div>
                 </div>
               ) : (
-                <div className="flex items-center justify-center h-72 md:h-80 bg-gradient-to-br from-neon-blue/10 to-electric-green/10">
+                <div className="flex items-center justify-center h-72 md:h-80 bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border">
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-gray-800 dark:text-white">
+                    <div className="text-3xl font-bold text-light-text dark:text-dark-text">
                       {project.title.split(" ")[0]}
                     </div>
-                    <div className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+                    <div className="mt-2 text-sm text-light-text-secondary dark:text-dark-text-secondary">
                       No preview available
                     </div>
                   </div>
@@ -205,7 +219,7 @@ export default function ProjectDetails() {
         {/* Challenges */}
         {project.problemsSolved && project.problemsSolved.length > 0 && (
           <section className="mt-14">
-            <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
+            <h2 className="text-2xl font-semibold text-light-text dark:text-dark-text mb-6">
               Key Challenges Solved
             </h2>
             <div className="grid gap-6 sm:grid-cols-2">
@@ -216,10 +230,10 @@ export default function ProjectDetails() {
                   whileInView={{ y: 0, opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.05 }}
-                  className="p-6 rounded-2xl bg-white dark:bg-dark-surface border border-light-border dark:border-dark-border hover:border-neon-blue dark:hover:border-electric-green transition-all duration-300 shadow-sm"
+                  className="p-6 rounded-2xl bg-light-bg dark:bg-dark-surface border border-light-border dark:border-dark-border glass-card transition-all duration-300 shadow-sm"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="min-w-[44px] h-11 rounded-lg bg-neon-blue/10 dark:bg-electric-green/10 flex items-center justify-center font-semibold text-neon-blue dark:text-electric-green">
+                    <div className="min-w-[44px] h-11 rounded-lg bg-light-surface dark:bg-dark-surface flex items-center justify-center font-semibold text-light-text dark:text-dark-text border border-light-border dark:border-dark-border">
                       {idx + 1}
                     </div>
                     <div>
@@ -245,7 +259,7 @@ export default function ProjectDetails() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4 }}
-              className="p-8 rounded-2xl bg-white dark:bg-dark-surface border shadow-sm max-w-7xl mx-auto border-light-border dark:border-dark-border hover:border-neon-blue dark:hover:border-electric-green transition-all duration-300"
+              className="p-8 rounded-2xl bg-light-bg dark:bg-dark-surface border shadow-sm max-w-7xl mx-auto border-light-border dark:border-dark-border glass-card transition-all duration-300"
             >
               <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
                 Case Study
@@ -275,24 +289,24 @@ export default function ProjectDetails() {
                       >
                         <div className="flex items-start gap-3">
                           <div className="flex-shrink-0">
-                            <div className="w-9 h-9 rounded-lg bg-neon-blue/10 dark:bg-electric-green/10 flex items-center justify-center">
-                              <span className="text-neon-blue dark:text-electric-green font-semibold">
+                            <div className="w-9 h-9 rounded-lg bg-light-surface dark:bg-dark-surface flex items-center justify-center border border-light-border dark:border-dark-border">
+                              <span className="text-light-text dark:text-dark-text font-semibold">
                                 {i + 1}
                               </span>
                             </div>
                           </div>
                           <div>
-                            <h4 className="text-md font-semibold mb-2 text-gray-900 dark:text-white">
+                            <h4 className="text-md font-semibold mb-2 text-light-text dark:text-dark-text">
                               {c.problem}
                             </h4>
-                            <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">
-                              <strong className="text-gray-600 dark:text-gray-400">
+                            <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary mb-2">
+                              <strong className="text-light-text-secondary dark:text-dark-text-secondary">
                                 Solution:
                               </strong>{" "}
                               {c.solution}
                             </p>
                             {c.impact && (
-                              <p className="text-sm text-gray-600 dark:text-gray-400">
+                              <p className="text-sm text-light-text-secondary dark:text-dark-text-secondary">
                                 <strong>Impact:</strong> {c.impact}
                               </p>
                             )}

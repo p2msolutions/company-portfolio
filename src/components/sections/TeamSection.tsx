@@ -74,7 +74,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
       className="flex flex-col items-center justify-start p-6"
     >
       {/* Avatar */}
-      <div className="w-28 h-28 rounded-full overflow-hidden border-4 border-neon-blue dark:border-electric-green shadow-lg mb-6 mx-auto">
+      <div className="w-28 h-28 rounded-full overflow-hidden border-4 border-accent-primary dark:border-accent-primary-light shadow-lg mb-6 mx-auto">
         <img
           src={member.avatar}
           alt={member.name}
@@ -86,7 +86,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
       <h3 className="text-xl font-bold text-gray-900 dark:text-white text-center mb-1">
         {member.name}
       </h3>
-      <p className="text-sm font-medium text-neon-blue dark:text-electric-green mb-3 text-center">
+      <p className="text-sm font-medium text-accent-primary dark:text-accent-primary-light mb-3 text-center">
         {member.role}
       </p>
 
@@ -102,10 +102,10 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
             href={member.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 rounded-full bg-white dark:bg-dark-bg border border-light-border dark:border-dark-border hover:border-neon-blue dark:hover:border-electric-green transition-colors duration-200 shadow-sm"
+            className="p-2 rounded-full bg-light-bg dark:bg-dark-bg border border-light-border dark:border-dark-border hover:border-accent-primary dark:hover:border-accent-primary-light transition-colors duration-200 shadow-sm"
             onClick={(e) => e.stopPropagation()}
           >
-            <Linkedin className="w-5 h-5 text-neon-blue dark:text-electric-green" />
+            <Linkedin className="w-5 h-5 text-accent-primary dark:text-accent-primary-light" />
           </a>
         )}
         {member.github && (
@@ -113,7 +113,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
             href={member.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 rounded-full bg-white dark:bg-dark-bg border border-light-border dark:border-dark-border hover:border-neon-blue dark:hover:border-electric-green transition-colors duration-200 shadow-sm"
+            className="p-2 rounded-full bg-light-bg dark:bg-dark-bg border border-light-border dark:border-dark-border hover:border-accent-primary dark:hover:border-accent-primary-light transition-colors duration-200 shadow-sm"
             onClick={(e) => e.stopPropagation()}
           >
             <Github className="w-5 h-5 text-gray-700 dark:text-gray-300" />
@@ -129,10 +129,10 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
             }
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 rounded-full bg-white dark:bg-dark-bg border border-light-border dark:border-dark-border hover:border-neon-blue dark:hover:border-electric-green transition-colors duration-200 shadow-sm"
+            className="p-2 rounded-full bg-light-bg dark:bg-dark-bg border border-light-border dark:border-dark-border hover:border-accent-primary dark:hover:border-accent-primary-light transition-colors duration-200 shadow-sm"
             onClick={(e) => e.stopPropagation()}
           >
-            <Globe className="w-5 h-5 text-electric-green dark:text-neon-blue" />
+            <Globe className="w-5 h-5 text-accent-primary dark:text-accent-primary-light" />
           </a>
         )}
       </div>

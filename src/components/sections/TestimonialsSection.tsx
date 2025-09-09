@@ -154,23 +154,22 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial }) => {
       </div>
 
       {/* Content */}
-      <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+      <p className="text-light-text-secondary dark:text-dark-text-secondary mb-6 leading-relaxed">
         "{testimonial.content}"
       </p>
 
       {/* Enhanced Author */}
       <div className="flex items-center space-x-4">
         <motion.div
-          className="w-12 h-12 rounded-full bg-gradient-to-br from-neon-blue to-electric-green dark:from-purple-accent dark:to-blue-accent p-0.5 relative"
+          className="w-12 h-12 rounded-full bg-gradient-to-br from-light-text to-light-text-secondary dark:from-dark-text dark:to-dark-text-secondary p-0.5 relative"
           whileHover={{
             scale: 1.1,
             rotate: 5,
-            boxShadow: "0 0 20px rgba(0, 212, 255, 0.5)",
           }}
           transition={{ type: "spring", stiffness: 400, damping: 15 }}
         >
           <div className="w-full h-full rounded-full bg-light-bg dark:bg-dark-bg flex items-center justify-center">
-            <span className="text-sm font-bold text-gray-900 dark:text-white">
+            <span className="text-sm font-bold text-light-text dark:text-dark-text">
               {testimonial.name
                 .split(" ")
                 .map((n) => n[0])

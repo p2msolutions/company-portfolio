@@ -5,6 +5,7 @@ import { useInView } from "../../hooks/useInView";
 import { sectionContent } from "../../data/content";
 import { Link } from "react-router-dom";
 import BaseCard from "../ui/BaseCard";
+import SkeletonLoader from "../ui/SkeletonLoader";
 
 interface Project {
   id: number;
@@ -100,8 +101,8 @@ const PortfolioSection: React.FC = () => {
                   onClick={() => setSelectedCategory(category)}
                   className={`px-6 py-2 rounded-full font-medium transition-all duration-200 ${
                     selectedCategory === category
-                      ? "bg-gradient-to-r from-neon-blue to-electric-green dark:from-purple-accent dark:to-blue-accent text-white"
-                      : "bg-white dark:bg-dark-surface text-gray-700 dark:text-gray-300 border border-light-border dark:border-dark-border hover:border-neon-blue dark:hover:border-electric-green"
+                      ? "btn-primary text-white"
+                      : "bg-light-bg dark:bg-dark-surface text-light-text-secondary dark:text-dark-text-secondary border border-light-border dark:border-dark-border glass-card"
                   }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -115,9 +116,9 @@ const PortfolioSection: React.FC = () => {
 
         {/* Loading / Error */}
         {loading && (
-          <p className="text-center text-gray-500 dark:text-gray-400">
-            Loading projects...
-          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <SkeletonLoader variant="project" count={4} />
+          </div>
         )}
         {error && (
           <p className="text-center text-red-500 dark:text-red-400">{error}</p>
@@ -142,7 +143,7 @@ const PortfolioSection: React.FC = () => {
         <div className="flex justify-center mt-6">
           <Link to="/projects" className="group w-full max-w-xs">
             <motion.button
-              className="w-full py-3 bg-gradient-to-r from-blue-500 via-teal-400 to-green-500 dark:from-purple-500 dark:via-indigo-500 dark:to-blue-500 text-white font-semibold rounded-xl shadow-lg opacity-90 group-hover:opacity-100 transition-all duration-300 transform group-hover:-translate-y-1"
+              className="btn-primary w-full py-3 font-semibold rounded-xl shadow-lg opacity-90 group-hover:opacity-100 transition-all duration-300 transform group-hover:-translate-y-1"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
             >
@@ -235,12 +236,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-          <span className="px-3 py-1 text-xs font-semibold bg-neon-blue/10 dark:bg-electric-green/10 text-neon-blue dark:text-electric-green rounded-full">
+          <span className="px-3 py-1 text-xs font-semibold bg-light-surface dark:bg-dark-surface text-accent-primary dark:text-accent-primary-light rounded-full border border-light-border dark:border-dark-border">
             {project.category}
           </span>
         </motion.div>
 
-        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-neon-blue dark:group-hover:text-electric-green transition-colors duration-200">
+        <h3 className="text-xl font-bold text-light-text dark:text-dark-text mb-3 group-hover:text-accent-primary dark:group-hover:text-accent-primary-light transition-colors duration-200">
           {project.title}
         </h3>
 
@@ -263,7 +264,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         {/* CTA */}
         <Link to={`/projects/${project.slug}`} className="block">
           <motion.button
-            className="w-full py-3 bg-gradient-to-r from-neon-blue to-electric-green dark:from-purple-accent dark:to-blue-accent text-white font-semibold rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0"
+            className="btn-primary w-full py-3 font-semibold rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >

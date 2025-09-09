@@ -143,7 +143,7 @@ const FeatureBlock: React.FC<FeatureBlockProps> = ({
         {/* CTA */}
         <Link to={`/service/${feature.slug}`} className="block">
           <motion.button
-            className="mt-8 px-6 py-3 border-2 border-neon-blue dark:border-electric-green text-neon-blue dark:text-electric-green font-semibold rounded-lg hover:bg-neon-blue dark:hover:bg-electric-green hover:text-white transition-all duration-200"
+            className="btn-secondary mt-8 px-6 py-3 font-semibold rounded-lg transition-all duration-200"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             initial={{ opacity: 0, x: isEven ? -30 : 30 }}
@@ -165,8 +165,8 @@ const FeatureBlock: React.FC<FeatureBlockProps> = ({
           animate={isInView ? { opacity: 1, scale: 1, x: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          {/* Glowing background */}
-          <div className="absolute inset-0 bg-gradient-to-r from-neon-blue/20 to-electric-green/20 dark:from-purple-accent/20 dark:to-blue-accent/20 rounded-3xl blur-3xl transform scale-110" />
+          {/* Subtle background */}
+          <div className="absolute inset-0 bg-gradient-to-r from-light-text/5 to-light-text-secondary/5 dark:from-dark-text/5 dark:to-dark-text-secondary/5 rounded-3xl blur-3xl transform scale-110" />
 
           {/* Content container */}
           <div className="relative bg-white/5 dark:bg-black/5 backdrop-blur-sm border border-white/10 dark:border-white/5 rounded-3xl p-8 h-80 flex items-center justify-center">

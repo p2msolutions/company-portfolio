@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect } from "react";
+import { motion } from "framer-motion";
 import { ThemeProvider } from "../contexts/ThemeContext";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 
@@ -7,7 +7,7 @@ import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import SEOHead from "../components/layout/SEOHead";
 import CursorTrail from "../components/ui/CursorTrail";
-import LoadingAnimation from "../components/ui/LoadingAnimation";
+
 
 // Sections
 import HeroSection from "../components/sections/HeroSection";
@@ -42,14 +42,10 @@ const ScrollToTop = () => {
 };
 
 const AppRouter = () => {
-  const [isLoading, setIsLoading] = useState(true);
-
   useEffect(() => {
     document.documentElement.style.scrollBehavior = "smooth";
-    const timer = setTimeout(() => setIsLoading(false), 800);
     document.body.style.cursor = "none";
     return () => {
-      clearTimeout(timer);
       document.body.style.cursor = "auto";
     };
   }, []);
@@ -67,9 +63,7 @@ const AppRouter = () => {
   return (
     <ThemeProvider>
       <SEOHead />
-      <AnimatePresence mode="wait">
-        {isLoading && <LoadingAnimation />}
-      </AnimatePresence>
+
 
       <Router>
         <ScrollToTop />

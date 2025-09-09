@@ -1083,7 +1083,7 @@ export const pageContent = {
           "Delivery in 7–10 Days",
           "6 months Free Maintenance & Support"
         ],
-        accent: "from-neon-blue to-electric-green",
+        accent: "from-accent-primary to-accent-primary",
         recommended: false
       },
       {

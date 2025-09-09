@@ -194,7 +194,7 @@ const ContactSection: React.FC = () => {
                   </label>
                   <motion.input
                     {...register("name", { required: "Name is required" })}
-                    className="w-full px-4 py-3 bg-light-surface dark:bg-dark-bg border border-light-border dark:border-dark-border rounded-lg focus:border-neon-blue dark:focus:border-electric-green focus:outline-none transition-colors duration-200"
+                    className="w-full px-4 py-3 bg-light-surface dark:bg-dark-bg border border-light-border dark:border-dark-border rounded-lg focus:border-accent-primary dark:focus:border-accent-primary-light focus:outline-none transition-colors duration-200"
                     placeholder="John Doe"
                     whileFocus={{ scale: 1.02 }}
                     value={form.name}
@@ -220,7 +220,7 @@ const ContactSection: React.FC = () => {
                       },
                     })}
                     type="email"
-                    className="w-full px-4 py-3 bg-light-surface dark:bg-dark-bg border border-light-border dark:border-dark-border rounded-lg focus:border-neon-blue dark:focus:border-electric-green focus:outline-none transition-colors duration-200"
+                    className="w-full px-4 py-3 bg-light-surface dark:bg-dark-bg border border-light-border dark:border-dark-border rounded-lg focus:border-accent-primary dark:focus:border-accent-primary-light focus:outline-none transition-colors duration-200"
                     placeholder="john@company.com"
                     whileFocus={{ scale: 1.02 }}
                     // value={form.email}
@@ -240,7 +240,7 @@ const ContactSection: React.FC = () => {
                 </label>
                 <motion.input
                   {...register("company")}
-                  className="w-full px-4 py-3 bg-light-surface dark:bg-dark-bg border border-light-border dark:border-dark-border rounded-lg focus:border-neon-blue dark:focus:border-electric-green focus:outline-none transition-colors duration-200"
+                  className="w-full px-4 py-3 bg-light-surface dark:bg-dark-bg border border-light-border dark:border-dark-border rounded-lg focus:border-accent-primary dark:focus:border-accent-primary-light focus:outline-none transition-colors duration-200"
                   placeholder="Your Company Name"
                   whileFocus={{ scale: 1.02 }}
                   value={form.company}
@@ -256,7 +256,7 @@ const ContactSection: React.FC = () => {
                   {...register("projectType", {
                     required: "Please select a project type",
                   })}
-                  className="w-full px-4 py-3 bg-light-surface dark:bg-dark-bg border border-light-border dark:border-dark-border rounded-lg focus:border-neon-blue dark:focus:border-electric-green focus:outline-none transition-colors duration-200"
+                  className="w-full px-4 py-3 bg-light-surface dark:bg-dark-bg border border-light-border dark:border-dark-border rounded-lg focus:border-accent-primary dark:focus:border-accent-primary-light focus:outline-none transition-colors duration-200"
                   whileFocus={{ scale: 1.02 }}
                   value={form.projectType}
                   onChange={handleChange}
@@ -282,7 +282,7 @@ const ContactSection: React.FC = () => {
                 <motion.textarea
                   {...register("message", { required: "Message is required" })}
                   rows={5}
-                  className="w-full px-4 py-3 bg-light-surface dark:bg-dark-bg border border-light-border dark:border-dark-border rounded-lg focus:border-neon-blue dark:focus:border-electric-green focus:outline-none transition-colors duration-200 resize-none"
+                  className="w-full px-4 py-3 bg-light-surface dark:bg-dark-bg border border-light-border dark:border-dark-border rounded-lg focus:border-accent-primary dark:focus:border-accent-primary-light focus:outline-none transition-colors duration-200 resize-none"
                   placeholder="Tell us about your project, goals, and requirements..."
                   whileFocus={{ scale: 1.02 }}
                   value={form.message}
@@ -299,7 +299,7 @@ const ContactSection: React.FC = () => {
                 <motion.button
                   type="submit"
                   disabled={isSubmitting || isSubmitted}
-                  className="w-full py-4 bg-gradient-to-r from-neon-blue to-electric-green dark:from-purple-accent dark:to-blue-accent text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-neon-blue/25 dark:hover:shadow-electric-green/25 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="btn-primary w-full py-4 font-semibold rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   animate={isSubmitted ? { backgroundColor: "#10b981" } : {}}
@@ -339,7 +339,7 @@ const ContactSection: React.FC = () => {
               <div className="mt-6 flex flex-col justify-end h-32 text-justify text-gray-600 dark:text-gray-400 text-base leading-relaxed text-center">
                 <p className="text-center">
                   Our team typically replies within{" "}
-                  <span className="font-semibold text-neon-blue dark:text-electric-green">
+                  <span className="font-semibold text-accent-primary dark:text-accent-primary-light">
                     24 hours
                   </span>
                   . Don't worry we are here for you.
@@ -363,15 +363,15 @@ const ContactSection: React.FC = () => {
               return (
                 <motion.div
                   key={info.title}
-                  className="flex items-start space-x-4 p-6 bg-white dark:bg-dark-surface rounded-2xl border border-light-border dark:border-dark-border hover:border-neon-blue dark:hover:border-electric-green transition-colors duration-300"
+                  className="flex items-start space-x-4 p-6 bg-light-bg dark:bg-dark-surface rounded-2xl border border-light-border dark:border-dark-border hover:border-accent-primary dark:hover:border-accent-primary-light transition-colors duration-300"
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
                   whileHover={{ scale: 1.02, y: -2 }}
                 >
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-neon-blue/20 to-electric-green/20 dark:from-purple-accent/20 dark:to-blue-accent/20 border border-neon-blue/30 dark:border-purple-accent/30 flex items-center justify-center">
-                      <Icon className="w-6 h-6 text-neon-blue dark:text-electric-green" />
+                    <div className="w-12 h-12 rounded-xl bg-light-surface dark:bg-dark-bg border border-light-border dark:border-dark-border flex items-center justify-center">
+                <Icon className="w-6 h-6 text-accent-primary dark:text-accent-primary-light" />
                     </div>
                   </div>
                   <div>
@@ -393,7 +393,7 @@ const ContactSection: React.FC = () => {
 
             {/* CTA Card */}
             <motion.div
-              className="bg-gradient-to-br from-neon-blue/10 to-electric-green/10 dark:from-purple-accent/10 dark:to-blue-accent/10 rounded-2xl p-8 border border-neon-blue/20 dark:border-purple-accent/20"
+              className="bg-light-surface dark:bg-dark-surface rounded-2xl p-8 border border-light-border dark:border-dark-border"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.8, delay: 0.5 }}
@@ -407,7 +407,7 @@ const ContactSection: React.FC = () => {
                 requirements and get a detailed proposal.
               </p>
               <motion.button
-                className="w-full py-3 bg-gradient-to-r from-neon-blue to-electric-green dark:from-purple-accent dark:to-blue-accent text-white font-semibold rounded-lg"
+                className="btn-primary w-full py-3 font-semibold rounded-lg"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
