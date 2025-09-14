@@ -64,9 +64,7 @@ const Footer: React.FC = () => {
                 src="https://res.cloudinary.com/dnmqfgexi/image/upload/v1757441496/White_P2M_Logo_lrojvg.png"
                 alt="P2msolutions.com logo"
               />
-              <span className="text-2xl font-display font-bold text-gray-900 dark:text-white">
-                Solutions
-              </span>
+              
             </motion.div>
 
             <motion.p className="text-gray-600 dark:text-gray-400 mb-6">

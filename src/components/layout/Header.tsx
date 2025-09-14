@@ -40,12 +40,13 @@ const Header: React.FC = () => {
           const el = document.querySelector(href);
           if (el) {
             const headerHeight = 120; // Account for header height + padding
-            const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
+            const elementPosition =
+              el.getBoundingClientRect().top + window.pageYOffset;
             const offsetPosition = elementPosition - headerHeight;
-            
+
             window.scrollTo({
               top: offsetPosition,
-              behavior: "smooth"
+              behavior: "smooth",
             });
           }
         }, 100);
@@ -53,12 +54,13 @@ const Header: React.FC = () => {
         const el = document.querySelector(href);
         if (el) {
           const headerHeight = 120; // Account for header height + padding
-          const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
+          const elementPosition =
+            el.getBoundingClientRect().top + window.pageYOffset;
           const offsetPosition = elementPosition - headerHeight;
-          
+
           window.scrollTo({
             top: offsetPosition,
-            behavior: "smooth"
+            behavior: "smooth",
           });
         }
       }
@@ -80,8 +82,8 @@ const Header: React.FC = () => {
           damping: 30,
         }}
       >
-        <div className="relative rounded-lg bg-light-bg dark:bg-dark-bg border border-light-border dark:border-dark-border overflow-hidden">
-          <div className="px-4 sm:px-6 lg:px-8 py-4">
+        <div className="relative rounded-xl bg-light-bg dark:bg-dark-bg border border-light-border dark:border-dark-border overflow-hidden">
+          <div className="px-2 sm:px-6 lg:px-8 py-2">
             <div className="flex items-center justify-between">
               {/* Logo - Updated animation */}
               <Link to="/" className="flex items-center" tabIndex={0}>
